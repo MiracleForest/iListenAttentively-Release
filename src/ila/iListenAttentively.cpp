@@ -1,5 +1,4 @@
 #include "iListenAttentively.h"
-#include "Global.h"
 #include <ll/api/mod/RegisterHelper.h>
 #include <memory>
 
