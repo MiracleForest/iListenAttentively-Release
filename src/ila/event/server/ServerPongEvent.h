@@ -1,4 +1,4 @@
-#include "ila/Global.h"
+#include "Global.h"
 #include <mc/enums/GameType.h>
 
 namespace ila::inline server

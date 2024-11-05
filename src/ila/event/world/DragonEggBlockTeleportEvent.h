@@ -1,10 +1,10 @@
-#include "ila/Global.h"
+#include "Global.h"
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/world/WorldEvent.h>
 #include <mc/util/Random.h>
 #include <mc/world/level/BlockPos.h>
 
-namespace iListenAttentively::World
+namespace ila::inline world
 {
 class DragonEggBlockTeleportBeforeEvent final : public ll::event::Cancellable<ll::event::WorldEvent>
 {

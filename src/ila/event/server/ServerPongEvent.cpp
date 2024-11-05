@@ -1,4 +1,4 @@
-#include "ila/event/server/ServerPongEvent.h"
+#include "ServerPongEvent.h"
 #include <mc/deps/raknet/SystemAddress.h>
 
 namespace ila::inline server

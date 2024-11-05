@@ -6,7 +6,7 @@
 #include <mc/world/level/block/registry/BlockTypeRegistry.h>
 #include <mc/world/level/block/utils/VanillaBlockTypeIds.h>
 
-namespace iListenAttentively::World
+namespace ila::inline world
 {
 
 LL_STATIC_HOOK(

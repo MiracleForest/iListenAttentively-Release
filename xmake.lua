@@ -32,15 +32,15 @@ target("iListenAttentively")
         "/w45204"
     )
     add_defines("NOMINMAX", "UNICODE","ILA_EXPORT")
-    add_headerfiles("src/**.h")
-    add_files("src/**.cpp")
-    add_files("src/**.rc")
-    add_includedirs("src")
+    add_headerfiles("src/ila/**.h")
+    add_files("src/ila/**.cpp")
+    add_includedirs("src/ila")
     add_packages(
 		"levilamina",
  		"fmt",
         "magic_enum",
-        "nlohmann_json")
+        "nlohmann_json"
+    )
     add_shflags("/DELAYLOAD:bedrock_server.dll")
     set_exceptions("none")
     set_kind("shared")
