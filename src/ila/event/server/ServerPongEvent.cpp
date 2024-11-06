@@ -48,7 +48,7 @@ LL_STATIC_HOOK(
         ushort   mLoaclPort   = static_cast<ushort>(std::stoi(parts[10]));
         ushort   mLoaclPortV6 = static_cast<ushort>(std::stoi(parts[11]));
 
-        ll::event::EventBus::getInstance().publish(ServerPongBeforeEvent(
+        eventBus.publish(ServerPongBeforeEvent(
             motd,
             protocolVersion,
             networkVersion,
@@ -86,7 +86,7 @@ LL_STATIC_HOOK(
         pSendParameters->length = static_cast<int>(packet.size());
 
         auto result = origin(pRns2Socket, pSendParameters, pFile, pLine);
-        ll::event::EventBus::getInstance().publish(ServerPongAfterEvent(
+        eventBus.publish(ServerPongAfterEvent(
             motd,
             protocolVersion,
             networkVersion,

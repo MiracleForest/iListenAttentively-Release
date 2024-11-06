@@ -40,7 +40,7 @@ LL_STATIC_HOOK(
     // clang-format on
 
     auto beforeEvent = DragonEggBlockTeleportBeforeEvent(pRegion, pPos, pRandom, targetPos);
-    ll::event::EventBus::getInstance().publish(beforeEvent);
+    eventBus.publish(beforeEvent);
     if (beforeEvent.isCancelled()) return;
 
     // pRegion.postGameEvent(nullptr, GameEventRegistry::teleport, pPos, nullptr);
@@ -61,9 +61,7 @@ LL_STATIC_HOOK(
         nullptr
     );
     pRegion.removeBlock(pPos);
-    ll::event::EventBus::getInstance().publish(
-        DragonEggBlockTeleportAfterEvent(pRegion, pPos, pRandom, targetPos)
-    );
+    eventBus.publish(DragonEggBlockTeleportAfterEvent(pRegion, pPos, pRandom, targetPos));
 }
 
 static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&);
@@ -89,4 +87,4 @@ static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::Listen
 {
     return std::make_unique<DragonEggBlockTeleportAfterEventEmitter>();
 }
-} // namespace iListenAttentively::World
+} // namespace ila::inline world

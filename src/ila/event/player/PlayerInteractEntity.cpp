@@ -8,17 +8,15 @@ LL_TYPE_INSTANCE_HOOK(
     Player,
     "?interact@Player@@QEAA_NAEAVActor@@AEBVVec3@@@Z",
     bool,
-    Actor& actor,
-    Vec3&  location
+    Actor& pActor,
+    Vec3&  pLocation
 )
 {
-    // clang-format off
-    auto beforeEvent = PlayerInteractEntityBeforeEvent(*this, actor, location);
-    ll::event::EventBus::getInstance().publish(beforeEvent);
+    auto beforeEvent = PlayerInteractEntityBeforeEvent(*this, pActor, pLocation);
+    eventBus.publish(beforeEvent);
     if (beforeEvent.isCancelled()) return false;
-    auto result = origin(actor, location);
-    ll::event::EventBus::getInstance().publish(PlayerInteractEntityAfterEvent(*this, actor, location, result));
-    // clang-format on
+    auto result = origin(pActor, pLocation);
+    eventBus.publish(PlayerInteractEntityAfterEvent(*this, pActor, pLocation, result));
     return result;
 }
 
@@ -46,4 +44,4 @@ static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::Listen
     return std::make_unique<PlayerInteractEntityAfterEventEmitter>();
 }
 
-} // namespace ila::inline server
+} // namespace ila::inline player

@@ -46,4 +46,4 @@ public:
     Vec3 const&  getPos() const { return mPos; };
     bool&        getResult() const { return mResult; };
 };
-} // namespace ila::inline server
+} // namespace ila::inline player

@@ -41,10 +41,10 @@ protected:
 
 public:
     constexpr explicit DragonEggBlockTeleportAfterEvent(
-        BlockSource& blockSource,
-        BlockPos const&    pos,
-        Random const&      random,
-        BlockPos const&    targetPos
+        BlockSource&    blockSource,
+        BlockPos const& pos,
+        Random const&   random,
+        BlockPos const& targetPos
     )
         : WorldEvent(blockSource)
         , mPos(pos)
@@ -57,4 +57,4 @@ public:
     Random const&   getRandom() const { return mRandom; }
     BlockPos const& getTargetPos() const { return mTargetPos; }
 };
-} // namespace iListenAttentively::World
+} // namespace ila::inline world

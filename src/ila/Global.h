@@ -10,3 +10,4 @@
 #include <ll/api/memory/Hook.h>
 
 #define SelfLogger ila::iListenAttentively::getInstance().getSelf().getLogger()
+#define eventBus ll::event::EventBus::getInstance()
