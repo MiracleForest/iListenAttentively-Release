@@ -1,5 +1,4 @@
 #include "Global.h"
-#include <mc/world/actor/player/Player.h>
 
 namespace ila::inline player
 {

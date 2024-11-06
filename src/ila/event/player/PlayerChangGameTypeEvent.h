@@ -1,5 +1,4 @@
 #include "Global.h"
-#include <mc/server/ServerPlayer.h>
 
 namespace ila::inline player
 {
