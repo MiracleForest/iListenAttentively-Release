@@ -8,14 +8,15 @@ LL_TYPE_INSTANCE_HOOK(
     Player,
     &Player::setPermissions,
     void,
-    CommandPermissionLevel pPermissions
+    CommandPermissionLevel pNewPermissions
 )
 {
-    auto beforeEvent = PlayerChangPermissionsBeforeEvent(*this, pPermissions);
+    auto const oldPermissions = this->getCommandPermissionLevel();
+    auto       beforeEvent    = PlayerChangPermissionsBeforeEvent(*this, oldPermissions, pNewPermissions);
     eventBus.publish(beforeEvent);
     if (beforeEvent.isCancelled()) return;
-    origin(pPermissions);
-    eventBus.publish(PlayerChangPermissionsAfterEvent(*this, pPermissions));
+    origin(pNewPermissions);
+    eventBus.publish(PlayerChangPermissionsAfterEvent(*this, oldPermissions, pNewPermissions));
 }
 
 static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&);

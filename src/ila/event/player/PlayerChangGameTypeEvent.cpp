@@ -9,14 +9,15 @@ LL_TYPE_INSTANCE_HOOK(
     ServerPlayer,
     "?setPlayerGameType@ServerPlayer@@UEAAXW4GameType@@@Z",
     void,
-    GameType pGameType
+    GameType pNewGameType
 )
 {
-    auto beforeEvent = PlayerChangGameTypeBeforeEvent(*this, pGameType);
+    auto const oldGameType = this->getPlayerGameType();
+    auto       beforeEvent = PlayerChangGameTypeBeforeEvent(*this, oldGameType, pNewGameType);
     eventBus.publish(beforeEvent);
     if (beforeEvent.isCancelled()) return;
-    origin(pGameType);
-    eventBus.publish(PlayerChangGameTypeAfterEvent(*this, pGameType));
+    origin(pNewGameType);
+    eventBus.publish(PlayerChangGameTypeAfterEvent(*this, oldGameType, pNewGameType));
 }
 
 static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&);
