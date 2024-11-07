@@ -11,7 +11,7 @@ namespace ila::inline world
 
 LL_STATIC_HOOK(
     DragonEggBlockTeleportEventHook,
-    HookPriority::Normal,
+    HookPriority::Low,
     "?_attemptTeleport@DragonEggBlock@@CAXAEAVBlockSource@@AEAVRandom@@AEBVBlockPos@@@Z",
     void,
     BlockSource&    pRegion,

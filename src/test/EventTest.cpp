@@ -2,6 +2,7 @@
 #include "event/player/PlayerChangPermissionsEvent.h"
 #include "event/player/PlayerChangeDimensionEvent.h"
 #include "event/player/PlayerInteractEntityEvent.h"
+#include "event/actor/ActorRideEvent.h"
 #include "event/server/ServerPongEvent.h"
 #include "event/world/DragonEggBlockTeleportEvent.h"
 #include <ll/api/event/EventBus.h>

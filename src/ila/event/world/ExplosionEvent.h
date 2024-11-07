@@ -23,7 +23,7 @@ public:
     ILAPI Vec3&          getPos() const { return *(Vec3*)&getExplosion(); }
     ILAPI float&         getRadius() const { return *((float*)&getExplosion() + 3); }
     ILAPI ActorUniqueID& getSource() const { return *((ActorUniqueID*)&getExplosion() + 12); }
-    ILAPI CustomKnockbackCalculationFunc& getCustomKnockbackCalculationFunc() const
+    ILAPI CustomKnockbackCalculationFunc& getCustomKnockbackCalculation() const
     {
         return *((CustomKnockbackCalculationFunc*)&getExplosion() + 17);
     }
@@ -58,7 +58,7 @@ public:
     ILAPI Vec3 const&          getPos() const { return *(Vec3*)&getExplosion(); }
     ILAPI float const&         getRadius() const { return *((float*)&getExplosion() + 3); }
     ILAPI ActorUniqueID const& getSource() const { return *((ActorUniqueID*)&getExplosion() + 12); }
-    ILAPI CustomKnockbackCalculationFunc const& getCustomKnockbackCalculationFunc() const
+    ILAPI CustomKnockbackCalculationFunc const& getCustomKnockbackCalculation() const
     {
         return *((CustomKnockbackCalculationFunc*)&getExplosion() + 17);
     }
