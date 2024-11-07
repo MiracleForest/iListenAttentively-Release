@@ -7,6 +7,7 @@
 #include <ll/api/event/Event.h>
 #include <ll/api/event/EventBus.h>
 #include <ll/api/event/player/PlayerEvent.h>
+#include <ll/api/event/world/WorldEvent.h>
 #include <ll/api/memory/Hook.h>
 
 #define SelfLogger ila::iListenAttentively::getInstance().getSelf().getLogger()
