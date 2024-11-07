@@ -11,4 +11,10 @@
 #include <ll/api/memory/Hook.h>
 
 #define SelfLogger ila::iListenAttentively::getInstance().getSelf().getLogger()
-#define eventBus ll::event::EventBus::getInstance()
+#define eventBus   ll::event::EventBus::getInstance()
+
+#ifdef ILA_EXPORT
+#    define ILAPI __declspec(dllexport)
+#else
+#    define ILAPI __declspec(dllimport)
+#endif

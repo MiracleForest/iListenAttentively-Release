@@ -16,8 +16,8 @@ public:
     {
     }
 
-    Actor& getTarget() const { return mTarget; };
-    Vec3&  getPos() const { return mPos; };
+    ILAPI Actor& getTarget() const { return mTarget; };
+    ILAPI Vec3&  getPos() const { return mPos; };
 };
 
 class PlayerInteractEntityAfterEvent final : public ll::event::player::PlayerEvent
@@ -41,8 +41,8 @@ public:
     {
     }
 
-    Actor const& getTarget() const { return mTarget; };
-    Vec3 const&  getPos() const { return mPos; };
-    bool&        getResult() const { return mResult; };
+    ILAPI Actor const& getTarget() const { return mTarget; };
+    ILAPI Vec3 const&  getPos() const { return mPos; };
+    ILAPI bool&        getResult() const { return mResult; };
 };
 } // namespace ila::inline player

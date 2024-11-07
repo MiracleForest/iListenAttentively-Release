@@ -20,8 +20,8 @@ public:
     {
     }
 
-    GameType const& getOldGameType() const { return mOldGameType; };
-    GameType&       getNewGameType() const { return mNewGameType; };
+    ILAPI GameType const& getOldGameType() const { return mOldGameType; };
+    ILAPI GameType&       getNewGameType() const { return mNewGameType; };
 };
 
 class PlayerChangGameTypeAfterEvent final : public ll::event::player::PlayerEvent
@@ -42,7 +42,7 @@ public:
     {
     }
 
-    GameType const& getOldGameType() const { return mOldGameType; };
-    GameType const& getNewGameType() const { return mNewGameType; };
+    ILAPI GameType const& getOldGameType() const { return mOldGameType; };
+    ILAPI GameType const& getNewGameType() const { return mNewGameType; };
 };
 } // namespace ila::inline player

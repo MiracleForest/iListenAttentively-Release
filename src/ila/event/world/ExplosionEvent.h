@@ -20,22 +20,22 @@ public:
 
     Explosion& getExplosion() const { return mExplosion; }
 
-    Vec3&                           getPos() const { return *(Vec3*)&getExplosion(); }
-    float&                          getRadius() const { return *((float*)&getExplosion() + 3); }
-    ActorUniqueID&                  getSource() const { return *((ActorUniqueID*)&getExplosion() + 12); }
-    CustomKnockbackCalculationFunc& getCustomKnockbackCalculationFunc() const
+    ILAPI Vec3&          getPos() const { return *(Vec3*)&getExplosion(); }
+    ILAPI float&         getRadius() const { return *((float*)&getExplosion() + 3); }
+    ILAPI ActorUniqueID& getSource() const { return *((ActorUniqueID*)&getExplosion() + 12); }
+    ILAPI CustomKnockbackCalculationFunc& getCustomKnockbackCalculationFunc() const
     {
         return *((CustomKnockbackCalculationFunc*)&getExplosion() + 17);
     }
-    float& getMaxResistance() const { return *((float*)&getExplosion() + 28); }
-    float& getKnockbackScaling() const { return *((float*)&getExplosion() + 32); }
-    bool&  getOverrideInWater() const { return *((bool*)&getExplosion() + 58); }
-    bool&  getFire() const { return *((bool*)&getExplosion() + 80); }
-    bool&  getBreaking() const { return *((bool*)&getExplosion() + 81); }
-    bool&  getAllowUnderwater() const { return *((bool*)&getExplosion() + 82); }
-    bool&  getCanToggleBlocks() const { return *((bool*)&getExplosion() + 83); }
-    bool&  getShouldTakeDamage() const { return *((bool*)&getExplosion() + 84); }
-    bool&  getIgnoreBlockResistance() const { return *((bool*)&getExplosion() + 85); }
+    ILAPI float& getMaxResistance() const { return *((float*)&getExplosion() + 28); }
+    ILAPI float& getKnockbackScaling() const { return *((float*)&getExplosion() + 32); }
+    ILAPI bool&  getOverrideInWater() const { return *((bool*)&getExplosion() + 58); }
+    ILAPI bool&  getFire() const { return *((bool*)&getExplosion() + 80); }
+    ILAPI bool&  getBreaking() const { return *((bool*)&getExplosion() + 81); }
+    ILAPI bool&  getAllowUnderwater() const { return *((bool*)&getExplosion() + 82); }
+    ILAPI bool&  getCanToggleBlocks() const { return *((bool*)&getExplosion() + 83); }
+    ILAPI bool&  getShouldTakeDamage() const { return *((bool*)&getExplosion() + 84); }
+    ILAPI bool&  getIgnoreBlockResistance() const { return *((bool*)&getExplosion() + 85); }
 };
 
 class ExplosionAfterEvent final : public ll::event::WorldEvent
@@ -52,24 +52,24 @@ public:
     {
     }
 
-    Explosion const& getExplosion() const { return mExplosion; }
-    bool&            getResult() { return mResult; }
+    ILAPI Explosion const& getExplosion() const { return mExplosion; }
+    ILAPI bool&            getResult() { return mResult; }
 
-    Vec3 const&          getPos() const { return *(Vec3*)&getExplosion(); }
-    float const&         getRadius() const { return *((float*)&getExplosion() + 3); }
-    ActorUniqueID const& getSource() const { return *((ActorUniqueID*)&getExplosion() + 12); }
-    CustomKnockbackCalculationFunc const& getCustomKnockbackCalculationFunc() const
+    ILAPI Vec3 const&          getPos() const { return *(Vec3*)&getExplosion(); }
+    ILAPI float const&         getRadius() const { return *((float*)&getExplosion() + 3); }
+    ILAPI ActorUniqueID const& getSource() const { return *((ActorUniqueID*)&getExplosion() + 12); }
+    ILAPI CustomKnockbackCalculationFunc const& getCustomKnockbackCalculationFunc() const
     {
         return *((CustomKnockbackCalculationFunc*)&getExplosion() + 17);
     }
-    float const& getMaxResistance() const { return *((float*)&getExplosion() + 28); }
-    float const& getKnockbackScaling() const { return *((float*)&getExplosion() + 32); }
-    bool const&  getOverrideInWater() const { return *((bool*)&getExplosion() + 58); }
-    bool const&  getFire() const { return *((bool*)&getExplosion() + 80); }
-    bool const&  getBreaking() const { return *((bool*)&getExplosion() + 81); }
-    bool const&  getAllowUnderwater() const { return *((bool*)&getExplosion() + 82); }
-    bool const&  getCanToggleBlocks() const { return *((bool*)&getExplosion() + 83); }
-    bool const&  getShouldTakeDamage() const { return *((bool*)&getExplosion() + 84); }
-    bool const&  getIgnoreBlockResistance() const { return *((bool*)&getExplosion() + 85); }
+    ILAPI float const& getMaxResistance() const { return *((float*)&getExplosion() + 28); }
+    ILAPI float const& getKnockbackScaling() const { return *((float*)&getExplosion() + 32); }
+    ILAPI bool const&  getOverrideInWater() const { return *((bool*)&getExplosion() + 58); }
+    ILAPI bool const&  getFire() const { return *((bool*)&getExplosion() + 80); }
+    ILAPI bool const&  getBreaking() const { return *((bool*)&getExplosion() + 81); }
+    ILAPI bool const&  getAllowUnderwater() const { return *((bool*)&getExplosion() + 82); }
+    ILAPI bool const&  getCanToggleBlocks() const { return *((bool*)&getExplosion() + 83); }
+    ILAPI bool const&  getShouldTakeDamage() const { return *((bool*)&getExplosion() + 84); }
+    ILAPI bool const&  getIgnoreBlockResistance() const { return *((bool*)&getExplosion() + 85); }
 };
 } // namespace ila::inline world

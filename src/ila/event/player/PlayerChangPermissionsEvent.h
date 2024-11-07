@@ -20,8 +20,8 @@ public:
     {
     }
 
-    CommandPermissionLevel const& getOldPermissions() const { return mOldPermissions; };
-    CommandPermissionLevel&       getNewPermissions() const { return mNewPermissions; };
+    ILAPI CommandPermissionLevel const& getOldPermissions() const { return mOldPermissions; };
+    ILAPI CommandPermissionLevel&       getNewPermissions() const { return mNewPermissions; };
 };
 
 class PlayerChangPermissionsAfterEvent final : public ll::event::player::PlayerEvent
@@ -42,7 +42,7 @@ public:
     {
     }
 
-    CommandPermissionLevel const& getOldPermissions() const { return mOldPermissions; };
-    CommandPermissionLevel const& getNewPermissions() const { return mNewPermissions; };
+    ILAPI CommandPermissionLevel const& getOldPermissions() const { return mOldPermissions; };
+    ILAPI CommandPermissionLevel const& getNewPermissions() const { return mNewPermissions; };
 };
 } // namespace ila::inline player
