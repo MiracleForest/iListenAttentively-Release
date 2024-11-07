@@ -14,24 +14,24 @@ public:
     {
     }
 
-    ILAPI Actor& getTarget() const { return mTarget; };
+    ILAPI Actor& getTarget() const { return mTarget; }
 };
 
 class ActorRideAfterEvent final : public ll::event::entity::ActorEvent
 {
 protected:
-    Actor& mTarget;
-    bool&  mResult;
+    Actor const& mTarget;
+    bool&        mResult;
 
 public:
-    constexpr explicit ActorRideAfterEvent(Actor& acotr, Actor& target, bool& result)
+    constexpr explicit ActorRideAfterEvent(Actor& acotr, Actor const& target, bool& result)
         : ActorEvent(acotr)
         , mTarget(target)
         , mResult(result)
     {
     }
 
-    ILAPI Actor& getTarget() const { return mTarget; };
-    ILAPI bool&  getResult() const { return mResult; }
+    ILAPI Actor const& getTarget() const { return mTarget; }
+    ILAPI bool&        getResult() const { return mResult; }
 };
 } // namespace ila::inline actor

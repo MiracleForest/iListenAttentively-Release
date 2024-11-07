@@ -21,8 +21,8 @@ public:
     {
     }
 
-    ILAPI ChangeDimensionRequest const& getChangeDimensionRequest() const { return mChangeDimensionRequest; };
-    ILAPI Dimension const&              getDimension() const { return mDimension; };
+    ILAPI ChangeDimensionRequest const& getChangeDimensionRequest() const { return mChangeDimensionRequest; }
+    ILAPI Dimension const&              getDimension() const { return mDimension; }
 };
 
 class PlayerChangeDimensionAfterEvent final : public ll::event::player::PlayerEvent
@@ -43,7 +43,7 @@ public:
     {
     }
 
-    ILAPI ChangeDimensionRequest const& getChangeDimensionRequest() const { return mChangeDimensionRequest; };
-    ILAPI Dimension const&              getDimension() const { return mDimension; };
+    ILAPI ChangeDimensionRequest const& getChangeDimensionRequest() const { return mChangeDimensionRequest; }
+    ILAPI Dimension const&              getDimension() const { return mDimension; }
 };
 } // namespace ila::inline player
