@@ -8,14 +8,14 @@ LL_TYPE_INSTANCE_HOOK(
     Actor,
     "?canAddPassenger@Actor@@UEBA_NAEAV1@@Z",
     bool,
-    Actor& passenger
+    Actor& pPassenger
 )
 {
-    auto beforeEvent = ActorRideBeforeEvent(passenger, *this);
+    auto beforeEvent = ActorRideBeforeEvent(pPassenger, *this);
     eventBus.publish(beforeEvent);
     if (beforeEvent.isCancelled()) return false;
-    auto result = origin(passenger);
-    eventBus.publish(ActorRideAfterEvent(passenger, *this, result));
+    auto result = origin(pPassenger);
+    eventBus.publish(ActorRideAfterEvent(pPassenger, *this, result));
     return result;
 }
 

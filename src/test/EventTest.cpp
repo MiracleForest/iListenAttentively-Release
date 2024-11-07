@@ -7,6 +7,9 @@
 #include "event/server/ServerPongEvent.h"
 #include "event/world/DragonEggBlockTeleportEvent.h"
 #include "event/world/FarmDecayEvent.h"
+#include "event/world/LiquidFlowEvent.h"
+#include "event/world/LiquidTryFlowEvent.h"
+#include "event/world/PistonPushEvent.h"
 #include <ll/api/event/EventBus.h>
 #include <ll/api/memory/Hook.h>
 #include <magic_enum.hpp>

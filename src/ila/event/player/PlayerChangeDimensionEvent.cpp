@@ -10,14 +10,14 @@ LL_TYPE_INSTANCE_HOOK(
     "?playerPrepareRegion@PlayerDimensionTransferer@@UEAAXAEAVPlayer@@AEBVChangeDimensionRequest@@"
     "AEBVDimension@@@Z",
     void,
-    Player&                       player,
-    ChangeDimensionRequest const& changeDimensionRequest,
-    Dimension const&              dimension
+    Player&                       pPlayer,
+    ChangeDimensionRequest const& pChangeDimensionRequest,
+    Dimension const&              pDimension
 )
 {
-    eventBus.publish(PlayerChangeDimensionBeforeEvent(player, changeDimensionRequest, dimension));
-    origin(player, changeDimensionRequest, dimension);
-    eventBus.publish(PlayerChangeDimensionAfterEvent(player, changeDimensionRequest, dimension));
+    eventBus.publish(PlayerChangeDimensionBeforeEvent(pPlayer, pChangeDimensionRequest, pDimension));
+    origin(pPlayer, pChangeDimensionRequest, pDimension);
+    eventBus.publish(PlayerChangeDimensionAfterEvent(pPlayer, pChangeDimensionRequest, pDimension));
 }
 
 static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&);

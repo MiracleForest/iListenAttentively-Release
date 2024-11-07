@@ -9,20 +9,21 @@ LL_TYPE_INSTANCE_HOOK(
     ArmorStand,
     &ArmorStand::_trySwapItem,
     bool,
-    Player&                    player,
-    Puv::Legacy::EquipmentSlot slot
+    Player&                    pPlayer,
+    Puv::Legacy::EquipmentSlot pSlot
 )
 {
-    auto beforeEvent = ArmorStandSwapItemBeforeEvent(*this, player, slot);
+    auto beforeEvent = ArmorStandSwapItemBeforeEvent(*this, pPlayer, pSlot);
     eventBus.publish(beforeEvent);
     if (beforeEvent.isCancelled()) return false;
-    auto result = origin(player, slot);
-    eventBus.publish(ArmorStandSwapItemAfterEvent(*this, player, slot, result));
+    auto result = origin(pPlayer, pSlot);
+    eventBus.publish(ArmorStandSwapItemAfterEvent(*this, pPlayer, pSlot, result));
     return result;
 }
 
 static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&);
-class ArmorStandSwapItemBeforeEventEmitter : public ll::event::Emitter<emitterFactory1, ArmorStandSwapItemBeforeEvent>
+class ArmorStandSwapItemBeforeEventEmitter
+    : public ll::event::Emitter<emitterFactory1, ArmorStandSwapItemBeforeEvent>
 {
     ll::memory::HookRegistrar<ArmorStandSwapItemEventHook> hook;
 };
@@ -33,7 +34,8 @@ static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::Listen
 }
 
 static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&);
-class ArmorStandSwapItemAfterEventEmitter : public ll::event::Emitter<emitterFactory2, ArmorStandSwapItemAfterEvent>
+class ArmorStandSwapItemAfterEventEmitter
+    : public ll::event::Emitter<emitterFactory2, ArmorStandSwapItemAfterEvent>
 {
     ll::memory::HookRegistrar<ArmorStandSwapItemEventHook> hook;
 };

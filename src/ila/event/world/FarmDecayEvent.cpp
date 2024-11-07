@@ -10,17 +10,17 @@ LL_TYPE_INSTANCE_HOOK(
     FarmBlock,
     "?transformOnFall@FarmBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@PEAVActor@@M@Z",
     void,
-    BlockSource&    region,
-    BlockPos const& pos,
-    Actor*          actor,
-    float           fallDistance
+    BlockSource&    pRegion,
+    BlockPos const& pPos,
+    Actor*          pActor,
+    float           pFallDistance
 )
 {
-    auto beforeEvent = FarmDecayBeforeEvent(region, pos, actor, fallDistance);
+    auto beforeEvent = FarmDecayBeforeEvent(pRegion, pPos, pActor, pFallDistance);
     eventBus.publish(beforeEvent);
     if (beforeEvent.isCancelled()) return;
-    origin(region, pos, actor, fallDistance);
-    eventBus.publish(FarmDecayAfterEvent(region, pos, actor, fallDistance));
+    origin(pRegion, pPos, pActor, pFallDistance);
+    eventBus.publish(FarmDecayAfterEvent(pRegion, pPos, pActor, pFallDistance));
 }
 
 static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&);
