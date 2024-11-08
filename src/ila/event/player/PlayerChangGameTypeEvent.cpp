@@ -27,28 +27,6 @@ LL_TYPE_INSTANCE_HOOK(
     eventBus.publish(PlayerChangGameTypeAfterEvent(*this, oldGameType, pNewGameType));
 }
 
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&);
-class PlayerChangGameTypeBeforeEventEmitter
-    : public ll::event::Emitter<emitterFactory1, PlayerChangGameTypeBeforeEvent>
-{
-    ll::memory::HookRegistrar<PlayerChangGameTypeEventHook> hook;
-};
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&)
-{
-    return std::make_unique<PlayerChangGameTypeBeforeEventEmitter>();
-}
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&);
-class PlayerChangGameTypeAfterEventEmitter
-    : public ll::event::Emitter<emitterFactory2, PlayerChangGameTypeAfterEvent>
-{
-    ll::memory::HookRegistrar<PlayerChangGameTypeEventHook> hook;
-};
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&)
-{
-    return std::make_unique<PlayerChangGameTypeAfterEventEmitter>();
-}
+Event_Factory(PlayerChangGameType, <PlayerChangGameTypeEventHook>);
 
 } // namespace ila::inline player

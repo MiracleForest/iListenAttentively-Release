@@ -72,27 +72,6 @@ LL_STATIC_HOOK(
     eventBus.publish(DragonEggBlockTeleportAfterEvent(pRegion, pPos, pRandom, targetPos));
 }
 
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&);
-class DragonEggBlockTeleportBeforeEventEmitter
-    : public ll::event::Emitter<emitterFactory1, DragonEggBlockTeleportBeforeEvent>
-{
-    ll::memory::HookRegistrar<DragonEggBlockTeleportEventHook> hook;
-};
+Event_Factory(DragonEggBlockTeleport, <DragonEggBlockTeleportEventHook>);
 
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&)
-{
-    return std::make_unique<DragonEggBlockTeleportBeforeEventEmitter>();
-}
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&);
-class DragonEggBlockTeleportAfterEventEmitter
-    : public ll::event::Emitter<emitterFactory2, DragonEggBlockTeleportAfterEvent>
-{
-    ll::memory::HookRegistrar<DragonEggBlockTeleportEventHook> hook;
-};
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&)
-{
-    return std::make_unique<DragonEggBlockTeleportAfterEventEmitter>();
-}
 } // namespace ila::inline world

@@ -19,25 +19,6 @@ LL_TYPE_INSTANCE_HOOK(ExplosionEventHook, HookPriority::Normal, ::Explosion, &Ex
     return result;
 }
 
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&);
-class ExplosionBeforeEventEmitter : public ll::event::Emitter<emitterFactory1, ExplosionBeforeEvent>
-{
-    ll::memory::HookRegistrar<ExplosionEventHook> hook;
-};
+Event_Factory(Explosion, <ExplosionEventHook>);
 
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&)
-{
-    return std::make_unique<ExplosionBeforeEventEmitter>();
-}
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&);
-class ExplosionAfterEventEmitter : public ll::event::Emitter<emitterFactory2, ExplosionAfterEvent>
-{
-    ll::memory::HookRegistrar<ExplosionEventHook> hook;
-};
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&)
-{
-    return std::make_unique<ExplosionAfterEventEmitter>();
-}
 } // namespace ila::inline world

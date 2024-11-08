@@ -127,25 +127,6 @@ LL_STATIC_HOOK(
     return origin(pRns2Socket, pSendParameters, pFile, pLine);
 }
 
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&);
-class ServerPongBeforeEventEmitter : public ll::event::Emitter<emitterFactory1, ServerPongBeforeEvent>
-{
-    ll::memory::HookRegistrar<ServerPongEventHook> hook;
-};
+Event_Factory(ServerPong, <ServerPongEventHook>);
 
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&)
-{
-    return std::make_unique<ServerPongBeforeEventEmitter>();
-}
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&);
-class ServerPongAfterEventEmitter : public ll::event::Emitter<emitterFactory2, ServerPongAfterEvent>
-{
-    ll::memory::HookRegistrar<ServerPongEventHook> hook;
-};
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&)
-{
-    return std::make_unique<ServerPongAfterEventEmitter>();
-}
 } // namespace ila::inline server

@@ -25,26 +25,6 @@ LL_TYPE_INSTANCE_HOOK(
     return result;
 }
 
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&);
-class ActorRideBeforeEventEmitter : public ll::event::Emitter<emitterFactory1, ActorRideBeforeEvent>
-{
-    ll::memory::HookRegistrar<ActorRideEventHook> hook;
-};
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&)
-{
-    return std::make_unique<ActorRideBeforeEventEmitter>();
-}
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&);
-class ActorRideAfterEventEmitter : public ll::event::Emitter<emitterFactory2, ActorRideAfterEvent>
-{
-    ll::memory::HookRegistrar<ActorRideEventHook> hook;
-};
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&)
-{
-    return std::make_unique<ActorRideAfterEventEmitter>();
-}
+Event_Factory(ActorRide, <ActorRideEventHook>);
 
 } // namespace ila::inline actor

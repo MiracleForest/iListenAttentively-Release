@@ -29,28 +29,5 @@ LL_TYPE_INSTANCE_HOOK(
     return result;
 }
 
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&);
-class ArmorStandSwapItemBeforeEventEmitter
-    : public ll::event::Emitter<emitterFactory1, ArmorStandSwapItemBeforeEvent>
-{
-    ll::memory::HookRegistrar<ArmorStandSwapItemEventHook> hook;
-};
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&)
-{
-    return std::make_unique<ArmorStandSwapItemBeforeEventEmitter>();
-}
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&);
-class ArmorStandSwapItemAfterEventEmitter
-    : public ll::event::Emitter<emitterFactory2, ArmorStandSwapItemAfterEvent>
-{
-    ll::memory::HookRegistrar<ArmorStandSwapItemEventHook> hook;
-};
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&)
-{
-    return std::make_unique<ArmorStandSwapItemAfterEventEmitter>();
-}
-
+Event_Factory(ArmorStandSwapItem, <ArmorStandSwapItemEventHook>);
 } // namespace ila::inline actor

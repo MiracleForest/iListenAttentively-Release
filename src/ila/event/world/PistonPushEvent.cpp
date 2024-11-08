@@ -33,25 +33,6 @@ LL_TYPE_INSTANCE_HOOK(
     return result;
 }
 
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&);
-class PistonPushBeforeEventEmitter : public ll::event::Emitter<emitterFactory1, PistonPushBeforeEvent>
-{
-    ll::memory::HookRegistrar<PistonPushEventHook> hook;
-};
+Event_Factory(PistonPush, <PistonPushEventHook>);
 
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&)
-{
-    return std::make_unique<PistonPushBeforeEventEmitter>();
-}
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&);
-class PistonPushAfterEventEmitter : public ll::event::Emitter<emitterFactory2, PistonPushAfterEvent>
-{
-    ll::memory::HookRegistrar<PistonPushEventHook> hook;
-};
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&)
-{
-    return std::make_unique<PistonPushAfterEventEmitter>();
-}
 } // namespace ila::inline world

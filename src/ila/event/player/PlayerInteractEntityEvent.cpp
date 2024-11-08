@@ -28,28 +28,6 @@ LL_TYPE_INSTANCE_HOOK(
     return result;
 }
 
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&);
-class PlayerInteractEntityBeforeEventEmitter
-    : public ll::event::Emitter<emitterFactory1, PlayerInteractEntityBeforeEvent>
-{
-    ll::memory::HookRegistrar<PlayerInteractEntityEventHook> hook;
-};
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&)
-{
-    return std::make_unique<PlayerInteractEntityBeforeEventEmitter>();
-}
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&);
-class PlayerInteractEntityAfterEventEmitter
-    : public ll::event::Emitter<emitterFactory2, PlayerInteractEntityAfterEvent>
-{
-    ll::memory::HookRegistrar<PlayerInteractEntityEventHook> hook;
-};
-
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&)
-{
-    return std::make_unique<PlayerInteractEntityAfterEventEmitter>();
-}
+Event_Factory(PlayerInteractEntity, <PlayerInteractEntityEventHook>);
 
 } // namespace ila::inline player
