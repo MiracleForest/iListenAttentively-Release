@@ -17,6 +17,7 @@
 #include "event/world/LiquidTryFlowEvent.h"
 #include "event/world/PistonPushEvent.h"
 #include "event/world/PressurePlateTriggerEvent.h"
+#include "event/world/RedstoneUpdateEvent.h"
 #include <ll/api/event/EventBus.h>
 #include <ll/api/memory/Hook.h>
 #include <magic_enum.hpp>
@@ -32,10 +33,4 @@ LL_AUTO_TYPE_INSTANCE_HOOK(
 )
 {
     origin(ins);
-
-    eventBus.emplaceListener<ila::actor::ProjectileCreateBeforeEvent>(
-        [](ila::actor::ProjectileCreateBeforeEvent& event) -> void {
-            SelfLogger.debug("{0}: {1}", event.self().getTypeName(), event.self().getPosition().toString());
-        }
-    );
 }
