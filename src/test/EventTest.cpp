@@ -1,3 +1,4 @@
+#include "Global.h"
 #include "event/actor/ActorRideEvent.h"
 #include "event/actor/ArmorStandSwapItemEvent.h"
 #include "event/player/PlayerChangGameTypeEvent.h"
@@ -9,6 +10,7 @@
 #include "event/world/FarmDecayEvent.h"
 #include "event/world/LiquidFlowEvent.h"
 #include "event/world/LiquidTryFlowEvent.h"
+#include "event/world/ExplosionEvent.h"
 #include "event/world/PistonPushEvent.h"
 #include <ll/api/event/EventBus.h>
 #include <ll/api/memory/Hook.h>

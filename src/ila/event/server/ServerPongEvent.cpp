@@ -16,7 +16,7 @@ ushort&      ServerPongBeforeEvent::getLocalPort() const { return mLoaclPort; }
 ushort&      ServerPongBeforeEvent::getLocalPortV6() const { return mLoaclPortV6; }
 
 std::string const& ServerPongAfterEvent::getMotd() const { return mMotd; }
-int const&         ServerPongAfterEvent::getProtocolVersion() const { return mProtocolVersion; 
+int const&         ServerPongAfterEvent::getProtocolVersion() const { return mProtocolVersion; }
 std::string const& ServerPongAfterEvent::getNetworkVersion() const { return mNetworkVersion; }
 int const&         ServerPongAfterEvent::getPlayerCount() const { return mPlayerCount; }
 int const&         ServerPongAfterEvent::getMaxPlayerCount() const { return mMaxPlayerCount; }

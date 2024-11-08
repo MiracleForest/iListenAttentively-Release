@@ -31,7 +31,13 @@ target("iListenAttentively")
         "/w44738",
         "/w45204"
     )
-    add_defines("NOMINMAX", "UNICODE","ILA_EXPORT")
+    add_defines(
+        "NOMINMAX", 
+        "UNICODE",
+        "ILA_EXPORT",
+        "_HAS_CXX17",
+        "_HAS_CXX20"
+    )
     add_headerfiles("src/ila/**.h")
     add_files("src/ila/**.cpp")
     add_includedirs("src/ila")
