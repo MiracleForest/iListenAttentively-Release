@@ -10,11 +10,11 @@ protected:
 
 public:
     constexpr explicit ArmorStandSwapItemBeforeEvent(
-        Actor&                      acotr,
+        Actor&                      actor,
         Player&                     player,
         Puv::Legacy::EquipmentSlot& slot
     )
-        : Cancellable(acotr)
+        : Cancellable(actor)
         , mPlayer(player)
         , mSlot(slot)
     {
@@ -33,12 +33,12 @@ protected:
 
 public:
     constexpr explicit ArmorStandSwapItemAfterEvent(
-        Actor&                            acotr,
+        Actor&                            actor,
         Player const&                     player,
         Puv::Legacy::EquipmentSlot const& slot,
         bool&                             result
     )
-        : ActorEvent(acotr)
+        : ActorEvent(actor)
         , mPlayer(player)
         , mSlot(slot)
         , mResult(result)

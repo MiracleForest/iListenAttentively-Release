@@ -8,8 +8,8 @@ protected:
     Actor& mTarget;
 
 public:
-    constexpr explicit ActorRideBeforeEvent(Actor& acotr, Actor& target)
-        : Cancellable(acotr)
+    constexpr explicit ActorRideBeforeEvent(Actor& actor, Actor& target)
+        : Cancellable(actor)
         , mTarget(target)
     {
     }
@@ -24,8 +24,8 @@ protected:
     bool&        mResult;
 
 public:
-    constexpr explicit ActorRideAfterEvent(Actor& acotr, Actor const& target, bool& result)
-        : ActorEvent(acotr)
+    constexpr explicit ActorRideAfterEvent(Actor& actor, Actor const& target, bool& result)
+        : ActorEvent(actor)
         , mTarget(target)
         , mResult(result)
     {

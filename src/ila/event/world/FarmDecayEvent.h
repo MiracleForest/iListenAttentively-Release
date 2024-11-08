@@ -14,12 +14,12 @@ public:
     constexpr explicit FarmDecayBeforeEvent(
         BlockSource&    blockSource,
         BlockPos const& pos,
-        Actor*&         acotr,
+        Actor*&         actor,
         float&          fallDistance
     )
         : Cancellable(blockSource)
         , mPos(pos)
-        , mActor(acotr)
+        , mActor(actor)
         , mFallDistance(fallDistance)
     {
     }
@@ -40,12 +40,12 @@ public:
     constexpr explicit FarmDecayAfterEvent(
         BlockSource&    blockSource,
         BlockPos const& pos,
-        Actor* const&   acotr,
+        Actor* const&   actor,
         float const&    fallDistance
     )
         : WorldEvent(blockSource)
         , mPos(pos)
-        , mActor(acotr)
+        , mActor(actor)
         , mFallDistance(fallDistance)
     {
     }
