@@ -1,4 +1,5 @@
 #include "Global.h"
+#include "event/actor/ActorGetEffectEvent.h"
 #include "event/actor/ActorRideEvent.h"
 #include "event/actor/ArmorStandSwapItemEvent.h"
 #include "event/actor/ProjectileCreateEvent.h"
