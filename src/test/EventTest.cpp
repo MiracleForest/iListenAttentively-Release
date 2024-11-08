@@ -2,6 +2,7 @@
 #include "event/actor/ActorRideEvent.h"
 #include "event/actor/ArmorStandSwapItemEvent.h"
 #include "event/actor/ProjectileCreateEvent.h"
+#include "event/level/SculkCatalystAbsorbExperienceEvent.h"
 #include "event/player/PlayerAttackBlockEvent.h"
 #include "event/player/PlayerChangGameTypeEvent.h"
 #include "event/player/PlayerChangPermissionsEvent.h"
@@ -18,6 +19,7 @@
 #include "event/world/PistonPushEvent.h"
 #include "event/world/PressurePlateTriggerEvent.h"
 #include "event/world/RedstoneUpdateEvent.h"
+#include "event/world/SculkBlockGrowthEvent.h"
 #include <ll/api/event/EventBus.h>
 #include <ll/api/memory/Hook.h>
 #include <magic_enum.hpp>

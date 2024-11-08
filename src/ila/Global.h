@@ -8,8 +8,10 @@
 #include <ll/api/event/EventBus.h>
 #include <ll/api/event/entity/ActorEvent.h>
 #include <ll/api/event/player/PlayerEvent.h>
+#include <ll/api/event/world/LevelEvent.h>
 #include <ll/api/event/world/WorldEvent.h>
 #include <ll/api/memory/Hook.h>
+#include <mc/world/level/BlockPos.h>
 
 #define SelfLogger ila::iListenAttentively::getInstance().getSelf().getLogger()
 #define eventBus   ll::event::EventBus::getInstance()

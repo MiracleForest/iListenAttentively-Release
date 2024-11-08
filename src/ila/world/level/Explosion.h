@@ -3,7 +3,6 @@
 #include <mc/events/LevelSoundEvent.h>
 #include <mc/math/Vec3.h>
 #include <mc/world/ActorUniqueID.h>
-#include <mc/world/level/BlockPos.h>
 #include <mc/world/level/BlockSource.h>
 #include <optional>
 
