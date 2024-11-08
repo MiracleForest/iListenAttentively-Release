@@ -3,6 +3,13 @@
 
 namespace ila::inline player
 {
+
+GameType const& PlayerChangGameTypeBeforeEvent::getOldGameType() const { return mOldGameType; }
+GameType&       PlayerChangGameTypeBeforeEvent::getNewGameType() const { return mNewGameType; }
+
+GameType const& PlayerChangGameTypeAfterEvent::getOldGameType() const { return mOldGameType; }
+GameType const& PlayerChangGameTypeAfterEvent::getNewGameType() const { return mNewGameType; }
+
 LL_TYPE_INSTANCE_HOOK(
     PlayerChangGameTypeEventHook,
     HookPriority::Normal,

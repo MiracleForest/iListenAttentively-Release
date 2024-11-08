@@ -24,9 +24,9 @@ public:
     {
     }
 
-    ILAPI BlockPos const& getPos() const { return mPos; }
-    ILAPI uchar&          getBranchFacing() const { return mBranchFacing; }
-    ILAPI uchar&          getPistonMoveFacing() const { return mPistonMoveFacing; }
+    ILAPI BlockPos const& getPos() const;
+    ILAPI uchar&          getBranchFacing() const;
+    ILAPI uchar&          getPistonMoveFacing() const;
 };
 
 class PistonPushAfterEvent final : public ll::event::WorldEvent
@@ -53,9 +53,9 @@ public:
     {
     }
 
-    ILAPI BlockPos const& getPos() const { return mPos; }
-    ILAPI uchar const&    getBranchFacing() const { return mBranchFacing; }
-    ILAPI uchar const&    getPistonMoveFacing() const { return mPistonMoveFacing; }
-    ILAPI bool&           getResult() const { return mResult; }
+    ILAPI BlockPos const& getPos() const;
+    ILAPI uchar const&    getBranchFacing() const;
+    ILAPI uchar const&    getPistonMoveFacing() const;
+    ILAPI bool&           getResult() const;
 };
 } // namespace ila::inline world

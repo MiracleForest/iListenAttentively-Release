@@ -20,8 +20,8 @@ public:
     {
     }
 
-    ILAPI Player& getPlayer() const { return mPlayer; }
-    ILAPI Puv::Legacy::EquipmentSlot& getSlot() const { return mSlot; }
+    ILAPI Player& getPlayer() const;
+    ILAPI Puv::Legacy::EquipmentSlot& getSlot() const;
 };
 
 class ArmorStandSwapItemAfterEvent final : public ll::event::entity::ActorEvent
@@ -45,8 +45,8 @@ public:
     {
     }
 
-    ILAPI Player const& getPlayer() const { return mPlayer; }
-    ILAPI Puv::Legacy::EquipmentSlot const& getSlot() const { return mSlot; }
-    ILAPI bool&                             getResult() const { return mResult; }
+    ILAPI Player const& getPlayer() const;
+    ILAPI Puv::Legacy::EquipmentSlot const& getSlot() const;
+    ILAPI bool&                             getResult() const;
 };
 } // namespace ila::inline actor

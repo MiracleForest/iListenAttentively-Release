@@ -4,6 +4,15 @@
 namespace ila::inline world
 {
 
+BlockPos const& PistonPushBeforeEvent::getPos() const { return mPos; }
+uchar&          PistonPushBeforeEvent::getBranchFacing() const { return mBranchFacing; }
+uchar&          PistonPushBeforeEvent::getPistonMoveFacing() const { return mPistonMoveFacing; }
+
+BlockPos const& PistonPushAfterEvent::getPos() const { return mPos; }
+uchar const&    PistonPushAfterEvent::getBranchFacing() const { return mBranchFacing; }
+uchar const&    PistonPushAfterEvent::getPistonMoveFacing() const { return mPistonMoveFacing; }
+bool&           PistonPushAfterEvent::getResult() const { return mResult; }
+
 LL_TYPE_INSTANCE_HOOK(
     PistonPushEventHook,
     HookPriority::Normal,

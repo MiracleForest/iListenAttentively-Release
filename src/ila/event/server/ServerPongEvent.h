@@ -43,16 +43,16 @@ public:
     {
     }
 
-    ILAPI std::string& getMotd() const { return mMotd; }
-    ILAPI int&         getProtocolVersion() const { return mProtocolVersion; }
-    ILAPI std::string& getNetworkVersion() const { return mNetworkVersion; }
-    ILAPI int&         getPlayerCount() const { return mPlayerCount; }
-    ILAPI int&         getMaxPlayerCount() const { return mMaxPlayerCount; }
-    ILAPI std::string& getGuid() const { return mGuid; }
-    ILAPI std::string& getLevelName() const { return mLevelName; }
-    ILAPI GameType&    getGameMode() const { return mGameMode; }
-    ILAPI ushort&      getLocalPort() const { return mLoaclPort; }
-    ILAPI ushort&      getLocalPortV6() const { return mLoaclPortV6; }
+    ILAPI std::string& getMotd() const;
+    ILAPI int&         getProtocolVersion() const;
+    ILAPI std::string& getNetworkVersion() const;
+    ILAPI int&         getPlayerCount() const;
+    ILAPI int&         getMaxPlayerCount() const;
+    ILAPI std::string& getGuid() const;
+    ILAPI std::string& getLevelName() const;
+    ILAPI GameType&    getGameMode() const;
+    ILAPI ushort&      getLocalPort() const;
+    ILAPI ushort&      getLocalPortV6() const;
 }; // class ServerPongEvent
 
 class ServerPongAfterEvent final : public ll::event::Event
@@ -98,16 +98,16 @@ public:
     {
     }
 
-    ILAPI std::string const& getMotd() const { return mMotd; }
-    ILAPI int const&         getProtocolVersion() const { return mProtocolVersion; }
-    ILAPI std::string const& getNetworkVersion() const { return mNetworkVersion; }
-    ILAPI int const&         getPlayerCount() const { return mPlayerCount; }
-    ILAPI int const&         getMaxPlayerCount() const { return mMaxPlayerCount; }
-    ILAPI std::string const& getGuid() const { return mGuid; }
-    ILAPI std::string const& getLevelName() const { return mLevelName; }
-    ILAPI GameType const&    getGameMode() const { return mGameMode; }
-    ILAPI ushort const&      getLocalPort() const { return mLoaclPort; }
-    ILAPI ushort const&      getLocalPortV6() const { return mLoaclPortV6; }
-    ILAPI int&               getResult() const { return mResult; }
+    ILAPI std::string const& getMotd() const;
+    ILAPI int const&         getProtocolVersion() const;
+    ILAPI std::string const& getNetworkVersion() const;
+    ILAPI int const&         getPlayerCount() const;
+    ILAPI int const&         getMaxPlayerCount() const;
+    ILAPI std::string const& getGuid() const;
+    ILAPI std::string const& getLevelName() const;
+    ILAPI GameType const&    getGameMode() const;
+    ILAPI ushort const&      getLocalPort() const;
+    ILAPI ushort const&      getLocalPortV6() const;
+    ILAPI int&               getResult() const;
 }; // class ServerPongEvent
 } // namespace ila::inline server

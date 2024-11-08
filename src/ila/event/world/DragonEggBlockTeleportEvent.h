@@ -25,9 +25,9 @@ public:
     {
     }
 
-    ILAPI BlockPos const& getPos() const { return mPos; }
-    ILAPI Random&         getRandom() const { return mRandom; }
-    ILAPI BlockPos&       getTargetPos() const { return mTargetPos; }
+    ILAPI BlockPos const& getPos() const;
+    ILAPI Random&         getRandom() const;
+    ILAPI BlockPos&       getTargetPos() const;
 };
 
 class DragonEggBlockTeleportAfterEvent final : public ll::event::WorldEvent
@@ -51,8 +51,8 @@ public:
     {
     }
 
-    ILAPI BlockPos const& getPos() const { return mPos; }
-    ILAPI Random const&   getRandom() const { return mRandom; }
-    ILAPI BlockPos const& getTargetPos() const { return mTargetPos; }
+    ILAPI BlockPos const& getPos() const;
+    ILAPI Random const&   getRandom() const;
+    ILAPI BlockPos const& getTargetPos() const;
 };
 } // namespace ila::inline world

@@ -3,6 +3,14 @@
 
 namespace ila::inline actor
 {
+
+Player&                     ArmorStandSwapItemBeforeEvent::getPlayer() const { return mPlayer; }
+Puv::Legacy::EquipmentSlot& ArmorStandSwapItemBeforeEvent::getSlot() const { return mSlot; }
+
+Player const&                     ArmorStandSwapItemAfterEvent::getPlayer() const { return mPlayer; }
+Puv::Legacy::EquipmentSlot const& ArmorStandSwapItemAfterEvent::getSlot() const { return mSlot; }
+bool&                             ArmorStandSwapItemAfterEvent::getResult() const { return mResult; }
+
 LL_TYPE_INSTANCE_HOOK(
     ArmorStandSwapItemEventHook,
     HookPriority::Normal,

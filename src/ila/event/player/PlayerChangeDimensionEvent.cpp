@@ -3,6 +3,19 @@
 
 namespace ila::inline player
 {
+
+ChangeDimensionRequest const& PlayerChangeDimensionBeforeEvent::getChangeDimensionRequest() const
+{
+    return mChangeDimensionRequest;
+}
+Dimension const& PlayerChangeDimensionBeforeEvent::getDimension() const { return mDimension; }
+
+ChangeDimensionRequest const& PlayerChangeDimensionAfterEvent::getChangeDimensionRequest() const
+{
+    return mChangeDimensionRequest;
+}
+Dimension const& PlayerChangeDimensionAfterEvent::getDimension() const { return mDimension; }
+
 LL_TYPE_INSTANCE_HOOK(
     PlayerChangeDimensionEventHook,
     HookPriority::Normal,

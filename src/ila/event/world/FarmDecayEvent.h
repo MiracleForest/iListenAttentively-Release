@@ -24,9 +24,9 @@ public:
     {
     }
 
-    ILAPI BlockPos const& getPos() const { return mPos; }
-    ILAPI Actor*&         getActor() const { return mActor; }
-    ILAPI float&          getFallDistance() const { return mFallDistance; }
+    ILAPI BlockPos const& getPos() const;
+    ILAPI Actor*&         getActor() const;
+    ILAPI float&          getFallDistance() const;
 };
 
 class FarmDecayAfterEvent final : public ll::event::WorldEvent
@@ -50,8 +50,8 @@ public:
     {
     }
 
-    ILAPI BlockPos const& getPos() const { return mPos; }
-    ILAPI Actor* const&   getActor() const { return mActor; }
-    ILAPI float const&    getFallDistance() const { return mFallDistance; }
+    ILAPI BlockPos const& getPos() const;
+    ILAPI Actor* const&   getActor() const;
+    ILAPI float const&    getFallDistance() const;
 };
 } // namespace ila::inline world

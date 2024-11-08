@@ -9,6 +9,14 @@
 namespace ila::inline world
 {
 
+BlockPos const& DragonEggBlockTeleportBeforeEvent::getPos() const { return mPos; }
+Random&         DragonEggBlockTeleportBeforeEvent::getRandom() const { return mRandom; }
+BlockPos&       DragonEggBlockTeleportBeforeEvent::getTargetPos() const { return mTargetPos; }
+
+BlockPos const& DragonEggBlockTeleportAfterEvent::getPos() const { return mPos; }
+Random const&   DragonEggBlockTeleportAfterEvent::getRandom() const { return mRandom; }
+BlockPos const& DragonEggBlockTeleportAfterEvent::getTargetPos() const { return mTargetPos; }
+
 LL_STATIC_HOOK(
     DragonEggBlockTeleportEventHook,
     HookPriority::Low,

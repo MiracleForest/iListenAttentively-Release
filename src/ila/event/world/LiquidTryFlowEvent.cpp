@@ -4,6 +4,15 @@
 namespace ila::inline world
 {
 
+BlockPos const& LiquidTryFlowBeforeEvent::getPos() const { return mPos; }
+BlockPos const& LiquidTryFlowBeforeEvent::getFlowFromPos() const { return mFlowFromPos; }
+uchar&          LiquidTryFlowBeforeEvent::getFlowFromDirection() const { return mFlowFromDirection; }
+
+BlockPos const& LiquidTryFlowAfterEvent::getPos() const { return mPos; }
+BlockPos const& LiquidTryFlowAfterEvent::getFlowFromPos() const { return mFlowFromPos; }
+uchar const&    LiquidTryFlowAfterEvent::getFlowFromDirection() const { return mFlowFromDirection; }
+bool&           LiquidTryFlowAfterEvent::getResult() const { return mResult; }
+
 LL_TYPE_INSTANCE_HOOK(
     LiquidTryFlowEventHook,
     HookPriority::Normal,

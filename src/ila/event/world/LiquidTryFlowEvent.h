@@ -24,9 +24,9 @@ public:
     {
     }
 
-    ILAPI BlockPos const& getPos() const { return mPos; }
-    ILAPI BlockPos const& getFlowFromPos() const { return mFlowFromPos; }
-    ILAPI uchar&          getFlowFromDirection() const { return mFlowFromDirection; }
+    ILAPI BlockPos const& getPos() const;
+    ILAPI BlockPos const& getFlowFromPos() const;
+    ILAPI uchar&          getFlowFromDirection() const;
 };
 
 class LiquidTryFlowAfterEvent final : public ll::event::WorldEvent
@@ -53,9 +53,9 @@ public:
     {
     }
 
-    ILAPI BlockPos const& getPos() const { return mPos; }
-    ILAPI BlockPos const& getFlowFromPos() const { return mFlowFromPos; }
-    ILAPI uchar const&    getFlowFromDirection() const { return mFlowFromDirection; }
-    ILAPI bool&           getResult() const { return mResult; }
+    ILAPI BlockPos const& getPos() const;
+    ILAPI BlockPos const& getFlowFromPos() const;
+    ILAPI uchar const&    getFlowFromDirection() const;
+    ILAPI bool&           getResult() const;
 };
 } // namespace ila::inline world

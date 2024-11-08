@@ -2,6 +2,14 @@
 
 namespace ila::inline player
 {
+
+Actor& PlayerInteractEntityBeforeEvent::getTarget() const { return mTarget; }
+Vec3&  PlayerInteractEntityBeforeEvent::getPos() const { return mPos; }
+
+Actor const& PlayerInteractEntityAfterEvent::getTarget() const { return mTarget; }
+Vec3 const&  PlayerInteractEntityAfterEvent::getPos() const { return mPos; }
+bool&        PlayerInteractEntityAfterEvent::getResult() const { return mResult; }
+
 LL_TYPE_INSTANCE_HOOK(
     PlayerInteractEntityEventHook,
     HookPriority::Normal,

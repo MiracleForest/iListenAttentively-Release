@@ -2,6 +2,13 @@
 
 namespace ila::inline player
 {
+
+CommandPermissionLevel const& PlayerChangPermissionsBeforeEvent::getOldPermissions() const { return mOldPermissions; }
+CommandPermissionLevel&       PlayerChangPermissionsBeforeEvent::getNewPermissions() const { return mNewPermissions; }
+
+CommandPermissionLevel const& PlayerChangPermissionsAfterEvent::getOldPermissions() const { return mOldPermissions; }
+CommandPermissionLevel const& PlayerChangPermissionsAfterEvent::getNewPermissions() const { return mNewPermissions; }
+
 LL_TYPE_INSTANCE_HOOK(
     PlayerChangPermissionsEventHook,
     HookPriority::Normal,

@@ -2,6 +2,12 @@
 
 namespace ila::inline actor
 {
+
+Actor& ActorRideBeforeEvent::getTarget() const { return mTarget; }
+
+Actor const& ActorRideAfterEvent::getTarget() const { return mTarget; }
+bool&        ActorRideAfterEvent::getResult() const { return mResult; }
+
 LL_TYPE_INSTANCE_HOOK(
     ActorRideEventHook,
     HookPriority::Normal,

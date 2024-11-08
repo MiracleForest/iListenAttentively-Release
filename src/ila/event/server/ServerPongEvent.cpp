@@ -4,6 +4,29 @@
 namespace ila::inline server
 {
 
+std::string& ServerPongBeforeEvent::getMotd() const { return mMotd; }
+int&         ServerPongBeforeEvent::getProtocolVersion() const { return mProtocolVersion; }
+std::string& ServerPongBeforeEvent::getNetworkVersion() const { return mNetworkVersion; }
+int&         ServerPongBeforeEvent::getPlayerCount() const { return mPlayerCount; }
+int&         ServerPongBeforeEvent::getMaxPlayerCount() const { return mMaxPlayerCount; }
+std::string& ServerPongBeforeEvent::getGuid() const { return mGuid; }
+std::string& ServerPongBeforeEvent::getLevelName() const { return mLevelName; }
+GameType&    ServerPongBeforeEvent::getGameMode() const { return mGameMode; }
+ushort&      ServerPongBeforeEvent::getLocalPort() const { return mLoaclPort; }
+ushort&      ServerPongBeforeEvent::getLocalPortV6() const { return mLoaclPortV6; }
+
+std::string const& ServerPongAfterEvent::getMotd() const { return mMotd; }
+int const&         ServerPongAfterEvent::getProtocolVersion() const { return mProtocolVersion; 
+std::string const& ServerPongAfterEvent::getNetworkVersion() const { return mNetworkVersion; }
+int const&         ServerPongAfterEvent::getPlayerCount() const { return mPlayerCount; }
+int const&         ServerPongAfterEvent::getMaxPlayerCount() const { return mMaxPlayerCount; }
+std::string const& ServerPongAfterEvent::getGuid() const { return mGuid; }
+std::string const& ServerPongAfterEvent::getLevelName() const { return mLevelName; }
+GameType const&    ServerPongAfterEvent::getGameMode() const { return mGameMode; }
+ushort const&      ServerPongAfterEvent::getLocalPort() const { return mLoaclPort; }
+ushort const&      ServerPongAfterEvent::getLocalPortV6() const { return mLoaclPortV6; }
+int&               ServerPongAfterEvent::getResult() const { return mResult; }
+
 struct RNS2_SendParameters
 {
     char*                 data;

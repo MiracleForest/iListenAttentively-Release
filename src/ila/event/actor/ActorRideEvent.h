@@ -14,7 +14,7 @@ public:
     {
     }
 
-    ILAPI Actor& getTarget() const { return mTarget; }
+    ILAPI Actor& getTarget() const;
 };
 
 class ActorRideAfterEvent final : public ll::event::entity::ActorEvent
@@ -31,7 +31,7 @@ public:
     {
     }
 
-    ILAPI Actor const& getTarget() const { return mTarget; }
-    ILAPI bool&        getResult() const { return mResult; }
+    ILAPI Actor const& getTarget() const;
+    ILAPI bool&        getResult() const;
 };
 } // namespace ila::inline actor
