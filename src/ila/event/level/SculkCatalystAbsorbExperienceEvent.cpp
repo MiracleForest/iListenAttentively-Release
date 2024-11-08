@@ -25,7 +25,7 @@ LL_TYPE_INSTANCE_HOOK(
     Actor& pActor
 )
 {
-    auto       beforeEvent = SculkCatalystAbsorbExperienceBeforeEvent(pLevel, *this, pActor);
+    auto beforeEvent = SculkCatalystAbsorbExperienceBeforeEvent(pLevel, *this, pActor);
     eventBus.publish(beforeEvent);
     if (beforeEvent.isCancelled()) return;
     origin(pLevel, pActor);
