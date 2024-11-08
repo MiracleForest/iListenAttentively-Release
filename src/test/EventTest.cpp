@@ -21,6 +21,7 @@
 #include "event/world/PressurePlateTriggerEvent.h"
 #include "event/world/RedstoneUpdateEvent.h"
 #include "event/world/SculkBlockGrowthEvent.h"
+#include "event/world/SpawnWanderingTraderEvent.h"
 #include "event/world/WitherDestroyEvent.h"
 #include <ll/api/event/EventBus.h>
 #include <ll/api/memory/Hook.h>
