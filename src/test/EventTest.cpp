@@ -4,6 +4,7 @@
 #include "event/player/PlayerAttackBlockEvent.h"
 #include "event/player/PlayerChangGameTypeEvent.h"
 #include "event/player/PlayerChangPermissionsEvent.h"
+#include "event/world/ItemFrameBlockEvent.h"
 #include "event/player/PlayerChangeDimensionEvent.h"
 #include "event/player/PlayerDropItemEvent.h"
 #include "event/player/PlayerInteractEntityEvent.h"
