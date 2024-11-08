@@ -1,6 +1,7 @@
 #include "Global.h"
 #include "event/actor/ActorRideEvent.h"
 #include "event/actor/ArmorStandSwapItemEvent.h"
+#include "event/actor/ProjectileCreateEvent.h"
 #include "event/player/PlayerAttackBlockEvent.h"
 #include "event/player/PlayerChangGameTypeEvent.h"
 #include "event/player/PlayerChangPermissionsEvent.h"
@@ -31,4 +32,10 @@ LL_AUTO_TYPE_INSTANCE_HOOK(
 )
 {
     origin(ins);
+
+    eventBus.emplaceListener<ila::actor::ProjectileCreateBeforeEvent>(
+        [](ila::actor::ProjectileCreateBeforeEvent& event) -> void {
+            SelfLogger.debug("{0}: {1}", event.self().getTypeName(), event.self().getPosition().toString());
+        }
+    );
 }

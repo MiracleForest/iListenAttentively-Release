@@ -80,7 +80,8 @@ LL_TYPE_INSTANCE_HOOK(
     Actor*       pActor
 )
 {
-    if (pActor == nullptr || !pActor->isPlayer()) return origin(pRegion, pIsSurvival, pActor);
+    if (pActor == nullptr || !pActor->isPlayer() || !((Player*)pActor)->isCreative())
+        return origin(pRegion, pIsSurvival, pActor);
     auto beforeEvent = ItemFrameBlockBeforeEvent(
         pRegion,
         this->getPosition(),
