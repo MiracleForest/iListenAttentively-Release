@@ -1,4 +1,5 @@
 #include "Global.h"
+#include "event/actor/ActorChangeDimensionEvent.h"
 #include "event/actor/ActorGetEffectEvent.h"
 #include "event/actor/ActorRideEvent.h"
 #include "event/actor/ArmorStandSwapItemEvent.h"
@@ -30,7 +31,7 @@
 
 LL_AUTO_TYPE_INSTANCE_HOOK(
     EventTest,
-    ll::memory::HookPriority::Normal,
+    HookPriority::Normal,
     ServerInstanceEventCoordinator,
     &ServerInstanceEventCoordinator::sendServerThreadStarted,
     void,

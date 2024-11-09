@@ -10,7 +10,7 @@ BlockPos const& SpawnWanderingTraderAfterEvent::getPos() const { return mPos; }
 
 LL_TYPE_INSTANCE_HOOK(
     SpawnWanderingTraderEventHook,
-    ll::memory::HookPriority::Normal,
+    HookPriority::Normal,
     WanderingTraderScheduler,
     "?_spawnWanderingTraderAtPos@WanderingTraderScheduler@@AEAAXAEBVBlockPos@@AEAVBlockSource@@@Z",
     void,

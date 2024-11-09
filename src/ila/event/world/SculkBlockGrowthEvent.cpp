@@ -9,7 +9,7 @@ BlockPos const& SculkBlockGrowthAfterEvent::getPos() const { return mPos; }
 
 LL_STATIC_HOOK(
     SculkBlockGrowthEventHook,
-    ll::memory::HookPriority::Normal,
+    HookPriority::Normal,
     "?_placeGrowthAt@SculkBlockBehavior@@CAXAEAVIBlockWorldGenAPI@@PEAVBlockSource@@AEBVBlockPos@@AEAVRandom@"
     "@"
     "AEAVSculkSpreader@@@Z",
