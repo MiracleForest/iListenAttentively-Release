@@ -22,11 +22,11 @@
 #    define ILAPI __declspec(dllimport)
 #endif
 
-#define Event_Factory(eventName, hooks, ...)                                                                 \
+#define Event_Factory(eventName, ...)                                                                        \
     static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&);                \
     class eventName##BeforeEventEmitter : public ll::event::Emitter<emitterFactory1, eventName##BeforeEvent> \
     {                                                                                                        \
-        ll::memory::HookRegistrar hooks __VA_ARGS__ hook;                                                    \
+        ll::memory::HookRegistrar __VA_ARGS__ hook;                                                          \
     };                                                                                                       \
     static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&)                 \
     {                                                                                                        \
@@ -35,7 +35,7 @@
     static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&);                \
     class eventName##AfterEventEmitter : public ll::event::Emitter<emitterFactory2, eventName##AfterEvent>   \
     {                                                                                                        \
-        ll::memory::HookRegistrar hooks __VA_ARGS__ hook;                                                    \
+        ll::memory::HookRegistrar __VA_ARGS__ hook;                                                          \
     };                                                                                                       \
     static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&)                 \
     {                                                                                                        \

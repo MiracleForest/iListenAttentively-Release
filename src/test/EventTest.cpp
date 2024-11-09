@@ -17,6 +17,7 @@
 #include "event/world/FarmDecayEvent.h"
 #include "event/world/ItemFrameBlockEvent.h"
 #include "event/world/LiquidFlowEvent.h"
+#include "event/actor/DeathMessageEvent.h"
 #include "event/world/LiquidTryFlowEvent.h"
 #include "event/world/PistonPushEvent.h"
 #include "event/world/PressurePlateTriggerEvent.h"

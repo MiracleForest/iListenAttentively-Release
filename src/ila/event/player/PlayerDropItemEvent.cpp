@@ -57,6 +57,6 @@ LL_TYPE_INSTANCE_HOOK(
     return origin(pPlayer, pIsSenderAuthority);
 }
 
-Event_Factory(PlayerDropItem, <PlayerDropItemEventHook1, , PlayerDropItemEventHook2>);
+Event_Factory(PlayerDropItem, <PlayerDropItemEventHook1, PlayerDropItemEventHook2>);
 
 } // namespace ila::inline player

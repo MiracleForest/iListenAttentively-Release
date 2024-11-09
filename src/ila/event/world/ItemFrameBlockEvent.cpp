@@ -101,6 +101,6 @@ LL_TYPE_INSTANCE_HOOK(
     ));
 }
 
-Event_Factory(ItemFrameBlock, <ItemFrameBlockEventHook1, , ItemFrameBlockEventHook2, ItemFrameBlockEventHook3>);
+Event_Factory(ItemFrameBlock, <ItemFrameBlockEventHook1, ItemFrameBlockEventHook2, ItemFrameBlockEventHook3>);
 
 } // namespace ila::inline world
