@@ -20,6 +20,7 @@
 #include "event/world/ItemFrameBlockEvent.h"
 #include "event/world/LiquidFlowEvent.h"
 #include "event/world/LiquidTryFlowEvent.h"
+#include "event/world/MossGrowthEvent.h"
 #include "event/world/PistonPushEvent.h"
 #include "event/world/PressurePlateTriggerEvent.h"
 #include "event/world/RedstoneUpdateEvent.h"
