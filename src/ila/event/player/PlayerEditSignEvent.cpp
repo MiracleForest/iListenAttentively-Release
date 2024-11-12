@@ -1,6 +1,6 @@
 #include "PlayerEditSignEvent.h"
 #include <mc/network/ServerNetworkHandler.h>
-#include <mc/network/packet/BlockActorDataPacket.h>
+#include <mc/network/pPacket/BlockActorDataPacket.h>
 #include <mc/world/level/block/actor/SignBlockActor.h>
 
 namespace ila::inline player
@@ -20,47 +20,47 @@ LL_AUTO_TYPE_INSTANCE_HOOK(
     ServerNetworkHandler,
     &ServerNetworkHandler::handle,
     void,
-    NetworkIdentifier const&              source,
-    std::shared_ptr<BlockActorDataPacket> packet
+    NetworkIdentifier const&              pSource,
+    std::shared_ptr<BlockActorDataPacket> pPacket
 )
 {
     // clang-format off
     if (
-        packet == nullptr 
-        || !packet->mData.contains("id", Tag::Type::String)
-        || packet->mData.at("id").get<StringTag>() != "Sign"
-    ) return origin(source, packet);
+        pPacket == nullptr 
+        || !pPacket->mData.contains("id", Tag::Type::String)
+        || pPacket->mData.at("id").get<StringTag>() != "Sign"
+    ) return origin(pSource, pPacket);
 
-    auto player = getServerPlayer(source, packet->mClientSubId);
-    if (!player.has_value()) return origin(source, packet);
+    auto player = getServerPlayer(pSource, pPacket->mClientSubId);
+    if (!player.has_value()) return origin(pSource, pPacket);
 
-    auto* blockActor = (SignBlockActor*)player->getDimensionBlockSource().getBlockEntity(packet->mPos);
-    if (blockActor == nullptr) return origin(source, packet);
+    auto* blockActor = (SignBlockActor*)player->getDimensionBlockSource().getBlockEntity(pPacket->mPos);
+    if (blockActor == nullptr) return origin(pSource, pPacket);
 
     bool frontEdit = false;
     bool backEdit  = false;
 
-    if (blockActor->getMessage(SignTextSide::Front) != packet->mData["FrontText"]["Text"])
+    if (blockActor->getMessage(SignTextSide::Front) != pPacket->mData["FrontText"]["Text"])
     {
         frontEdit        = true;
-        auto beforeEvent = PlayerEditSignBeforeEvent(*player, packet->mPos, packet->mData["FrontText"]["Text"].get<StringTag>(), SignTextSide::Front);
+        auto beforeEvent = PlayerEditSignBeforeEvent(*player, pPacket->mPos, pPacket->mData["FrontText"]["Text"].get<StringTag>(), SignTextSide::Front);
         eventBus.publish(beforeEvent);
         if (beforeEvent.isCancelled()) return;
     }
-    if (blockActor->getMessage(SignTextSide::Back) != packet->mData["BackText"]["Text"])
+    if (blockActor->getMessage(SignTextSide::Back) != pPacket->mData["BackText"]["Text"])
     {
         backEdit         = true;
-        auto beforeEvent = PlayerEditSignBeforeEvent(*player, packet->mPos, packet->mData["BackText"]["Text"].get<StringTag>(), SignTextSide::Back);
+        auto beforeEvent = PlayerEditSignBeforeEvent(*player, pPacket->mPos, pPacket->mData["BackText"]["Text"].get<StringTag>(), SignTextSide::Back);
         eventBus.publish(beforeEvent);
         if (beforeEvent.isCancelled()) return;
     }
 
-    origin(source, packet);
+    origin(pSource, pPacket);
 
     if (frontEdit)
-        eventBus.publish(PlayerEditSignAfterEvent(*player, packet->mPos, packet->mData["FrontText"]["Text"].get<StringTag>(), SignTextSide::Front));
+        eventBus.publish(PlayerEditSignAfterEvent(*player, pPacket->mPos, pPacket->mData["FrontText"]["Text"].get<StringTag>(), SignTextSide::Front));
     if (backEdit)
-        eventBus.publish(PlayerEditSignAfterEvent(*player, packet->mPos, packet->mData["BackText"]["Text"].get<StringTag>(), SignTextSide::Back));
+        eventBus.publish(PlayerEditSignAfterEvent(*player, pPacket->mPos, pPacket->mData["BackText"]["Text"].get<StringTag>(), SignTextSide::Back));
     // clang-format on
 }
 

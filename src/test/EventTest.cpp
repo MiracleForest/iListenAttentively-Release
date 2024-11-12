@@ -12,6 +12,7 @@
 #include "event/player/PlayerChangPermissionsEvent.h"
 #include "event/player/PlayerChangeDimensionEvent.h"
 #include "event/player/PlayerDropItemEvent.h"
+#include "event/player/PlayerEditSignEvent.h"
 #include "event/player/PlayerInteractEntityEvent.h"
 #include "event/server/ServerPongEvent.h"
 #include "event/world/DragonEggBlockTeleportEvent.h"
@@ -19,7 +20,6 @@
 #include "event/world/FarmDecayEvent.h"
 #include "event/world/ItemFrameBlockEvent.h"
 #include "event/world/LiquidFlowEvent.h"
-#include "event/player/PlayerEditSignEvent.h"
 #include "event/world/LiquidTryFlowEvent.h"
 #include "event/world/MossGrowthEvent.h"
 #include "event/world/PistonPushEvent.h"
@@ -27,6 +27,7 @@
 #include "event/world/RedstoneUpdateEvent.h"
 #include "event/world/SculkBlockGrowthEvent.h"
 #include "event/world/SculkSpreadEvent.h"
+#include "event/world/SpawnItemActorEvent.h"
 #include "event/world/SpawnWanderingTraderEvent.h"
 #include "event/world/WitherDestroyEvent.h"
 #include <ll/api/event/EventBus.h>
