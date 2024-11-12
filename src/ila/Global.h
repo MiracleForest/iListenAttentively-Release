@@ -7,6 +7,7 @@
 #include <ll/api/event/Event.h>
 #include <ll/api/event/EventBus.h>
 #include <ll/api/event/entity/ActorEvent.h>
+#include <ll/api/event/entity/MobEvent.h>
 #include <ll/api/event/player/PlayerEvent.h>
 #include <ll/api/event/world/LevelEvent.h>
 #include <ll/api/event/world/WorldEvent.h>
