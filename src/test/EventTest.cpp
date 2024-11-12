@@ -8,6 +8,7 @@
 #include "event/actor/DragonRespawnEvent.h"
 #include "event/actor/ProjectileCreateEvent.h"
 #include "event/level/SculkCatalystAbsorbExperienceEvent.h"
+#include "event/level/WeatherUpdateEvent.h"
 #include "event/player/PlayerAttackBlockEvent.h"
 #include "event/player/PlayerChangGameTypeEvent.h"
 #include "event/player/PlayerChangPermissionsEvent.h"
@@ -34,7 +35,6 @@
 #include <ll/api/event/EventBus.h>
 #include <ll/api/memory/Hook.h>
 #include <mc/world/events/ServerInstanceEventCoordinator.h>
-
 
 LL_AUTO_TYPE_INSTANCE_HOOK(
     EventTest,
