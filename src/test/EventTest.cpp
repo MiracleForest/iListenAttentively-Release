@@ -16,6 +16,7 @@
 #include "event/player/PlayerDropItemEvent.h"
 #include "event/player/PlayerEditSignEvent.h"
 #include "event/player/PlayerInteractEntityEvent.h"
+#include "event/player/PlayerRequestItemActionEvent.h"
 #include "event/server/ClientLoginEvent.h"
 #include "event/server/ServerPongEvent.h"
 #include "event/world/DragonEggBlockTeleportEvent.h"
