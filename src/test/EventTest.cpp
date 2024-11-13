@@ -4,6 +4,7 @@
 #include "event/minecraft/actor/ActorGetEffectEvent.h"
 #include "event/minecraft/actor/ActorPickupItemEvent.h"
 #include "event/minecraft/actor/ActorRideEvent.h"
+#include "event/minecraft/actor/ActorTickEvent.h"
 #include "event/minecraft/actor/ArmorStandSwapItemEvent.h"
 #include "event/minecraft/actor/DeathMessageEvent.h"
 #include "event/minecraft/actor/DragonRespawnEvent.h"

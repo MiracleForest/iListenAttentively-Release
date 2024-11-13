@@ -29,15 +29,22 @@ void MoneyAfterEventCallback(LLMoneyEventType type, std::string from, std::strin
 static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&);
 class MoneyChangBeforeEventEmitter : public ll::event::Emitter<emitterFactory1, MoneyChangBeforeEvent>
 {
+private:
+    static bool mCreated;
+
 public:
     MoneyChangBeforeEventEmitter()
     {
-        // clang-format off
-        if (auto func = GetProcAddress(GetModuleHandleW(L"LegacyMoney.dll"), "LLMoney_ListenBeforeEvent"); func != nullptr)
+        if (!mCreated)
         {
-            ((void (*)(bool (*)(LLMoneyEventType, std::string, std::string, llong)))func)(MoneyBeforeEventCallback);
+            // clang-format off
+            if (auto func = GetProcAddress(GetModuleHandleW(L"LegacyMoney.dll"), "LLMoney_ListenBeforeEvent"); func != nullptr)
+            {
+                ((void (*)(bool (*)(LLMoneyEventType, std::string, std::string, llong)))func)(MoneyBeforeEventCallback);
+            }
+            // clang-format on
+            mCreated = true;
         }
-        // clang-format on
     }
     ~MoneyChangBeforeEventEmitter()
     {
@@ -52,14 +59,21 @@ static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::Listen
 static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&);
 class MoneyChangAfterEventEmitter : public ll::event::Emitter<emitterFactory2, MoneyChangAfterEvent>
 {
+private:
+    static bool mCreated;
+
 public:
     MoneyChangAfterEventEmitter() {
-        // clang-format off
-        if (auto func = GetProcAddress(GetModuleHandleW(L"LegacyMoney.dll"), "LLMoney_ListenAfterEvent"); func != nullptr)
+        if (!mCreated)
         {
-            ((void (*)(void (*)(LLMoneyEventType, std::string, std::string, llong)))func)(MoneyAfterEventCallback);
+            // clang-format off
+            if (auto func = GetProcAddress(GetModuleHandleW(L"LegacyMoney.dll"), "LLMoney_ListenAfterEvent"); func != nullptr)
+            {
+                ((void (*)(void (*)(LLMoneyEventType, std::string, std::string, llong)))func)(MoneyAfterEventCallback);
+            }
+            // clang-format on
+            mCreated = true;
         }
-        // clang-format on
     }
     ~MoneyChangAfterEventEmitter()
     {
