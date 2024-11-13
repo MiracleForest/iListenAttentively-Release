@@ -1,4 +1,5 @@
 #include "Global.h"
+#include "event/legacyMoney/MoneyChangeEvent.h"
 #include "event/minecraft/actor/ActorChangeDimensionEvent.h"
 #include "event/minecraft/actor/ActorGetEffectEvent.h"
 #include "event/minecraft/actor/ActorPickupItemEvent.h"
