@@ -29,12 +29,10 @@ void MoneyAfterEventCallback(LLMoneyEventType type, std::string from, std::strin
 static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::ListenerBase&);
 class MoneyChangBeforeEventEmitter : public ll::event::Emitter<emitterFactory1, MoneyChangBeforeEvent>
 {
-private:
-    static bool mCreated;
-
 public:
     MoneyChangBeforeEventEmitter()
     {
+        static bool mCreated = false;
         if (!mCreated)
         {
             // clang-format off
@@ -59,11 +57,10 @@ static std::unique_ptr<ll::event::EmitterBase> emitterFactory1(ll::event::Listen
 static std::unique_ptr<ll::event::EmitterBase> emitterFactory2(ll::event::ListenerBase&);
 class MoneyChangAfterEventEmitter : public ll::event::Emitter<emitterFactory2, MoneyChangAfterEvent>
 {
-private:
-    static bool mCreated;
-
 public:
-    MoneyChangAfterEventEmitter() {
+    MoneyChangAfterEventEmitter()
+    {
+        static bool mCreated = false;
         if (!mCreated)
         {
             // clang-format off

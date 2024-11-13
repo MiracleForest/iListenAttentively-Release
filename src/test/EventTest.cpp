@@ -22,6 +22,7 @@
 #include "event/minecraft/player/PlayerRequestItemActionEvent.h"
 #include "event/minecraft/server/ClientLoginEvent.h"
 #include "event/minecraft/server/ServerPongEvent.h"
+#include "event/minecraft/world/BlockTickEvent.h"
 #include "event/minecraft/world/DragonEggBlockTeleportEvent.h"
 #include "event/minecraft/world/ExplosionEvent.h"
 #include "event/minecraft/world/FarmDecayEvent.h"
