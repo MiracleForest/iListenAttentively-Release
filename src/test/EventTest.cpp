@@ -8,6 +8,7 @@
 #include "event/minecraft/actor/DeathMessageEvent.h"
 #include "event/minecraft/actor/DragonRespawnEvent.h"
 #include "event/minecraft/actor/ProjectileCreateEvent.h"
+#include "event/minecraft/level/LevelTickEvent.h"
 #include "event/minecraft/level/SculkCatalystAbsorbExperienceEvent.h"
 #include "event/minecraft/level/WeatherUpdateEvent.h"
 #include "event/minecraft/player/PlayerAttackBlockEvent.h"
