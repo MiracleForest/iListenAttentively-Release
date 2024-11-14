@@ -10,7 +10,7 @@ ItemActor const& ActorPickupItemAfterEvent::getItemActor() const { return mItemA
 
 LL_TYPE_INSTANCE_HOOK(
     ActorPickupItemEventHook,
-    ll::memory::HookPriority::Normal,
+    HookPriority::Normal,
     PickupItemsGoal,
     &PickupItemsGoal::_pickItemUp,
     void,

@@ -41,7 +41,7 @@ void ClientLoginAfterEvent::disConnectClient(std::string reason) const
 
 LL_TYPE_INSTANCE_HOOK(
     ClientLoginEventHook,
-    ll::memory::HookPriority::Normal,
+    HookPriority::Normal,
     ServerNetworkHandler,
     "?handle@ServerNetworkHandler@@UEAAXAEBVNetworkIdentifier@@AEBVLoginPacket@@@Z",
     void,

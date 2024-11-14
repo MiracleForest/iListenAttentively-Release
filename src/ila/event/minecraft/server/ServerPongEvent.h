@@ -3,7 +3,7 @@
 
 namespace ila::mc::inline server
 {
-class ServerPongBeforeEvent final : public ll::event::Event
+class ServerPongBeforeEvent final : public ll::event::Cancellable<ll::event::Event>
 {
 protected:
     std::string& mMotd;

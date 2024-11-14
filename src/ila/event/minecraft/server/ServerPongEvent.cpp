@@ -71,7 +71,7 @@ LL_STATIC_HOOK(
         ushort   mLoaclPort   = static_cast<ushort>(std::stoi(parts[10]));
         ushort   mLoaclPortV6 = static_cast<ushort>(std::stoi(parts[11]));
 
-        eventBus.publish(ServerPongBeforeEvent(
+        auto beforeEvent = ServerPongBeforeEvent(
             motd,
             protocolVersion,
             networkVersion,
@@ -82,7 +82,9 @@ LL_STATIC_HOOK(
             mGameType,
             mLoaclPort,
             mLoaclPortV6
-        ));
+        );
+        eventBus.publish(beforeEvent);
+        if (beforeEvent.isCancelled()) return 133;
 
         std::string text = fmt::format(
             "MCPE;{};{};{};{};{};{};{};{};1;{};{};0;",

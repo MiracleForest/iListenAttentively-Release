@@ -15,7 +15,7 @@ int const&   WeatherUpdateAfterEvent::getLightningTime() const { return mLightni
 
 LL_TYPE_INSTANCE_HOOK(
     WeatherUpdateEventHook,
-    ll::memory::HookPriority::Normal,
+    HookPriority::Normal,
     Level,
     "?updateWeather@Level@@UEAAXMHMH@Z",
     void,
