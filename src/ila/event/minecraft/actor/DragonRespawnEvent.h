@@ -1,4 +1,6 @@
 #include "Global.h"
+#include <mc/common/wrapper/optional_ref.h>
+#include <mc/world/actor/monster/EnderDragon.h>
 
 namespace ila::mc::inline actor
 {
@@ -11,9 +13,18 @@ public:
     }
 };
 
-class DragonRespawnAfterEvent final : public ll::event::Event
+class DragonRespawnAfterEvent final : public ll::event::entity::ActorEvent
 {
+protected:
+    optional_ref<EnderDragon> mEnderDragon;
+
 public:
-    constexpr explicit DragonRespawnAfterEvent() {}
+    constexpr explicit DragonRespawnAfterEvent(optional_ref<EnderDragon> dragon)
+        : ActorEvent(dragon)
+        , mEnderDragon(dragon)
+    {
+    }
+
+    ILAPI optional_ref<EnderDragon> getEnderDragon() const;
 };
 } // namespace ila::mc::inline actor
