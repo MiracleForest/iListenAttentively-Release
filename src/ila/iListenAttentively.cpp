@@ -1,7 +1,6 @@
 #include "iListenAttentively.h"
 #include <ll/api/mod/RegisterHelper.h>
 #include <memory>
-#include <span>
 
 namespace ila
 {
