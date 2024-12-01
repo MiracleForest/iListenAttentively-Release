@@ -1,35 +1,47 @@
-# LeviLamina Mod Template
+# iListenAttentively
 
-A LeviLamina mod template
+![iListenAttentively](https://socialify.git.ci/MiracleForest/iListenAttentively/image?description=1&descriptionEditable=A%20rich%20and%20modern%20LeviLamina%20Minecraft%20event%20library&font=Raleway&forks=1&issues=1&language=1&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Auto)
 
-This mod is a template for developing LeviLamina mods.
+![English](https://img.shields.io/badge/English-inactive?style=for-the-badge)
+[![中文](https://img.shields.io/badge/简体中文-informational?style=for-the-badge)](README.zh.md)
+
+***iListenAttentively*** is a rich and modern LeviLamina Minecraft event library!
+
+> [!IMPORTANT]
+>
+> The authors is in school and may only have a day or two to write and commit code every half month or so!
 
 ## Install
 
-Generate a new repository from this template.
-
 ## Usage
 
-Before using this mod template, make sure that you have installed XMake and a Minecraft Bedrock Server with LeviLamina.
+### Config
 
-1. Clone the new repository into a local folder.
+## Star History
 
-1. Change the mod name and the expected LeviLamina version in `xmake.lua`.
+[![Star History Chart](https://api.star-history.com/svg?repos=MiracleForest/iListenAttentively&type=Date)](https://star-history.com/#MiracleForest/iListenAttentively&Date)
 
-1. Add your code.
+## ⭐Contributing⭐
 
-1. Run `xmake repo -u` in the root of the repository.
+> [!IMPORTANT]
+>
+> You can **contribute** to the ***iListenAttentively*** project in the following ways
+>
+> - ⭐ Add new functionality by [**pulling request**](https://github.com/MiracleForest/iListenAttentively/pulls) contribution code
+> - ⭐ Help us modify or optimize **documents**
+> - ⭐ Feedback on [**GitHub Issues**](https://github.com/MiracleForest/iListenAttentively/issues) for problems, suggestions, etc.
+> - ⭐ Help us promote ***iListenAttentively*** and support our development!
+>
+> Very much looking forward to and welcoming your contribution!
 
-1. Run `xmake` to build the mod.
+***iListenAttentively*** follows the [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
 
-Now the build is complete at `bin/`.
+## Contributors
 
-## Contributing
+This project exists thanks to all the people who contribute.
 
-Ask questions by creating an issue.
-
-PRs accepted.
+![Contributors](https://contrib.rocks/image?repo=MiracleForest/iListenAttentively)
 
 ## License
 
-CC0-1.0 © LiteLDev
+Copyright © 2024 MiracleForest, All rights reserved.
