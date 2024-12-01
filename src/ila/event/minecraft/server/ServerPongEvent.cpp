@@ -1,9 +1,31 @@
-#include "ila/event/server/ServerPongEvent.h"
-#include "ila/iListenAttentively.h"
+#include "ServerPongEvent.h"
 #include <mc/deps/raknet/SystemAddress.h>
 
-namespace ila::inline server
+namespace ila::mc::inline server
 {
+
+std::string& ServerPongBeforeEvent::getMotd() const { return mMotd; }
+int&         ServerPongBeforeEvent::getProtocolVersion() const { return mProtocolVersion; }
+std::string& ServerPongBeforeEvent::getNetworkVersion() const { return mNetworkVersion; }
+int&         ServerPongBeforeEvent::getPlayerCount() const { return mPlayerCount; }
+int&         ServerPongBeforeEvent::getMaxPlayerCount() const { return mMaxPlayerCount; }
+std::string& ServerPongBeforeEvent::getGuid() const { return mGuid; }
+std::string& ServerPongBeforeEvent::getLevelName() const { return mLevelName; }
+GameType&    ServerPongBeforeEvent::getGameMode() const { return mGameMode; }
+ushort&      ServerPongBeforeEvent::getLocalPort() const { return mLoaclPort; }
+ushort&      ServerPongBeforeEvent::getLocalPortV6() const { return mLoaclPortV6; }
+
+std::string const& ServerPongAfterEvent::getMotd() const { return mMotd; }
+int const&         ServerPongAfterEvent::getProtocolVersion() const { return mProtocolVersion; }
+std::string const& ServerPongAfterEvent::getNetworkVersion() const { return mNetworkVersion; }
+int const&         ServerPongAfterEvent::getPlayerCount() const { return mPlayerCount; }
+int const&         ServerPongAfterEvent::getMaxPlayerCount() const { return mMaxPlayerCount; }
+std::string const& ServerPongAfterEvent::getGuid() const { return mGuid; }
+std::string const& ServerPongAfterEvent::getLevelName() const { return mLevelName; }
+GameType const&    ServerPongAfterEvent::getGameMode() const { return mGameMode; }
+ushort const&      ServerPongAfterEvent::getLocalPort() const { return mLoaclPort; }
+ushort const&      ServerPongAfterEvent::getLocalPortV6() const { return mLoaclPortV6; }
+int&               ServerPongAfterEvent::getResult() const { return mResult; }
 
 struct RNS2_SendParameters
 {
@@ -44,14 +66,12 @@ LL_STATIC_HOOK(
         std::string guid            = parts[6];
         std::string levelName       = parts[7];
         auto        gameType        = magic_enum::enum_cast<GameType>(parts[8]);
-
         if (!gameType.has_value()) { return origin(pRns2Socket, pSendParameters, pFile, pLine); }
-
         GameType mGameType    = gameType.value();
         ushort   mLoaclPort   = static_cast<ushort>(std::stoi(parts[10]));
         ushort   mLoaclPortV6 = static_cast<ushort>(std::stoi(parts[11]));
 
-        auto event = ServerPongEvent(
+        auto beforeEvent = ServerPongBeforeEvent(
             motd,
             protocolVersion,
             networkVersion,
@@ -63,9 +83,10 @@ LL_STATIC_HOOK(
             mLoaclPort,
             mLoaclPortV6
         );
-        ll::event::EventBus::getInstance().publish(event);
+        eventBus.publish(beforeEvent);
+        if (beforeEvent.isCancelled()) return 133;
 
-        std::string result = fmt::format(
+        std::string text = fmt::format(
             "MCPE;{};{};{};{};{};{};{};{};1;{};{};0;",
             motd,
             protocolVersion,
@@ -82,26 +103,32 @@ LL_STATIC_HOOK(
         std::vector<char> packet;
         packet.reserve(256);
         packet.insert(packet.end(), data, data + head_size);
-        strlen = result.length();
+        strlen = text.length();
         packet.push_back(static_cast<char>((strlen >> 8) & 0xFF));
         packet.push_back(static_cast<char>(strlen & 0xFF));
-        packet.insert(packet.end(), result.begin(), result.end());
+        packet.insert(packet.end(), text.begin(), text.end());
         pSendParameters->data   = packet.data();
         pSendParameters->length = static_cast<int>(packet.size());
 
-        return origin(pRns2Socket, pSendParameters, pFile, pLine);
+        auto result = origin(pRns2Socket, pSendParameters, pFile, pLine);
+        eventBus.publish(ServerPongAfterEvent(
+            motd,
+            protocolVersion,
+            networkVersion,
+            playerCount,
+            maxPlayerCount,
+            guid,
+            levelName,
+            mGameType,
+            mLoaclPort,
+            mLoaclPortV6,
+            result
+        ));
+        return result;
     }
     return origin(pRns2Socket, pSendParameters, pFile, pLine);
 }
 
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory(ll::event::ListenerBase&);
-class ServerPongEventEmitter : public ll::event::Emitter<emitterFactory, ServerPongEvent>
-{
-    ll::memory::HookRegistrar<ServerPongEventHook> hook;
-};
+Event_Factory(ServerPong, <ServerPongEventHook>);
 
-static std::unique_ptr<ll::event::EmitterBase> emitterFactory(ll::event::ListenerBase&)
-{
-    return std::make_unique<ServerPongEventEmitter>();
-}
-} // namespace ila::inline server
+} // namespace ila::mc::inline server

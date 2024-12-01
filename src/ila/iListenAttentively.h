@@ -1,4 +1,7 @@
+// clang-format off
+#include <span>
 #include <ll/api/mod/NativeMod.h>
+// clang-format on
 
 namespace ila
 {
