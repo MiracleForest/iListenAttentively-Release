@@ -2,16 +2,24 @@ add_rules("mode.debug", "mode.release")
 
 add_repositories("liteldev-repo https://github.com/LiteLDev/xmake-repo.git")
 
--- add_requires("levilamina x.x.x") for a specific version
--- add_requires("levilamina develop") to use develop version
--- please note that you should add bdslibrary yourself if using dev version
+-- Dependencies from xmake-repo.
+add_requires("fmt")
+add_requires("magic_enum")
+add_requires("nlohmann_json")
+
+-- Dependencies from liteldev-repo.
 add_requires("levilamina")
 
 if not has_config("vs_runtime") then
     set_runtimes("MD")
 end
 
-target("my-mod") -- Change this to your mod name.
+option("tests")
+    set_default(false)
+    set_showmenu(true)
+    set_description("Enable tests")
+
+target("iListenAttentively")
     add_cxflags(
         "/EHa",
         "/utf-8",
@@ -23,15 +31,38 @@ target("my-mod") -- Change this to your mod name.
         "/w44738",
         "/w45204"
     )
-    add_defines("NOMINMAX", "UNICODE")
-    add_files("src/**.cpp")
-    add_includedirs("src")
-    add_packages("levilamina")
-    add_shflags("/DELAYLOAD:bedrock_server.dll") -- To use symbols provided by SymbolProvider.
-    set_exceptions("none") -- To avoid conflicts with /EHa.
+    add_defines(
+        "NOMINMAX", 
+        "UNICODE",
+        "ILA_EXPORT",
+        "_HAS_CXX17",
+        "_HAS_CXX20"
+    )
+    add_headerfiles("src/ila/**.h")
+    add_files("src/ila/**.cpp")
+    add_includedirs("src/ila")
+    add_packages(
+		"levilamina",
+ 		"fmt",
+        "magic_enum",
+        "nlohmann_json"
+    )
+    add_shflags("/DELAYLOAD:bedrock_server.dll")
+    set_exceptions("none")
     set_kind("shared")
-    set_languages("c++20")
+    set_languages("c++23")
     set_symbols("debug")
+
+    if is_mode("debug") then
+        add_defines("ILA_DEBUG")
+    end
+
+    if has_config("tests") then
+        add_defines("ILA_TESTS")
+        add_includedirs("src/test/")
+        add_headerfiles("src/test/**.h")
+        add_files("src/test/**.cpp")
+    end
 
     after_build(function (target)
         local mod_packer = import("scripts.after_build")

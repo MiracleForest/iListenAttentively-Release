@@ -84,7 +84,7 @@
 .gitkeep       export-ignore
 
 
-## https://github.com/gitattributes/gitattributes/blob/master/C%2B%2B.gitattributes
+## https://github.com/gitattributes/gitattributes/blob/master/C++.gitattributes
 # Sources
 *.c     text diff=cpp
 *.cc    text diff=cpp
