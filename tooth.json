@@ -1,25 +1,27 @@
 {
     "format_version": 2,
-    "tooth": "my-mod",
-    "version": "0.0.0",
+    "tooth": "github.com/MiracleForest/iListenAttentively",
+    "version": "0.1.0",
     "info": {
-        "name": "My Mod Name",
-        "description": "My Mod Description",
-        "author": "My Name",
+        "name": "iListenAttentively",
+        "description": "iListenAttentively is a rich and modern LeviLamina Minecraft event library!",
+        "author": "MiracleForest",
+        "source": "github.com/MiracleForest/iListenAttentively",
         "tags": [
             "levilamina",
-            "mod"
+            "event",
+            "library"
         ]
     },
-    "asset_url": "My Asset Url",
+    "asset_url": "https://github.com/MiracleForest/iListenAttentively/releases/download/v0.1.0/iListenAttentively-windows-x64.zip",
     "prerequisites": {
-        "github.com/LiteLDev/LeviLamina": "My LeviLamina Dependency Version"
+        "github.com/LiteLDev/LeviLamina": ">=0.13.4"
     },
     "files": {
         "place": [
             {
-                "src": "my-mod/*",
-                "dest": "plugins/my-mod/"
+                "src": "iListenAttentively/*",
+                "dest": "plugins/iListenAttentively/"
             }
         ]
     }

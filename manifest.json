@@ -2,6 +2,8 @@
     "name": "${modName}",
     "entry": "${modFile}",
     "version": "${modVersion}",
+    "passive": true,
     "type": "native",
-    "author": "MiracleForest"
+    "author": "MiracleForest",
+    "description": "iListenAttentively is a rich and modern LeviLamina Minecraft event library!"
 }
