@@ -1,6 +1,6 @@
 #pragma once
+#include <span> // temporary fix workflow
 
-#include "event/minecraft/actor/itemActor/ItemActorEvent.h"
 #include "iListenAttentively.h"
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/Emitter.h>
