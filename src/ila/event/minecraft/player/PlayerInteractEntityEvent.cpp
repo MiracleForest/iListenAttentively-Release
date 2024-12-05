@@ -1,4 +1,4 @@
-#include "PlayerInteractEntityEvent.h"
+#include "ila/event/minecraft/player/PlayerInteractEntityEvent.h"
 
 namespace ila::mc::inline player
 {

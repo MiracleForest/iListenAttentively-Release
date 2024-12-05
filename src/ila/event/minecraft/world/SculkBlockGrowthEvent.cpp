@@ -1,4 +1,4 @@
-#include "SculkBlockGrowthEvent.h"
+#include "ila/event/minecraft/world/SculkBlockGrowthEvent.h"
 
 namespace ila::mc::inline world
 {

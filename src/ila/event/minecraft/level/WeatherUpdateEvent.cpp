@@ -1,4 +1,4 @@
-#include "WeatherUpdateEvent.h"
+#include "ila/event/minecraft/level/WeatherUpdateEvent.h"
 
 namespace ila::mc::inline level
 {

@@ -1,4 +1,4 @@
-#include "BlockTickEvent.h"
+#include "ila/event/minecraft/world/BlockTickEvent.h"
 #include <mc/world/level/block/Block.h>
 
 namespace ila::mc::inline world

@@ -1,4 +1,4 @@
-#include "ActorPickupItemEvent.h"
+#include "ila/event/minecraft/actor/ActorPickupItemEvent.h"
 #include <mc/world/actor/ai/goal/PickupItemsGoal.h>
 
 namespace ila::mc::inline actor

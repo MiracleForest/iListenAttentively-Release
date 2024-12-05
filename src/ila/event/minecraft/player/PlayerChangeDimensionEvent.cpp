@@ -1,4 +1,4 @@
-#include "PlayerChangeDimensionEvent.h"
+#include "ila/event/minecraft/player/PlayerChangeDimensionEvent.h"
 #include <mc/world/actor/player/PlayerDimensionTransferer.h>
 
 namespace ila::mc::inline player

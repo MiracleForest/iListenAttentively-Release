@@ -1,4 +1,4 @@
-#include "WitherDestroyEvent.h"
+#include "ila/event/minecraft/world/WitherDestroyEvent.h"
 #include <mc/world/actor/boss/WitherBoss.h>
 
 namespace ila::mc::inline world

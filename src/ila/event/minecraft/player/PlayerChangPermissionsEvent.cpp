@@ -1,4 +1,4 @@
-#include "PlayerChangPermissionsEvent.h"
+#include "ila/event/minecraft/player/PlayerChangPermissionsEvent.h"
 
 namespace ila::mc::inline player
 {

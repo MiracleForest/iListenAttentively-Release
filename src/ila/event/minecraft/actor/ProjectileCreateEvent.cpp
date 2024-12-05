@@ -1,4 +1,4 @@
-#include "ProjectileCreateEvent.h"
+#include "ila/event/minecraft/actor/ProjectileCreateEvent.h"
 #include <mc/entity/components/ProjectileComponent.h>
 
 namespace ila::mc::inline actor

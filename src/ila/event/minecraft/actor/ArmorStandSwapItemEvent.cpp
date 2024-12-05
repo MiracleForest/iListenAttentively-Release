@@ -1,4 +1,4 @@
-#include "ArmorStandSwapItemEvent.h"
+#include "ila/event/minecraft/actor/ArmorStandSwapItemEvent.h"
 #include <mc/world/actor/ArmorStand.h>
 
 namespace ila::mc::inline actor

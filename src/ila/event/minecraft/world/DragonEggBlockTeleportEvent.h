@@ -1,4 +1,4 @@
-#include "Global.h"
+#include "ila/Global.h"
 #include <mc/util/Random.h>
 
 namespace ila::mc::inline world

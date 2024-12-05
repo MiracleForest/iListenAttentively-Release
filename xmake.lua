@@ -40,7 +40,7 @@ target("iListenAttentively")
     )
     add_files("src/**.cpp")
     add_headerfiles("src/(ila/**.h)")
-    add_includedirs("src/ila")
+    add_includedirs("src")
     add_packages(
 		"levilamina",
  		"fmt",
@@ -59,9 +59,9 @@ target("iListenAttentively")
 
     if has_config("tests") then
         add_defines("ILA_TESTS")
-        add_includedirs("src/test/")
-        add_headerfiles("src/test/**.h")
-        add_files("src/test/**.cpp")
+        add_includedirs("src-test/")
+        add_headerfiles("src-test/**.h")
+        add_files("src-test/**.cpp")
     end
 
     after_build(function (target)

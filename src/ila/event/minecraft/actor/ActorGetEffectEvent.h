@@ -1,4 +1,4 @@
-#include "Global.h"
+#include "ila/Global.h"
 #include <mc/world/effect/MobEffectInstance.h>
 
 namespace ila::mc::inline actor

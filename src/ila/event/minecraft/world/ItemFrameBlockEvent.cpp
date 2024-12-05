@@ -1,4 +1,4 @@
-#include "ItemFrameBlockEvent.h"
+#include "ila/event/minecraft/world/ItemFrameBlockEvent.h"
 #include <mc/world/item/ItemInstance.h>
 #include <mc/world/level/block/ItemFrameBlock.h>
 #include <mc/world/level/block/actor/ItemFrameBlockActor.h>
