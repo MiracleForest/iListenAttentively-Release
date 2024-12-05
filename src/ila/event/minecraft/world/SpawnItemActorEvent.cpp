@@ -1,4 +1,4 @@
-#include "SpawnItemActorEvent.h"
+#include "ila/event/minecraft/world/SpawnItemActorEvent.h"
 #include <mc/world/level/Spawner.h>
 
 namespace ila::mc::inline world

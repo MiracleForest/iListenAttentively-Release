@@ -1,4 +1,4 @@
-#include "SpawnWanderingTraderEvent.h"
+#include "ila/event/minecraft/world/SpawnWanderingTraderEvent.h"
 #include <mc/world/actor/ai/village/WanderingTraderScheduler.h>
 
 namespace ila::mc::inline world

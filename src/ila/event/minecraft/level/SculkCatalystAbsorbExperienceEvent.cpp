@@ -1,4 +1,4 @@
-#include "SculkCatalystAbsorbExperienceEvent.h"
+#include "ila/event/minecraft/level/SculkCatalystAbsorbExperienceEvent.h"
 
 namespace ila::mc::inline level
 {

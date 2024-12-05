@@ -1,4 +1,4 @@
-#include "PlayerAttackBlockEvent.h"
+#include "ila/event/minecraft/player/PlayerAttackBlockEvent.h"
 #include <mc/world/level/block/Block.h>
 
 namespace ila::mc::inline player

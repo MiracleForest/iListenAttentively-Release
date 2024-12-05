@@ -1,4 +1,4 @@
-#include "RedstoneUpdateEvent.h"
+#include "ila/event/minecraft/world/RedstoneUpdateEvent.h"
 #include <mc/world/redstone/circuit/CircuitSystem.h>
 
 namespace ila::mc::inline world

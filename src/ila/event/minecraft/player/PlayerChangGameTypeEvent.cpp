@@ -1,4 +1,4 @@
-#include "PlayerChangGameTypeEvent.h"
+#include "ila/event/minecraft/player/PlayerChangGameTypeEvent.h"
 #include <mc/network/packet/SetPlayerGameTypePacket.h>
 
 namespace ila::mc::inline player

@@ -1,5 +1,5 @@
-#include "PlayerOpenContainerEvent.h"
-#include "event/minecraft/server/SendPacketEvent.h"
+#include "ila/event/minecraft/player/PlayerOpenContainerEvent.h"
+#include "ila/event/minecraft/server/SendPacketEvent.h"
 #include <mc/enums/MinecraftPacketIds.h>
 #include <mc/network/packet/ContainerOpenPacket.h>
 

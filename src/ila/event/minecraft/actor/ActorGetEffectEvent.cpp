@@ -1,4 +1,4 @@
-#include "ActorGetEffectEvent.h"
+#include "ila/event/minecraft/actor/ActorGetEffectEvent.h"
 
 namespace ila::mc::inline actor
 {

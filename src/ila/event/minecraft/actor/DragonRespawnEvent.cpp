@@ -1,4 +1,4 @@
-#include "DragonRespawnEvent.h"
+#include "ila/event/minecraft/actor/DragonRespawnEvent.h"
 #include <ll/api/service/Bedrock.h>
 #include <mc/world/level/Level.h>
 #include <mc/world/level/dimension/end/EndDragonFight.h>

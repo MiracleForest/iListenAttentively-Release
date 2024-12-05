@@ -1,4 +1,4 @@
-#include "DeathMessageEvent.h"
+#include "ila/event/minecraft/actor/DeathMessageEvent.h"
 #include <mc/world/actor/ActorDamageByActorSource.h>
 #include <mc/world/actor/ActorDamageByBlockSource.h>
 #include <mc/world/actor/ActorDamageByChildActorSource.h>

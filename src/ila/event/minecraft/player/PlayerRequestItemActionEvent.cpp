@@ -1,4 +1,4 @@
-#include "PlayerRequestItemActionEvent.h"
+#include "ila/event/minecraft/player/PlayerRequestItemActionEvent.h"
 #include <mc/world/inventory/network/ItemStackRequestActionHandler.h>
 
 namespace ila::mc::inline player

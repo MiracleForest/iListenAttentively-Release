@@ -1,4 +1,4 @@
-#include "ActorChangeDimensionEvent.h"
+#include "ila/event/minecraft/actor/ActorChangeDimensionEvent.h"
 
 namespace ila::mc::inline actor
 {

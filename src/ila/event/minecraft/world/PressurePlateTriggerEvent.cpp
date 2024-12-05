@@ -1,4 +1,4 @@
-#include "PressurePlateTriggerEvent.h"
+#include "ila/event/minecraft/world/PressurePlateTriggerEvent.h"
 #include <mc/world/level/block/BasePressurePlateBlock.h>
 
 namespace ila::mc::inline world
