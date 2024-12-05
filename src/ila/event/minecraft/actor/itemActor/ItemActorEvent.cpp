@@ -1,7 +1,7 @@
 #include "ItemActorEvent.h"
 #include <mc/nbt/CompoundTag.h>
 
-namespace ila::event::inline actor
+namespace ila::event::inline actor::itemActor
 {
 ItemActor& ItemActorEvent::self() const { return mSelf; }
 
