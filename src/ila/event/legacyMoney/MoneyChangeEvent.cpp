@@ -1,5 +1,6 @@
 #include "MoneyChangeEvent.h"
-#include <windows.h>
+#define _AMD64_
+#include <libloaderapi.h>
 
 namespace ila::legacyMoney
 {

@@ -3,12 +3,12 @@ add_rules("mode.debug", "mode.release")
 add_repositories("liteldev-repo https://github.com/LiteLDev/xmake-repo.git")
 
 -- Dependencies from xmake-repo.
-add_requires("fmt")
-add_requires("magic_enum")
-add_requires("nlohmann_json")
+add_requires("fmt 10.2.1")
+add_requires("magic_enum v0.9.5")
+add_requires("nlohmann_json v3.11.3")
 
 -- Dependencies from liteldev-repo.
-add_requires("levilamina")
+add_requires("levilamina 0.13.5")
 
 if not has_config("vs_runtime") then
     set_runtimes("MD")
@@ -38,8 +38,8 @@ target("iListenAttentively")
         "_HAS_CXX17",
         "_HAS_CXX20"
     )
-    add_headerfiles("src/ila/**.h")
-    add_files("src/ila/**.cpp")
+    add_files("src/**.cpp")
+    add_headerfiles("src/(ila/**.h)")
     add_includedirs("src/ila")
     add_packages(
 		"levilamina",
@@ -65,19 +65,40 @@ target("iListenAttentively")
     end
 
     after_build(function (target)
-        local mod_packer = import("scripts.after_build")
-
-        local tag = os.iorun("git describe --tags --abbrev=0 --always")
-        local major, minor, patch, suffix = tag:match("v(%d+)%.(%d+)%.(%d+)(.*)")
-        if not major then
-            print("Failed to parse version tag, using 0.0.0")
-            major, minor, patch = 0, 0, 0
+        local version, suffix = os.iorun("git describe --tags --abbrev=0 --always"):match("^v([0-9+].[0-9+].[0-9+])(.*)")
+        if not version then
+            version = "0.0.0"
         end
+
+        local output_directory = path.join(os.projectdir(), "bin", target:name())
+        if os.exists(output_directory) then -- remove old build
+            os.rm(output_directory)
+        end
+
+        if not os.isfile(path.join(os.projectdir(), "manifest.json")) then
+            return cprint("${bright red}error: ${reset}not found manifest.json in root dir!")
+        end
+
+        local manifest_path = path.join(output_directory, "manifest.json")
+        os.cp(path.join(os.projectdir(), "manifest.json"), manifest_path)
+
         local mod_define = {
             modName = target:name(),
             modFile = path.filename(target:targetfile()),
-            modVersion = major .. "." .. minor .. "." .. patch,
+            modVersion = version,
+            passive = not has_config("tests")
         }
-        
-        mod_packer.pack_mod(target,mod_define)
+
+        io.gsub(manifest_path, "%${(.-)}", function(var)
+            return tostring(mod_define[var]) or "${" .. var .. "}"
+        end)
+
+        os.cp(target:targetfile(), path.join(output_directory, target:name() .. ".dll"))
+
+        local pdb_path = path.join(output_directory, target:name() .. ".pdb")
+        if os.isfile(target:symbolfile()) then
+            os.cp(target:symbolfile(), pdb_path)
+        end
+
+        cprint("${bright green}[mod Packer]: ${reset}mod already generated to " .. output_directory)
     end)
