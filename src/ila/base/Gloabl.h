@@ -64,3 +64,8 @@
         }                                                                                                    \
         eventName##EventEmitter::eventName##EventEmitter()
 #endif
+
+namespace ila
+{
+void nextTick(std::function<void()> func);
+}

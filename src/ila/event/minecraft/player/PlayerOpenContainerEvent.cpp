@@ -48,50 +48,54 @@ ActorUniqueID const& PlayerOpenContainerAfterEvent::getContainerActorId() const 
 
 Event_Listener_Factory(PlayerOpenContainerBefore)
 {
-    mListeners.emplace_back(LLEventBus.emplaceListener<ila::mc::server::SendPacketBeforeEvent>(
-        [](ila::mc::server::SendPacketBeforeEvent& event) -> void {
-            if (event.getPacket().getId() != MinecraftPacketIds::ContainerOpen || event.getIsBroadcast()
-                || !event.getPlayer().has_value())
-            {
-                return;
+    nextTick([this]() -> void { // Prevent deadlock
+        mListeners.emplace_back(LLEventBus.emplaceListener<ila::mc::server::SendPacketBeforeEvent>(
+            [](ila::mc::server::SendPacketBeforeEvent& event) -> void {
+                if (event.getPacket().getId() != MinecraftPacketIds::ContainerOpen || event.getIsBroadcast()
+                    || !event.getPlayer().has_value())
+                {
+                    return;
+                }
+                auto& packet      = static_cast<ContainerOpenPacket&>(event.getPacket());
+                auto  beforeEvent = PlayerOpenContainerBeforeEvent(
+                    *event.getPlayer(),
+                    *packet.mPos,
+                    packet.mContainerId,
+                    packet.mType,
+                    *packet.mEntityUniqueID
+                );
+                LLEventBus.publish(beforeEvent);
+                if (beforeEvent.isCancelled())
+                {
+                    event.cancel();
+                    event.getPlayer()->doDeleteContainerManager(false);
+                }
             }
-            auto& packet      = static_cast<ContainerOpenPacket&>(event.getPacket());
-            auto  beforeEvent = PlayerOpenContainerBeforeEvent(
-                *event.getPlayer(),
-                packet.mPos.get(),
-                packet.mContainerId,
-                packet.mType,
-                packet.mEntityUniqueID.get()
-            );
-            LLEventBus.publish(beforeEvent);
-            if (beforeEvent.isCancelled())
-            {
-                event.cancel();
-                event.getPlayer()->doDeleteContainerManager(false);
-            }
-        }
-    ));
+        ));
+    });
 }
 
 Event_Listener_Factory(PlayerOpenContainerAfter)
 {
-    mListeners.emplace_back(LLEventBus.emplaceListener<ila::mc::server::SendPacketAfterEvent>(
-        [](ila::mc::server::SendPacketAfterEvent& event) -> void {
-            if (event.getPacket().getId() != MinecraftPacketIds::ContainerOpen || event.getIsBroadcast()
-                || !event.getPlayer().has_value())
-            {
-                return;
+    nextTick([this]() -> void { // Prevent deadlock
+        mListeners.emplace_back(LLEventBus.emplaceListener<ila::mc::server::SendPacketAfterEvent>(
+            [](ila::mc::server::SendPacketAfterEvent& event) -> void {
+                if (event.getPacket().getId() != MinecraftPacketIds::ContainerOpen || event.getIsBroadcast()
+                    || !event.getPlayer().has_value())
+                {
+                    return;
+                }
+                auto& packet = static_cast<ContainerOpenPacket const&>(event.getPacket());
+                LLEventBus.publish(PlayerOpenContainerAfterEvent(
+                    *event.getPlayer(),
+                    *packet.mPos,
+                    packet.mContainerId,
+                    packet.mType,
+                    *packet.mEntityUniqueID
+                ));
             }
-            auto& packet = static_cast<ContainerOpenPacket const&>(event.getPacket());
-            LLEventBus.publish(PlayerOpenContainerAfterEvent(
-                *event.getPlayer(),
-                packet.mPos.get(),
-                packet.mContainerId,
-                packet.mType,
-                packet.mEntityUniqueID.get()
-            ));
-        }
-    ));
+        ));
+    });
 }
 
 } // namespace ila::mc::inline player
