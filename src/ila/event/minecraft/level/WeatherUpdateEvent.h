@@ -1,4 +1,7 @@
-#include "ila/Global.h"
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
+#include <ll/api/event/world/LevelEvent.h>
 #include <mc/world/level/block/actor/SculkCatalystBlockActor.h>
 
 namespace ila::mc::inline level
@@ -27,10 +30,13 @@ public:
     {
     }
 
-    ILAPI float& getRainLevel() const;
-    ILAPI int&   getRainTime() const;
-    ILAPI float& getLightningLevel() const;
-    ILAPI int&   getLightningTime() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+    ILAPI void deserialize(CompoundTag const& nbt) override;
+
+    ILNDAPI float& getRainLevel() const;
+    ILNDAPI int&   getRainTime() const;
+    ILNDAPI float& getLightningLevel() const;
+    ILNDAPI int&   getLightningTime() const;
 };
 
 class WeatherUpdateAfterEvent final : public ll::event::LevelEvent
@@ -57,9 +63,11 @@ public:
     {
     }
 
-    ILAPI float const& getRainLevel() const;
-    ILAPI int const&   getRainTime() const;
-    ILAPI float const& getLightningLevel() const;
-    ILAPI int const&   getLightningTime() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI float const& getRainLevel() const;
+    ILNDAPI int const&   getRainTime() const;
+    ILNDAPI float const& getLightningLevel() const;
+    ILNDAPI int const&   getLightningTime() const;
 };
 } // namespace ila::mc::inline level

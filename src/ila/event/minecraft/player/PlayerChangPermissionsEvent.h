@@ -1,4 +1,7 @@
-#include "ila/Global.h"
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
+#include <ll/api/event/player/PlayerEvent.h>
 
 namespace ila::mc::inline player
 {
@@ -20,8 +23,11 @@ public:
     {
     }
 
-    ILAPI CommandPermissionLevel const& getOldPermissions() const;
-    ILAPI CommandPermissionLevel&       getNewPermissions() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+    ILAPI void deserialize(CompoundTag const& nbt) override;
+
+    ILNDAPI CommandPermissionLevel const& getOldPermissions() const;
+    ILNDAPI CommandPermissionLevel&       getNewPermissions() const;
 };
 
 class PlayerChangPermissionsAfterEvent final : public ll::event::player::PlayerEvent
@@ -42,7 +48,9 @@ public:
     {
     }
 
-    ILAPI CommandPermissionLevel const& getOldPermissions() const;
-    ILAPI CommandPermissionLevel const& getNewPermissions() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI CommandPermissionLevel const& getOldPermissions() const;
+    ILNDAPI CommandPermissionLevel const& getNewPermissions() const;
 };
 } // namespace ila::mc::inline player

@@ -1,4 +1,8 @@
-#include "ila/Global.h"
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
+#include <ll/api/event/player/PlayerEvent.h>
+#include <mc/deps/core/math/Vec3.h>
 
 namespace ila::mc::inline player
 {
@@ -16,6 +20,9 @@ public:
     {
     }
 
+    ILAPI void serialize(CompoundTag& nbt) const override;
+    ILAPI void deserialize(CompoundTag const& nbt) override;
+
     ILAPI Actor& getTarget() const;
     ILAPI Vec3&  getPos() const;
 };
@@ -25,24 +32,18 @@ class PlayerInteractEntityAfterEvent final : public ll::event::player::PlayerEve
 protected:
     Actor const& mTarget;
     Vec3 const&  mPos;
-    bool&        mResult;
 
 public:
-    constexpr explicit PlayerInteractEntityAfterEvent(
-        Player&      player,
-        Actor const& target,
-        Vec3 const&  pos,
-        bool&        result
-    )
+    constexpr explicit PlayerInteractEntityAfterEvent(Player& player, Actor const& target, Vec3 const& pos)
         : PlayerEvent(player)
         , mTarget(target)
         , mPos(pos)
-        , mResult(result)
     {
     }
 
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
     ILAPI Actor const& getTarget() const;
     ILAPI Vec3 const&  getPos() const;
-    ILAPI bool&        getResult() const;
 };
 } // namespace ila::mc::inline player

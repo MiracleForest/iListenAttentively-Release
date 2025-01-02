@@ -1,13 +1,30 @@
 #include "ila/event/minecraft/player/PlayerAttackBlockEvent.h"
+#include "ila/base/Gloabl.h"
 #include <mc/world/level/block/Block.h>
 
 namespace ila::mc::inline player
 {
 
-BlockPos const& PlayerAttackBlockBeforeEvent::getPos() const { return mPos; }
+void PlayerAttackBlockBeforeEvent::serialize(CompoundTag& nbt) const
+{
+    Cancellable::serialize(nbt);
+    nbt["pos"] = ListTag { getPos().x, getPos().y, getPos().z };
+}
+void PlayerAttackBlockBeforeEvent::deserialize(CompoundTag const& nbt)
+{
+    Cancellable::deserialize(nbt);
+    getPos().x = nbt["pos"][0ull]->as<IntTag>();
+    getPos().x = nbt["pos"][1ull]->as<IntTag>();
+    getPos().x = nbt["pos"][2ull]->as<IntTag>();
+}
+BlockPos& PlayerAttackBlockBeforeEvent::getPos() const { return mPos; }
 
+void PlayerAttackBlockAfterEvent::serialize(CompoundTag& nbt) const
+{
+    PlayerEvent::serialize(nbt);
+    nbt["pos"] = ListTag { getPos().x, getPos().y, getPos().z };
+}
 BlockPos const& PlayerAttackBlockAfterEvent::getPos() const { return mPos; }
-bool&           PlayerAttackBlockAfterEvent::getResult() const { return mResult; }
 
 LL_TYPE_INSTANCE_HOOK(
     PlayerAttackBlockEventHook,
@@ -20,14 +37,14 @@ LL_TYPE_INSTANCE_HOOK(
 )
 {
     if (pPlayer == nullptr) return origin(pPlayer, pPos);
-    auto beforeEvent = PlayerAttackBlockBeforeEvent(*pPlayer, pPos);
-    eventBus.publish(beforeEvent);
-    if (beforeEvent.isCancelled()) return false;
+    auto beforeEvent = PlayerAttackBlockBeforeEvent(*pPlayer, const_cast<BlockPos&>(pPos));
+    LLEventBus.publish(beforeEvent);
+    if (beforeEvent.isCancelled()) { return false; }
     auto result = origin(pPlayer, pPos);
-    eventBus.publish(PlayerAttackBlockAfterEvent(*pPlayer, pPos, result));
+    if (result) { LLEventBus.publish(PlayerAttackBlockAfterEvent(*pPlayer, pPos)); }
     return result;
 }
 
-Event_Factory(PlayerAttackBlock, <PlayerAttackBlockEventHook>);
+Event_Hook_Factory(PlayerAttackBlock, <PlayerAttackBlockEventHook>);
 
 } // namespace ila::mc::inline player

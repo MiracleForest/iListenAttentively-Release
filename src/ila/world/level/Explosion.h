@@ -1,32 +1,32 @@
 #include <mc/_HeaderOutputPredefine.h>
-#include <mc/events/LevelEvent.h>
-#include <mc/events/LevelSoundEvent.h>
-#include <mc/math/Vec3.h>
-#include <mc/world/ActorUniqueID.h>
+#include <mc/common/ActorUniqueID.h>
+#include <mc/deps/core/math/Vec3.h>
+#include <mc/deps/shared_types/LevelSoundEvent.h>
 #include <mc/world/level/BlockPos.h>
 #include <mc/world/level/BlockSource.h>
+#include <mc/world/level/block/LevelEvent.h>
 #include <optional>
 
 class Explosion
 {
 public:
-    Vec3                         mPos;
-    float                        mRadius;
-    std::unordered_set<BlockPos> mAffectedBlocks;
-    bool                         mFire;
-    bool                         mBreaking;
-    bool                         mAllowUnderwater;
-    bool                         mCanToggleBlocks;
-    bool                         mCanCauseDamage;
-    bool                         mIgnoreBlockExplosionResistance;
-    LevelEvent                   mParticleType;
-    Puv::Legacy::LevelSoundEvent mSoundExplosionType;
-    ActorUniqueID                mSourceID;
-    BlockSource&                 mRegion;
-    float                        mMaxResistance;
-    std::optional<bool>          mInWaterOverride;
-    std::optional<int>           mTotalDamageOverride;
-    float                        mKnockbackScaling;
+    Vec3                                 mPos;
+    float                                mRadius;
+    std::unordered_set<BlockPos>         mAffectedBlocks;
+    bool                                 mFire;
+    bool                                 mBreaking;
+    bool                                 mAllowUnderwater;
+    bool                                 mCanToggleBlocks;
+    bool                                 mCanCauseDamage;
+    bool                                 mIgnoreBlockExplosionResistance;
+    LevelEvent                           mParticleType;
+    SharedTypes::Legacy::LevelSoundEvent mSoundExplosionType;
+    ActorUniqueID                        mSourceID;
+    BlockSource&                         mRegion;
+    float                                mMaxResistance;
+    std::optional<bool>                  mInWaterOverride;
+    std::optional<int>                   mTotalDamageOverride;
+    float                                mKnockbackScaling;
 
 public:
     // prevent constructor by default
@@ -65,7 +65,7 @@ public:
     MCAPI void setExplosionParticleType(::LevelEvent);
 
     // symbol: ?setExplosionSound@Explosion@@QEAAXW4LevelSoundEvent@Legacy@Puv@@@Z
-    MCAPI void setExplosionSound(::Puv::Legacy::LevelSoundEvent);
+    MCAPI void setExplosionSound(::SharedTypes::Legacy::LevelSoundEvent);
 
     // symbol: ?setFire@Explosion@@QEAAX_N@Z
     MCAPI void setFire(bool val);

@@ -1,5 +1,7 @@
-#include "ila/Global.h"
-#include <mc/world/effect/MobEffectInstance.h>
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
+#include <ll/api/event/entity/MobEvent.h>
 
 namespace ila::mc::inline actor
 {
@@ -15,7 +17,9 @@ public:
     {
     }
 
-    ILAPI ItemActor& getItemActor() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI ItemActor& getItemActor() const;
 };
 
 class ActorPickupItemAfterEvent final : public ll::event::entity::MobEvent
@@ -30,6 +34,8 @@ public:
     {
     }
 
-    ILAPI ItemActor const& getItemActor() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI ItemActor const& getItemActor() const;
 };
 } // namespace ila::mc::inline actor

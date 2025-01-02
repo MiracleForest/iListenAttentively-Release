@@ -15,7 +15,7 @@ LL_TYPE_INSTANCE_HOOK(
     PressurePlateTriggerEventHook,
     HookPriority::Normal,
     BasePressurePlateBlock,
-    "?shouldTriggerEntityInside@BasePressurePlateBlock@@UEBA_NAEAVBlockSource@@AEBVBlockPos@@AEAVActor@@@Z",
+    &BasePressurePlateBlock::$shouldTriggerEntityInside,
     bool,
     BlockSource&    pRegion,
     BlockPos const& pPos,

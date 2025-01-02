@@ -1,5 +1,6 @@
-#include "ila/Global.h"
-#include <mc/enums/GameType.h>
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
+#include <mc/world/level/GameType.h>
 
 namespace ila::mc::inline server
 {
@@ -43,16 +44,19 @@ public:
     {
     }
 
-    ILAPI std::string& getMotd() const;
-    ILAPI int&         getProtocolVersion() const;
-    ILAPI std::string& getNetworkVersion() const;
-    ILAPI int&         getPlayerCount() const;
-    ILAPI int&         getMaxPlayerCount() const;
-    ILAPI std::string& getGuid() const;
-    ILAPI std::string& getLevelName() const;
-    ILAPI GameType&    getGameMode() const;
-    ILAPI ushort&      getLocalPort() const;
-    ILAPI ushort&      getLocalPortV6() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+    ILAPI void deserialize(CompoundTag const& nbt) override;
+
+    ILNDAPI std::string& getMotd() const;
+    ILNDAPI int&         getProtocolVersion() const;
+    ILNDAPI std::string& getNetworkVersion() const;
+    ILNDAPI int&         getPlayerCount() const;
+    ILNDAPI int&         getMaxPlayerCount() const;
+    ILNDAPI std::string& getGuid() const;
+    ILNDAPI std::string& getLevelName() const;
+    ILNDAPI GameType&    getGameMode() const;
+    ILNDAPI ushort&      getLocalPort() const;
+    ILNDAPI ushort&      getLocalPortV6() const;
 }; // class ServerPongEvent
 
 class ServerPongAfterEvent final : public ll::event::Event
@@ -68,7 +72,6 @@ protected:
     GameType const&    mGameMode;
     ushort const&      mLoaclPort;
     ushort const&      mLoaclPortV6;
-    int&               mResult;
 
 public:
     constexpr explicit ServerPongAfterEvent(
@@ -81,8 +84,7 @@ public:
         std::string const& levelName,
         GameType const&    gameMode,
         ushort const&      localPort,
-        ushort const&      localPortV6,
-        int&               result
+        ushort const&      localPortV6
     )
         : mMotd(motd)
         , mProtocolVersion(protocolVersion)
@@ -94,20 +96,20 @@ public:
         , mGameMode(gameMode)
         , mLoaclPort(localPort)
         , mLoaclPortV6(localPortV6)
-        , mResult(result)
     {
     }
 
-    ILAPI std::string const& getMotd() const;
-    ILAPI int const&         getProtocolVersion() const;
-    ILAPI std::string const& getNetworkVersion() const;
-    ILAPI int const&         getPlayerCount() const;
-    ILAPI int const&         getMaxPlayerCount() const;
-    ILAPI std::string const& getGuid() const;
-    ILAPI std::string const& getLevelName() const;
-    ILAPI GameType const&    getGameMode() const;
-    ILAPI ushort const&      getLocalPort() const;
-    ILAPI ushort const&      getLocalPortV6() const;
-    ILAPI int&               getResult() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI std::string const& getMotd() const;
+    ILNDAPI int const&         getProtocolVersion() const;
+    ILNDAPI std::string const& getNetworkVersion() const;
+    ILNDAPI int const&         getPlayerCount() const;
+    ILNDAPI int const&         getMaxPlayerCount() const;
+    ILNDAPI std::string const& getGuid() const;
+    ILNDAPI std::string const& getLevelName() const;
+    ILNDAPI GameType const&    getGameMode() const;
+    ILNDAPI ushort const&      getLocalPort() const;
+    ILNDAPI ushort const&      getLocalPortV6() const;
 }; // class ServerPongEvent
 } // namespace ila::mc::inline server

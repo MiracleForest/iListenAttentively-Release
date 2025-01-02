@@ -1,18 +1,34 @@
 #include "ila/event/minecraft/server/ClientLoginEvent.h"
+#include "ila/base/Gloabl.h"
 #include <ll/api/service/Bedrock.h>
 #include <mc/certificates/ExtendedCertificate.h>
+#include <mc/network/ConnectionRequest.h>
 #include <mc/network/packet/LoginPacket.h>
-
 
 namespace ila::mc::inline server
 {
 
+void ClientLoginBeforeEvent::serialize(CompoundTag& nbt) const {
+    Cancellable::serialize(nbt);
+    nbt["serverNetworkHandler"] = reinterpret_cast<uintptr_t>(&getServerNetworkHandler());
+    nbt["networkIdentifier"] = reinterpret_cast<uintptr_t>(&getNetworkIdentifier());
+}
 ServerNetworkHandler const& ClientLoginBeforeEvent::getServerNetworkHandler() const
 {
     return mServerNetworkHandler;
 }
 NetworkIdentifier const& ClientLoginBeforeEvent::getNetworkIdentifier() const { return mNetworkIdentifier; }
 
+void ClientLoginAfterEvent::serialize(CompoundTag& nbt) const {
+    Event::serialize(nbt);
+    nbt["serverNetworkHandler"] = reinterpret_cast<uintptr_t>(&getServerNetworkHandler());
+    nbt["networkIdentifier"] = reinterpret_cast<uintptr_t>(&getNetworkIdentifier());
+    nbt["uuid"] = getUuid().asString();
+    nbt["serverAuthXuid"] = getServerAuthXuid();
+    nbt["clientAuthXuid"] = getClientAuthXuid();
+    nbt["realName"] = getRealName();
+    nbt["ipAndPort"] = getIpAndPort();
+}
 ServerNetworkHandler const& ClientLoginAfterEvent::getServerNetworkHandler() const
 {
     return mServerNetworkHandler;
@@ -35,35 +51,41 @@ std::string ClientLoginAfterEvent::getPort() const
 }
 void ClientLoginAfterEvent::disConnectClient(std::string reason) const
 {
-    ll::service::getServerNetworkHandler()
-        ->disconnectClient(getNetworkIdentifier(), Connection::DisconnectFailReason::Kicked, reason, false);
+    ll::service::getServerNetworkHandler()->disconnectClient(
+        getNetworkIdentifier(),
+        Connection::DisconnectFailReason::Kicked,
+        reason,
+        std::nullopt,
+        false
+    );
 }
 
 LL_TYPE_INSTANCE_HOOK(
     ClientLoginEventHook,
     HookPriority::Normal,
     ServerNetworkHandler,
-    "?handle@ServerNetworkHandler@@UEAAXAEBVNetworkIdentifier@@AEBVLoginPacket@@@Z",
+    &ServerNetworkHandler::$handle,
     void,
     NetworkIdentifier const& pSource,
     LoginPacket const&       pPacket
 )
 {
     auto beforeEvent = ClientLoginBeforeEvent(*this, pSource);
-    eventBus.publish(beforeEvent);
+    LLEventBus.publish(beforeEvent);
     if (beforeEvent.isCancelled()) return;
     origin(pSource, pPacket);
-    auto* cert           = pPacket.mConnectionRequest->getCertificate();
-    auto  uuid           = ExtendedCertificate::getIdentity(*cert);
-    auto  serverAuthXuid = ExtendedCertificate::getXuid(*cert, false);
-    auto  clientAuthXuid = ExtendedCertificate::getXuid(*cert, true);
-    auto  realName       = ExtendedCertificate::getIdentityName(*cert);
-    auto  ipAndPort      = pSource.getIPAndPort();
-    eventBus.publish(
-        ClientLoginAfterEvent(*this, pSource, uuid, serverAuthXuid, clientAuthXuid, realName, ipAndPort)
-    );
+    auto* cert = pPacket.mConnectionRequest->getCertificate();
+    LLEventBus.publish(ClientLoginAfterEvent(
+        *this,
+        pSource,
+        ExtendedCertificate::getIdentity(*cert),
+        ExtendedCertificate::getXuid(*cert, false),
+        ExtendedCertificate::getXuid(*cert, true),
+        ExtendedCertificate::getIdentityName(*cert),
+        pSource.getIPAndPort()
+    ));
 }
 
-Event_Factory(ClientLogin, <ClientLoginEventHook>);
+Event_Hook_Factory(ClientLogin, <ClientLoginEventHook>);
 
 } // namespace ila::mc::inline server

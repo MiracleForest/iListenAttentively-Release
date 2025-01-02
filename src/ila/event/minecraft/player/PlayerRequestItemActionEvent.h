@@ -1,6 +1,9 @@
-#include "ila/Global.h"
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
+#include <ll/api/event/player/PlayerEvent.h>
+#include <mc/world/inventory/network/ItemStackNetResult.h>
 #include <mc/world/inventory/network/ItemStackRequestActionTransferBase.h>
-#include <mc/world/item/components/ItemStackNetResult.h>
 
 namespace ila::mc::inline player
 {
@@ -19,7 +22,10 @@ public:
     {
     }
 
-    ILAPI ItemStackRequestActionTransferBase& getRequestAction() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+    ILAPI void deserialize(CompoundTag const& nbt) override;
+
+    ILNDAPI ItemStackRequestActionTransferBase& getRequestAction() const;
 };
 
 class PlayerRequestItemActionAfterEvent final : public ll::event::player::PlayerEvent
@@ -40,7 +46,10 @@ public:
     {
     }
 
-    ILAPI ItemStackRequestActionTransferBase const& getRequestAction() const;
-    ILAPI ItemStackNetResult&                       getResult() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+    ILAPI void deserialize(CompoundTag const& nbt) override;
+
+    ILNDAPI ItemStackRequestActionTransferBase const& getRequestAction() const;
+    ILNDAPI ItemStackNetResult&                       getResult() const;
 };
 } // namespace ila::mc::inline player

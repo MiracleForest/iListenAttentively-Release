@@ -1,4 +1,5 @@
 #include "ila/Global.h"
+#include <mc/world/level/BlockPos.h>
 
 namespace ila::mc::inline world
 {

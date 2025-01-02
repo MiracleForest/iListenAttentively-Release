@@ -1,5 +1,6 @@
 #include "ila/event/minecraft/actor/ProjectileCreateEvent.h"
-#include <mc/entity/components/ProjectileComponent.h>
+#include "ila/base/Gloabl.h"
+#include <mc/entity/components_json_legacy/ProjectileComponent.h>
 
 namespace ila::mc::inline actor
 {
@@ -8,23 +9,24 @@ LL_TYPE_INSTANCE_HOOK(
     ProjectileCreateEventHook,
     HookPriority::Normal,
     ProjectileComponent,
-    "?shoot@ProjectileComponent@@QEAAXAEAVActor@@AEBVVec3@@MM1PEAV2@@Z",
+    &ProjectileComponent::shoot,
     void,
-    class Actor&      pProjectile,
-    class Vec3 const& pDirection,
-    float             pPower,
-    float             pOffset,
-    class Vec3 const& pBaseSpeed,
-    class Actor*      pTarget
+    Actor&      pProjectile,
+    Vec3 const& pDirection,
+    float       pPower,
+    float       pOffset,
+    Vec3 const& pBaseSpeed,
+    Actor*      pTarget
 )
 {
-    auto beforeEvent = ProjectileCreateBeforeEvent(pProjectile);
-    eventBus.publish(beforeEvent);
-    if (beforeEvent.isCancelled()) return pProjectile.remove();
     origin(pProjectile, pDirection, pPower, pOffset, pBaseSpeed, pTarget);
-    eventBus.publish(ProjectileCreateAfterEvent(pProjectile));
+    if (pProjectile.isRemoved()) { return; }
+    auto beforeEvent = ProjectileCreateBeforeEvent(pProjectile);
+    LLEventBus.publish(beforeEvent);
+    if (beforeEvent.isCancelled()) { pProjectile.remove(); }
+    if (!pProjectile.isRemoved()) { LLEventBus.publish(ProjectileCreateAfterEvent(pProjectile)); }
 }
 
-Event_Factory(ProjectileCreate, <ProjectileCreateEventHook>);
+Event_Hook_Factory(ProjectileCreate, <ProjectileCreateEventHook>);
 
 } // namespace ila::mc::inline actor

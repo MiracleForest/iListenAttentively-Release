@@ -14,7 +14,7 @@ LL_TYPE_INSTANCE_HOOK(
     BlockTickEventHook,
     HookPriority::Normal,
     Block,
-    "?randomTick@Block@@QEBAXAEAVBlockSource@@AEBVBlockPos@@AEAVRandom@@@Z",
+    &Block::randomTick,
     void,
     BlockSource&    pRegion,
     BlockPos const& pPos,

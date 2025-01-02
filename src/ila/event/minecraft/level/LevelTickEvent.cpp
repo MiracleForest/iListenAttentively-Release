@@ -1,17 +1,18 @@
 #include "ila/event/minecraft/level/LevelTickEvent.h"
+#include "ila/base/Gloabl.h"
 
 namespace ila::mc::inline level
 {
 
-LL_TYPE_INSTANCE_HOOK(LevelTickEventHook, HookPriority::Normal, Level, &Level::tick, void)
+LL_TYPE_INSTANCE_HOOK(LevelTickEventHook, HookPriority::Normal, Level, &Level::$tick, void)
 {
     auto beforeEvent = LevelTickBeforeEvent(*this);
-    eventBus.publish(beforeEvent);
-    if (beforeEvent.isCancelled()) return;
+    LLEventBus.publish(beforeEvent);
+    if (beforeEvent.isCancelled()) { return; }
     origin();
-    eventBus.publish(LevelTickAfterEvent(*this));
+    LLEventBus.publish(LevelTickAfterEvent(*this));
 }
 
-Event_Factory(LevelTick, <LevelTickEventHook>);
+Event_Hook_Factory(LevelTick, <LevelTickEventHook>);
 
 } // namespace ila::mc::inline level

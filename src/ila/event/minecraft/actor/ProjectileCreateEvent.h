@@ -1,4 +1,6 @@
-#include "ila/Global.h"
+#pragma once
+#include <ll/api/event/Cancellable.h>
+#include <ll/api/event/entity/ActorEvent.h>
 
 namespace ila::mc::inline actor
 {

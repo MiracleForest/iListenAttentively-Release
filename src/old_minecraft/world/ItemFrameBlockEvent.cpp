@@ -19,7 +19,7 @@ LL_TYPE_INSTANCE_HOOK(
     ItemFrameBlockEventHook1,
     HookPriority::Normal,
     ItemFrameBlock,
-    "?use@ItemFrameBlock@@UEBA_NAEAVPlayer@@AEBVBlockPos@@E@Z",
+    &ItemFrameBlock::$use,
     bool,
     Player&         pPlayer,
     BlockPos const& pPos,
@@ -43,7 +43,7 @@ LL_TYPE_INSTANCE_HOOK(
     ItemFrameBlockEventHook2,
     HookPriority::Normal,
     ItemFrameBlock,
-    "?attack@ItemFrameBlock@@UEBA_NPEAVPlayer@@AEBVBlockPos@@@Z",
+    &ItemFrameBlock::$attack,
     bool,
     Player*         pPlayer,
     BlockPos const& pPos

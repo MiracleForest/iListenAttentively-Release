@@ -1,16 +1,17 @@
 #include "ila/event/minecraft/actor/ActorTickEvent.h"
+#include "ila/base/Gloabl.h"
 
 namespace ila::mc::inline actor
 {
-LL_TYPE_INSTANCE_HOOK(ActorTickEventHook, HookPriority::Normal, Actor, "?normalTick@Actor@@UEAAXXZ", void)
+LL_TYPE_INSTANCE_HOOK(ActorTickEventHook, HookPriority::Normal, Actor, &Actor::$normalTick, void)
 {
     auto beforeEvent = ActorTickBeforeEvent(*this);
-    eventBus.publish(beforeEvent);
-    if (beforeEvent.isCancelled()) return;
+    LLEventBus.publish(beforeEvent);
+    if (beforeEvent.isCancelled()) { return; }
     origin();
-    eventBus.publish(ActorTickAfterEvent(*this));
+    LLEventBus.publish(ActorTickAfterEvent(*this));
 }
 
-Event_Factory(ActorTick, <ActorTickEventHook>);
+Event_Hook_Factory(ActorTick, <ActorTickEventHook>);
 
 } // namespace ila::mc::inline actor

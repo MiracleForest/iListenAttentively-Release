@@ -1,9 +1,40 @@
 #include "ila/event/minecraft/server/ServerPongEvent.h"
+#include "ila/base/Gloabl.h"
+#include <mc/deps/raknet/RNS2_SendParameters.h>
+#include <mc/deps/raknet/RNS2_Windows_Linux_360.h>
 #include <mc/deps/raknet/SystemAddress.h>
 
 namespace ila::mc::inline server
 {
 
+void ServerPongBeforeEvent::serialize(CompoundTag& nbt) const
+{
+    Cancellable::serialize(nbt);
+    nbt["motd"]            = getMotd();
+    nbt["protocolVersion"] = getProtocolVersion();
+    nbt["networkVersion"]  = getNetworkVersion();
+    nbt["playerCount"]     = getPlayerCount();
+    nbt["maxPlayerCount"]  = getMaxPlayerCount();
+    nbt["guid"]            = getGuid();
+    nbt["levelName"]       = getLevelName();
+    nbt["gameMode"]        = magic_enum::enum_name(getGameMode());
+    nbt["localPort"]       = getLocalPort();
+    nbt["localPortV6"]     = getLocalPortV6();
+}
+void ServerPongBeforeEvent::deserialize(CompoundTag const& nbt)
+{
+    Cancellable::deserialize(nbt);
+    getMotd()            = nbt["motd"];
+    getProtocolVersion() = nbt["protocolVersion"];
+    getNetworkVersion()  = nbt["networkVersion"];
+    getPlayerCount()     = nbt["playerCount"];
+    getMaxPlayerCount()  = nbt["maxPlayerCount"];
+    getGuid()            = nbt["guid"];
+    getLevelName()       = nbt["levelName"];
+    getGameMode() = magic_enum::enum_cast<GameType>(nbt["gameMode"].get<StringTag>()).value_or(getGameMode());
+    getLocalPort()   = nbt["localPort"];
+    getLocalPortV6() = nbt["localPortV6"];
+}
 std::string& ServerPongBeforeEvent::getMotd() const { return mMotd; }
 int&         ServerPongBeforeEvent::getProtocolVersion() const { return mProtocolVersion; }
 std::string& ServerPongBeforeEvent::getNetworkVersion() const { return mNetworkVersion; }
@@ -15,6 +46,20 @@ GameType&    ServerPongBeforeEvent::getGameMode() const { return mGameMode; }
 ushort&      ServerPongBeforeEvent::getLocalPort() const { return mLoaclPort; }
 ushort&      ServerPongBeforeEvent::getLocalPortV6() const { return mLoaclPortV6; }
 
+void ServerPongAfterEvent::serialize(CompoundTag& nbt) const
+{
+    Event::serialize(nbt);
+    nbt["motd"]            = getMotd();
+    nbt["protocolVersion"] = getProtocolVersion();
+    nbt["networkVersion"]  = getNetworkVersion();
+    nbt["playerCount"]     = getPlayerCount();
+    nbt["maxPlayerCount"]  = getMaxPlayerCount();
+    nbt["guid"]            = getGuid();
+    nbt["levelName"]       = getLevelName();
+    nbt["gameMode"]        = magic_enum::enum_name(getGameMode());
+    nbt["localPort"]       = getLocalPort();
+    nbt["localPortV6"]     = getLocalPortV6();
+}
 std::string const& ServerPongAfterEvent::getMotd() const { return mMotd; }
 int const&         ServerPongAfterEvent::getProtocolVersion() const { return mProtocolVersion; }
 std::string const& ServerPongAfterEvent::getNetworkVersion() const { return mNetworkVersion; }
@@ -25,31 +70,22 @@ std::string const& ServerPongAfterEvent::getLevelName() const { return mLevelNam
 GameType const&    ServerPongAfterEvent::getGameMode() const { return mGameMode; }
 ushort const&      ServerPongAfterEvent::getLocalPort() const { return mLoaclPort; }
 ushort const&      ServerPongAfterEvent::getLocalPortV6() const { return mLoaclPortV6; }
-int&               ServerPongAfterEvent::getResult() const { return mResult; }
-
-struct RNS2_SendParameters
-{
-    char*                 data;
-    int                   length;
-    RakNet::SystemAddress system_address;
-    int                   ttl;
-};
 
 LL_STATIC_HOOK(
     ServerPongEventHook,
     HookPriority::Normal,
-    "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z",
+    &RakNet::RNS2_Windows_Linux_360::Send_Windows_Linux_360NoVDP,
     int,
-    int                  pRns2Socket,
-    RNS2_SendParameters* pSendParameters,
-    char const*          pFile,
-    uint                 pLine
+    int                          pRns2Socket,
+    RakNet::RNS2_SendParameters* pSendParameters,
+    char const*                  pFile,
+    uint                         pLine
 )
 {
-    if (pSendParameters->data[0] == 28)
+    if (pSendParameters->mUnk98c838.as<char*>()[0] == 28)
     {
         constexpr static int head_size = sizeof(char) + sizeof(std::uint64_t) + sizeof(std::uint64_t) + 16;
-        const char*          data      = pSendParameters->data;
+        const char*          data      = pSendParameters->mUnk98c838.as<char*>();
         std::size_t          strlen    = data[head_size] << 8 | data[head_size + 1];
         if (strlen == 0) { return origin(pRns2Socket, pSendParameters, pFile, pLine); }
         std::istringstream       iss(std::string({ data + head_size + 2, strlen }));
@@ -83,7 +119,7 @@ LL_STATIC_HOOK(
             mLoaclPort,
             mLoaclPortV6
         );
-        eventBus.publish(beforeEvent);
+        LLEventBus.publish(beforeEvent);
         if (beforeEvent.isCancelled()) return 133;
 
         std::string text = fmt::format(
@@ -107,11 +143,11 @@ LL_STATIC_HOOK(
         packet.push_back(static_cast<char>((strlen >> 8) & 0xFF));
         packet.push_back(static_cast<char>(strlen & 0xFF));
         packet.insert(packet.end(), text.begin(), text.end());
-        pSendParameters->data   = packet.data();
-        pSendParameters->length = static_cast<int>(packet.size());
+        pSendParameters->mUnk98c838.as<char*>() = packet.data();
+        pSendParameters->mUnke627d8.as<int>()   = static_cast<int>(packet.size());
 
         auto result = origin(pRns2Socket, pSendParameters, pFile, pLine);
-        eventBus.publish(ServerPongAfterEvent(
+        LLEventBus.publish(ServerPongAfterEvent(
             motd,
             protocolVersion,
             networkVersion,
@@ -121,14 +157,13 @@ LL_STATIC_HOOK(
             levelName,
             mGameType,
             mLoaclPort,
-            mLoaclPortV6,
-            result
+            mLoaclPortV6
         ));
         return result;
     }
     return origin(pRns2Socket, pSendParameters, pFile, pLine);
 }
 
-Event_Factory(ServerPong, <ServerPongEventHook>);
+Event_Hook_Factory(ServerPong, <ServerPongEventHook>);
 
 } // namespace ila::mc::inline server

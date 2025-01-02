@@ -12,13 +12,13 @@ LL_TYPE_INSTANCE_HOOK(
     SpawnWanderingTraderEventHook,
     HookPriority::Normal,
     WanderingTraderScheduler,
-    "?_spawnWanderingTraderAtPos@WanderingTraderScheduler@@AEAAXAEBVBlockPos@@AEAVBlockSource@@@Z",
+    &WanderingTraderScheduler::_spawnWanderingTraderAtPos,
     void,
-    BlockPos&    pPos,
+    BlockPos const&    pPos,
     BlockSource& pRegion
 )
 {
-    auto beforeEvent = SpawnWanderingTraderBeforeEvent(pRegion, pPos);
+    auto beforeEvent = SpawnWanderingTraderBeforeEvent(pRegion, const_cast<BlockPos&>(pPos));
     eventBus.publish(beforeEvent);
     if (beforeEvent.isCancelled()) return;
     origin(pPos, pRegion);

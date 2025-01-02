@@ -1,8 +1,12 @@
-#include "ila/Global.h"
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
+#include <ll/api/event/player/ServerPlayerEvent.h>
+#include <mc/common/ActorUniqueID.h>
 
 namespace ila::mc::inline player
 {
-class PlayerOpenContainerBeforeEvent final : public ll::event::Cancellable<ll::event::player::PlayerEvent>
+class PlayerOpenContainerBeforeEvent final
+    : public ll::event::Cancellable<ll::event::player::ServerPlayerEvent>
 {
 protected:
     BlockPos&      mPos;
@@ -12,7 +16,7 @@ protected:
 
 public:
     constexpr explicit PlayerOpenContainerBeforeEvent(
-        Player&        player,
+        ServerPlayer&  player,
         BlockPos&      pos,
         ContainerID&   containerId,
         ContainerType& containerType,
@@ -26,13 +30,16 @@ public:
     {
     }
 
-    ILAPI BlockPos&      getContainerBlockPos() const;
-    ILAPI ContainerID&   getContainerId() const;
-    ILAPI ContainerType& getContainerType() const;
-    ILAPI ActorUniqueID& getContainerActorId() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+    ILAPI void deserialize(CompoundTag const& nbt) override;
+
+    ILNDAPI BlockPos&      getContainerBlockPos() const;
+    ILNDAPI ContainerID&   getContainerId() const;
+    ILNDAPI ContainerType& getContainerType() const;
+    ILNDAPI ActorUniqueID& getContainerActorId() const;
 };
 
-class PlayerOpenContainerAfterEvent final : public ll::event::player::PlayerEvent
+class PlayerOpenContainerAfterEvent final : public ll::event::player::ServerPlayerEvent
 {
 protected:
     BlockPos const&      mPos;
@@ -42,13 +49,13 @@ protected:
 
 public:
     constexpr explicit PlayerOpenContainerAfterEvent(
-        Player&              player,
+        ServerPlayer&        player,
         BlockPos const&      pos,
         ContainerID const&   containerId,
         ContainerType const& containerType,
         ActorUniqueID const& containerActorId
     )
-        : PlayerEvent(player)
+        : ServerPlayerEvent(player)
         , mPos(pos)
         , mContainerId(containerId)
         , mContainerType(containerType)
@@ -56,9 +63,11 @@ public:
     {
     }
 
-    ILAPI BlockPos const&      getContainerBlockPos() const;
-    ILAPI ContainerID const&   getContainerId() const;
-    ILAPI ContainerType const& getContainerType() const;
-    ILAPI ActorUniqueID const& getContainerActorId() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI BlockPos const&      getContainerBlockPos() const;
+    ILNDAPI ContainerID const&   getContainerId() const;
+    ILNDAPI ContainerType const& getContainerType() const;
+    ILNDAPI ActorUniqueID const& getContainerActorId() const;
 };
 } // namespace ila::mc::inline player

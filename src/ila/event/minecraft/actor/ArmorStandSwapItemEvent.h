@@ -1,18 +1,22 @@
-#include "ila/Global.h"
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
+#include <ll/api/event/player/PlayerEvent.h>
+#include <mc/deps/shared_types/EquipmentSlot.h>
 
 namespace ila::mc::inline actor
 {
 class ArmorStandSwapItemBeforeEvent final : public ll::event::Cancellable<ll::event::entity::ActorEvent>
 {
 protected:
-    Player&                     mPlayer;
-    Puv::Legacy::EquipmentSlot& mSlot;
+    Player&                             mPlayer;
+    SharedTypes::Legacy::EquipmentSlot& mSlot;
 
 public:
     constexpr explicit ArmorStandSwapItemBeforeEvent(
-        Actor&                      actor,
-        Player&                     player,
-        Puv::Legacy::EquipmentSlot& slot
+        Actor&                              actor,
+        Player&                             player,
+        SharedTypes::Legacy::EquipmentSlot& slot
     )
         : Cancellable(actor)
         , mPlayer(player)
@@ -20,33 +24,34 @@ public:
     {
     }
 
-    ILAPI Player& getPlayer() const;
-    ILAPI Puv::Legacy::EquipmentSlot& getSlot() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+    ILAPI void deserialize(CompoundTag const& nbt) override;
+
+    ILNDAPI Player& getPlayer() const;
+    ILNDAPI SharedTypes::Legacy::EquipmentSlot& getSlot() const;
 };
 
 class ArmorStandSwapItemAfterEvent final : public ll::event::entity::ActorEvent
 {
 protected:
-    Player const&                     mPlayer;
-    Puv::Legacy::EquipmentSlot const& mSlot;
-    bool&                             mResult;
+    Player const&                             mPlayer;
+    SharedTypes::Legacy::EquipmentSlot const& mSlot;
 
 public:
     constexpr explicit ArmorStandSwapItemAfterEvent(
-        Actor&                            actor,
-        Player const&                     player,
-        Puv::Legacy::EquipmentSlot const& slot,
-        bool&                             result
+        Actor&                                    actor,
+        Player const&                             player,
+        SharedTypes::Legacy::EquipmentSlot const& slot
     )
         : ActorEvent(actor)
         , mPlayer(player)
         , mSlot(slot)
-        , mResult(result)
     {
     }
 
-    ILAPI Player const& getPlayer() const;
-    ILAPI Puv::Legacy::EquipmentSlot const& getSlot() const;
-    ILAPI bool&                             getResult() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI Player const& getPlayer() const;
+    ILNDAPI SharedTypes::Legacy::EquipmentSlot const& getSlot() const;
 };
 } // namespace ila::mc::inline actor

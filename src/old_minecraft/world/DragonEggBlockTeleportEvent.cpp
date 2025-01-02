@@ -1,10 +1,12 @@
 #include "ila/event/minecraft/world/DragonEggBlockTeleportEvent.h"
-#include <mc/enums/BlockUpdateFlag.h>
-#include <mc/math/Vec3.h>
-#include <mc/world/events/GameEventRegistry.h>
+#include <mc/deps/core/math/Vec3.h>
+#include <mc/util/ThreadOwner.h>
+#include <mc/world/level/BlockPos.h>
 #include <mc/world/level/Level.h>
+#include <mc/world/level/block/DragonEggBlock.h>
 #include <mc/world/level/block/registry/BlockTypeRegistry.h>
-#include <mc/world/level/block/utils/VanillaBlockTypeIds.h>
+#include <mc/deps/core/math/Random.h>
+#include <mc/world/level/block/VanillaBlockTypeIds.h>
 
 namespace ila::mc::inline world
 {
@@ -20,7 +22,7 @@ BlockPos const& DragonEggBlockTeleportAfterEvent::getTargetPos() const { return 
 LL_STATIC_HOOK(
     DragonEggBlockTeleportEventHook,
     HookPriority::Low,
-    "?_attemptTeleport@DragonEggBlock@@CAXAEAVBlockSource@@AEAVRandom@@AEBVBlockPos@@@Z",
+    &DragonEggBlock::_attemptTeleport,
     void,
     BlockSource&    pRegion,
     Random&         pRandom,
@@ -37,9 +39,9 @@ LL_STATIC_HOOK(
     // clang-format off
     while (true)
     {
-        int verticalOffset = (randomGenerator.mObject._genRandInt32() & 7) - (randomGenerator.mObject._genRandInt32() & 7);
-        targetPos.x = ((randomGenerator.mObject._genRandInt32() & 0xF) - (randomGenerator.mObject._genRandInt32() & 0xF)) + pPos.x;
-        targetPos.z = (randomGenerator.mObject._genRandInt32() & 0xF) + pPos.z - (randomGenerator.mObject._genRandInt32() & 0xF);
+        int verticalOffset = (randomGenerator->mObject._genRandInt32() & 7) - (randomGenerator->mObject._genRandInt32() & 7);
+        targetPos.x = ((randomGenerator->mObject._genRandInt32() & 0xF) - (randomGenerator->mObject._genRandInt32() & 0xF)) + pPos.x;
+        targetPos.z = (randomGenerator->mObject._genRandInt32() & 0xF) + pPos.z - (randomGenerator->mObject._genRandInt32() & 0xF);
         targetPos.y = (verticalOffset > pRegion.getMaxHeight() ? 0 : verticalOffset) + pPos.y;
 
         if (pRegion.isEmptyBlock(targetPos)) break;
@@ -63,8 +65,8 @@ LL_STATIC_HOOK(
     );
     pRegion.setBlock(
         targetPos,
-        BlockTypeRegistry::getDefaultBlockState(VanillaBlockTypeIds::DragonEgg, true),
-        (int)BlockUpdateFlag::All,
+        BlockTypeRegistry::getDefaultBlockState(VanillaBlockTypeIds::DragonEgg(), true),
+        3 /* BlockUpdateFlag::All */,
         nullptr,
         nullptr
     );

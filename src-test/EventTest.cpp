@@ -1,7 +1,6 @@
-#include "ila/Global.h"
+#include "ila/base/Gloabl.h"
 #include "ila/include_all.h"
-#include <ll/api/event/EventBus.h>
-#include <ll/api/memory/Hook.h>
+#include "mc/nbt/CompoundTag.h"
 #include <mc/world/events/ServerInstanceEventCoordinator.h>
 
 LL_AUTO_TYPE_INSTANCE_HOOK(
@@ -14,4 +13,12 @@ LL_AUTO_TYPE_INSTANCE_HOOK(
 )
 {
     origin(ins);
+
+    LLEventBus.emplaceListener<ila::mc::PlayerOpenContainerBeforeEvent>(
+        [](ila::mc::PlayerOpenContainerBeforeEvent& event) -> void {
+            CompoundTag nbt;
+            event.serialize(nbt);
+            SelfLogger.debug(nbt.toSnbt());
+        }
+    );
 }

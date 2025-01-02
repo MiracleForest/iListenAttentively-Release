@@ -17,7 +17,7 @@ LL_TYPE_INSTANCE_HOOK(
     LiquidTryFlowEventHook,
     HookPriority::Normal,
     LiquidBlockDynamic,
-    &LiquidBlockDynamic::_canSpreadTo,
+    &LiquidBlockDynamic::_isLiquidBlocking,
     bool,
     BlockSource&    pRegion,
     BlockPos const& pPos,

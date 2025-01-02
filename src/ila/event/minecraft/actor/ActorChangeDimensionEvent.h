@@ -1,4 +1,8 @@
-#include "ila/Global.h"
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
+#include <ll/api/event/entity/ActorEvent.h>
+#include <mc/deps/core/math/Vec3.h>
 
 namespace ila::mc::inline actor
 {
@@ -20,29 +24,38 @@ public:
     {
     }
 
-    ILAPI DimensionType const& getFromDimensionId() const;
-    ILAPI DimensionType&       getToDimensionId() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+    ILAPI void deserialize(CompoundTag const& nbt) override;
+
+    ILNDAPI DimensionType const& getFromDimensionId() const;
+    ILNDAPI DimensionType&       getToDimensionId() const;
 };
 
 class ActorChangeDimensionAfterEvent final : public ll::event::entity::ActorEvent
 {
 protected:
     DimensionType const& mFromDimensionId;
+    Vec3 const&          mFromPos;
     DimensionType const& mToDimensionId;
 
 public:
     constexpr explicit ActorChangeDimensionAfterEvent(
         Actor&               actor,
         DimensionType const& fromDimensionId,
+        Vec3 const&          fromPos,
         DimensionType const& toDimensionId
     )
         : ActorEvent(actor)
         , mFromDimensionId(fromDimensionId)
+        , mFromPos(fromPos)
         , mToDimensionId(toDimensionId)
     {
     }
 
-    ILAPI DimensionType const& getFromDimensionId() const;
-    ILAPI DimensionType const& getToDimensionId() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI DimensionType const& getFromDimensionId() const;
+    ILNDAPI Vec3 const&          getFromPos() const;
+    ILNDAPI DimensionType const& getToDimensionId() const;
 };
 } // namespace ila::mc::inline actor

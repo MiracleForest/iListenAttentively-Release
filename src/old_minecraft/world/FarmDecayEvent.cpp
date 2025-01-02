@@ -16,7 +16,7 @@ LL_TYPE_INSTANCE_HOOK(
     FarmDecayEventHook,
     HookPriority::Normal,
     FarmBlock,
-    "?transformOnFall@FarmBlock@@UEBAXAEAVBlockSource@@AEBVBlockPos@@PEAVActor@@M@Z",
+    &FarmBlock::$transformOnFall,
     void,
     BlockSource&    pRegion,
     BlockPos const& pPos,

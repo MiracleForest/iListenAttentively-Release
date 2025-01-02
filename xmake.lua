@@ -8,7 +8,8 @@ add_requires("magic_enum v0.9.5")
 add_requires("nlohmann_json v3.11.3")
 
 -- Dependencies from liteldev-repo.
-add_requires("levilamina 0.13.5")
+add_requires("levilamina develop")
+add_requires("levibuildscript 0.2.0")
 
 if not has_config("vs_runtime") then
     set_runtimes("MD")
@@ -38,7 +39,7 @@ target("iListenAttentively")
         "_HAS_CXX17",
         "_HAS_CXX20"
     )
-    add_files("src/**.cpp")
+    add_files("src/ila/**.cpp")
     add_headerfiles("src/(ila/**.h)")
     add_includedirs("src")
     add_packages(
@@ -47,10 +48,10 @@ target("iListenAttentively")
         "magic_enum",
         "nlohmann_json"
     )
-    add_shflags("/DELAYLOAD:bedrock_server.dll")
+    add_rules("@levibuildscript/linkrule")
     set_exceptions("none")
     set_kind("shared")
-    set_languages("c++23")
+    set_languages("c++20")
     set_symbols("debug")
 
     if is_mode("debug") then

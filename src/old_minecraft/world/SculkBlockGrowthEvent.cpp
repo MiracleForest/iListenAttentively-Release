@@ -1,4 +1,5 @@
 #include "ila/event/minecraft/world/SculkBlockGrowthEvent.h"
+#include <mc/world/level/block/SculkBlockBehavior.h>
 
 namespace ila::mc::inline world
 {
@@ -10,9 +11,7 @@ BlockPos const& SculkBlockGrowthAfterEvent::getPos() const { return mPos; }
 LL_STATIC_HOOK(
     SculkBlockGrowthEventHook,
     HookPriority::Normal,
-    "?_placeGrowthAt@SculkBlockBehavior@@CAXAEAVIBlockWorldGenAPI@@PEAVBlockSource@@AEBVBlockPos@@AEAVRandom@"
-    "@"
-    "AEAVSculkSpreader@@@Z",
+    &SculkBlockBehavior::_placeGrowthAt,
     void,
     class IBlockWorldGenAPI& pTarget,
     BlockSource*             pRegion,
