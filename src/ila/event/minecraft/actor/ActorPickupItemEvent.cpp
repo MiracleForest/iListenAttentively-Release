@@ -8,14 +8,14 @@ namespace ila::mc::inline actor
 void ActorPickupItemBeforeEvent::serialize(CompoundTag& nbt) const
 {
     Cancellable::serialize(nbt);
-    nbt["itemActor"] = reinterpret_cast<uintptr_t>(&getItemActor());
+    nbt["itemActor"] = serializeRefObj(getItemActor());
 }
 ItemActor& ActorPickupItemBeforeEvent::getItemActor() const { return mItemActor; };
 
 void ActorPickupItemAfterEvent::serialize(CompoundTag& nbt) const
 {
     MobEvent::serialize(nbt);
-    nbt["itemActor"] = reinterpret_cast<uintptr_t>(&getItemActor());
+    nbt["itemActor"] = serializeRefObj(getItemActor());
 }
 ItemActor const& ActorPickupItemAfterEvent::getItemActor() const { return mItemActor; };
 

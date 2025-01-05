@@ -2,11 +2,11 @@
 
 #include <ll/api/event/Emitter.h>
 #include <ll/api/event/EventBus.h>
+#include <ll/api/event/EventRefObjSerializer.h>
 #include <ll/api/event/ListenerBase.h>
 #include <ll/api/io/Logger.h>
 #include <ll/api/memory/Hook.h>
 #include <mc/nbt/CompoundTag.h>
-
 
 #ifndef SelfLogger
 #    define SelfLogger ll::mod::NativeMod::current()->getLogger()
@@ -68,4 +68,5 @@
 namespace ila
 {
 void nextTick(std::function<void()> func);
+using ll::event::serializeRefObj;
 }

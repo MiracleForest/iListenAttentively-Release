@@ -8,7 +8,7 @@ namespace ila::mc::inline actor
 void ArmorStandSwapItemBeforeEvent::serialize(CompoundTag& nbt) const
 {
     Cancellable::serialize(nbt);
-    nbt["player"] = reinterpret_cast<uintptr_t>(&getPlayer());
+    nbt["player"] = serializeRefObj(getPlayer());
     nbt["slot"]   = magic_enum::enum_name(getSlot());
 }
 void ArmorStandSwapItemBeforeEvent::deserialize(CompoundTag const& nbt)
@@ -23,7 +23,7 @@ SharedTypes::Legacy::EquipmentSlot& ArmorStandSwapItemBeforeEvent::getSlot() con
 void ArmorStandSwapItemAfterEvent::serialize(CompoundTag& nbt) const
 {
     ActorEvent::serialize(nbt);
-    nbt["player"] = reinterpret_cast<uintptr_t>(&getPlayer());
+    nbt["player"] = serializeRefObj(getPlayer());
     nbt["slot"]   = magic_enum::enum_name(getSlot());
 }
 Player const&                             ArmorStandSwapItemAfterEvent::getPlayer() const { return mPlayer; }

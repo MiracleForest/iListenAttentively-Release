@@ -8,10 +8,11 @@
 namespace ila::mc::inline server
 {
 
-void ClientLoginBeforeEvent::serialize(CompoundTag& nbt) const {
+void ClientLoginBeforeEvent::serialize(CompoundTag& nbt) const
+{
     Cancellable::serialize(nbt);
-    nbt["serverNetworkHandler"] = reinterpret_cast<uintptr_t>(&getServerNetworkHandler());
-    nbt["networkIdentifier"] = reinterpret_cast<uintptr_t>(&getNetworkIdentifier());
+    nbt["serverNetworkHandler"] = serializeRefObj(getServerNetworkHandler());
+    nbt["networkIdentifier"]    = serializeRefObj(getNetworkIdentifier());
 }
 ServerNetworkHandler const& ClientLoginBeforeEvent::getServerNetworkHandler() const
 {
@@ -19,15 +20,16 @@ ServerNetworkHandler const& ClientLoginBeforeEvent::getServerNetworkHandler() co
 }
 NetworkIdentifier const& ClientLoginBeforeEvent::getNetworkIdentifier() const { return mNetworkIdentifier; }
 
-void ClientLoginAfterEvent::serialize(CompoundTag& nbt) const {
+void ClientLoginAfterEvent::serialize(CompoundTag& nbt) const
+{
     Event::serialize(nbt);
-    nbt["serverNetworkHandler"] = reinterpret_cast<uintptr_t>(&getServerNetworkHandler());
-    nbt["networkIdentifier"] = reinterpret_cast<uintptr_t>(&getNetworkIdentifier());
-    nbt["uuid"] = getUuid().asString();
-    nbt["serverAuthXuid"] = getServerAuthXuid();
-    nbt["clientAuthXuid"] = getClientAuthXuid();
-    nbt["realName"] = getRealName();
-    nbt["ipAndPort"] = getIpAndPort();
+    nbt["serverNetworkHandler"] = serializeRefObj(getServerNetworkHandler());
+    nbt["networkIdentifier"]    = serializeRefObj(getNetworkIdentifier());
+    nbt["uuid"]                 = getUuid().asString();
+    nbt["serverAuthXuid"]       = getServerAuthXuid();
+    nbt["clientAuthXuid"]       = getClientAuthXuid();
+    nbt["realName"]             = getRealName();
+    nbt["ipAndPort"]            = getIpAndPort();
 }
 ServerNetworkHandler const& ClientLoginAfterEvent::getServerNetworkHandler() const
 {
@@ -72,7 +74,7 @@ LL_TYPE_INSTANCE_HOOK(
 {
     auto beforeEvent = ClientLoginBeforeEvent(*this, pSource);
     LLEventBus.publish(beforeEvent);
-    if (beforeEvent.isCancelled()) return;
+    if (beforeEvent.isCancelled()) { return; }
     origin(pSource, pPacket);
     auto* cert = pPacket.mConnectionRequest->getCertificate();
     LLEventBus.publish(ClientLoginAfterEvent(

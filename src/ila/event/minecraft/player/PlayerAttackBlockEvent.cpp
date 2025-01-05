@@ -13,9 +13,9 @@ void PlayerAttackBlockBeforeEvent::serialize(CompoundTag& nbt) const
 void PlayerAttackBlockBeforeEvent::deserialize(CompoundTag const& nbt)
 {
     Cancellable::deserialize(nbt);
-    getPos().x = nbt["pos"][0ull]->as<IntTag>();
-    getPos().x = nbt["pos"][1ull]->as<IntTag>();
-    getPos().x = nbt["pos"][2ull]->as<IntTag>();
+    getPos().x = nbt["pos"][0];
+    getPos().x = nbt["pos"][1];
+    getPos().x = nbt["pos"][2];
 }
 BlockPos& PlayerAttackBlockBeforeEvent::getPos() const { return mPos; }
 
@@ -36,7 +36,7 @@ LL_TYPE_INSTANCE_HOOK(
     BlockPos const& pPos
 )
 {
-    if (pPlayer == nullptr) return origin(pPlayer, pPos);
+    if (pPlayer == nullptr) { return origin(pPlayer, pPos); }
     auto beforeEvent = PlayerAttackBlockBeforeEvent(*pPlayer, const_cast<BlockPos&>(pPos));
     LLEventBus.publish(beforeEvent);
     if (beforeEvent.isCancelled()) { return false; }

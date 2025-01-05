@@ -53,9 +53,9 @@ DEATH_MESSAGE const&     DeathMessageAfterEvent::getResult() const { return mRes
         auto result = origin(pDeadName, pDeadActor);                                                         \
         if (pDeadActor == nullptr || result.first.empty()) { return result; }                                \
         auto beforeEvent = DeathMessageBeforeEvent(*pDeadActor, *this, result);                              \
-        LLEventBus.publish(beforeEvent);                                                                       \
-        if (beforeEvent.isCancelled()) return DEATH_MESSAGE();                                               \
-        LLEventBus.publish(DeathMessageAfterEvent(*pDeadActor, *this, result));                                \
+        LLEventBus.publish(beforeEvent);                                                                     \
+        if (beforeEvent.isCancelled()) { return DEATH_MESSAGE(); }                                           \
+        LLEventBus.publish(DeathMessageAfterEvent(*pDeadActor, *this, result));                              \
         return result;                                                                                       \
     }
 

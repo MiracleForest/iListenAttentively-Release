@@ -38,14 +38,14 @@ namespace ila::mc::inline player
 void PlayerDropItemBeforeEvent::serialize(CompoundTag& nbt) const
 {
     Cancellable::serialize(nbt);
-    nbt["item"] = reinterpret_cast<uintptr_t>(&getItem());
+    nbt["item"] = serializeRefObj(getItem());
 }
 ItemStack const& PlayerDropItemBeforeEvent::getItem() const { return mItem; }
 
 void PlayerDropItemAfterEvent::serialize(CompoundTag& nbt) const
 {
     PlayerEvent::serialize(nbt);
-    nbt["item"] = reinterpret_cast<uintptr_t>(&getItem());
+    nbt["item"] = serializeRefObj(getItem());
 }
 ItemStack const& PlayerDropItemAfterEvent::getItem() const { return mItem; }
 
@@ -61,7 +61,7 @@ LL_TYPE_INSTANCE_HOOK(
 {
     auto beforeEvent = PlayerDropItemBeforeEvent(*this, const_cast<ItemStack&>(pItem));
     LLEventBus.publish(beforeEvent);
-    if (beforeEvent.isCancelled()) return false;
+    if (beforeEvent.isCancelled()) { return false; }
     auto result = origin(pItem, pRandomly);
     if (result) { LLEventBus.publish(PlayerDropItemAfterEvent(*this, pItem)); }
     return result;

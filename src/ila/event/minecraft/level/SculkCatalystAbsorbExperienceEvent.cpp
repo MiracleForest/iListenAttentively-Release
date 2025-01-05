@@ -7,8 +7,8 @@ namespace ila::mc::inline level
 void SculkCatalystAbsorbExperienceBeforeEvent::serialize(CompoundTag& nbt) const
 {
     Cancellable::serialize(nbt);
-    nbt["blockActor"] = reinterpret_cast<uintptr_t>(&getBlockActor());
-    nbt["actor"]      = reinterpret_cast<uintptr_t>(&getActor());
+    nbt["blockActor"] = serializeRefObj(getBlockActor());
+    nbt["actor"]      = serializeRefObj(getActor());
 }
 SculkCatalystBlockActor& SculkCatalystAbsorbExperienceBeforeEvent::getBlockActor() const
 {
@@ -19,8 +19,8 @@ Actor& SculkCatalystAbsorbExperienceBeforeEvent::getActor() const { return mActo
 void SculkCatalystAbsorbExperienceAfterEvent::serialize(CompoundTag& nbt) const
 {
     LevelEvent::serialize(nbt);
-    nbt["blockActor"] = reinterpret_cast<uintptr_t>(&getBlockActor());
-    nbt["actor"]      = reinterpret_cast<uintptr_t>(&getActor());
+    nbt["blockActor"] = serializeRefObj(getBlockActor());
+    nbt["actor"]      = serializeRefObj(getActor());
 }
 SculkCatalystBlockActor const& SculkCatalystAbsorbExperienceAfterEvent::getBlockActor() const
 {

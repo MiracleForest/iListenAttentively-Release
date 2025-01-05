@@ -19,9 +19,9 @@ void PlayerOpenContainerBeforeEvent::serialize(CompoundTag& nbt) const
 void PlayerOpenContainerBeforeEvent::deserialize(CompoundTag const& nbt)
 {
     Cancellable::deserialize(nbt);
-    getContainerBlockPos().x = nbt["containerBlockPos"][0ull].get<IntTag>();
-    getContainerBlockPos().y = nbt["containerBlockPos"][1ull].get<IntTag>();
-    getContainerBlockPos().z = nbt["containerBlockPos"][2ull].get<IntTag>();
+    getContainerBlockPos().x = nbt["containerBlockPos"][0];
+    getContainerBlockPos().y = nbt["containerBlockPos"][1];
+    getContainerBlockPos().z = nbt["containerBlockPos"][2];
     getContainerId()         = static_cast<ContainerID>(nbt["containerId"].get<ByteTag>().data);
     getContainerType()       = magic_enum::enum_cast<ContainerType>(nbt["containerType"].get<StringTag>())
                              .value_or(getContainerType());

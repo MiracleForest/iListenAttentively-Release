@@ -22,7 +22,9 @@ public:
 
     bool disable();
 
-    // bool unload();
+#ifdef ILA_TESTS
+    bool unload() { return true; }
+#endif
 
 private:
     ll::mod::NativeMod& mSelf;

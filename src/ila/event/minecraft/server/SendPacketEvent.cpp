@@ -9,10 +9,10 @@ namespace ila::mc::inline server
 void SendPacketBeforeEvent::serialize(CompoundTag& nbt) const
 {
     Cancellable::serialize(nbt);
-    nbt["packetSender"] = reinterpret_cast<uintptr_t>(&getPacketSender());
-    nbt["packet"]       = reinterpret_cast<uintptr_t>(&getPacket());
+    nbt["packetSender"] = serializeRefObj(getPacketSender());
+    nbt["packet"]       = serializeRefObj(getPacket());
     nbt["broadcast"]    = getIsBroadcast();
-    nbt["player"]       = reinterpret_cast<uintptr_t>(getPlayer().as_ptr());
+    nbt["player"]       = serializeRefObj(*getPlayer());
 }
 LoopbackPacketSender&      SendPacketBeforeEvent::getPacketSender() const { return mPacketSender; }
 Packet&                    SendPacketBeforeEvent::getPacket() const { return mPacket; }
@@ -22,10 +22,10 @@ optional_ref<ServerPlayer> SendPacketBeforeEvent::getPlayer() const { return mPl
 void SendPacketAfterEvent::serialize(CompoundTag& nbt) const
 {
     Event::serialize(nbt);
-    nbt["packetSender"] = reinterpret_cast<uintptr_t>(&getPacketSender());
-    nbt["packet"]       = reinterpret_cast<uintptr_t>(&getPacket());
+    nbt["packetSender"] = serializeRefObj(getPacketSender());
+    nbt["packet"]       = serializeRefObj(getPacket());
     nbt["broadcast"]    = getIsBroadcast();
-    nbt["player"]       = reinterpret_cast<uintptr_t>(getPlayer().as_ptr());
+    nbt["player"]       = serializeRefObj(*getPlayer());
 }
 LoopbackPacketSender&      SendPacketAfterEvent::getPacketSender() const { return mPacketSender; }
 Packet const&              SendPacketAfterEvent::getPacket() const { return mPacket; }
@@ -49,7 +49,7 @@ LL_TYPE_INSTANCE_HOOK(
     });
     auto beforeEvent = SendPacketBeforeEvent(*this, const_cast<Packet&>(pPacket), false, player);
     LLEventBus.publish(beforeEvent);
-    if (beforeEvent.isCancelled()) return;
+    if (beforeEvent.isCancelled()) { return; }
     origin(pUser, pPacket);
     LLEventBus.publish(SendPacketAfterEvent(*this, pPacket, false, player));
 }
@@ -74,7 +74,7 @@ LL_TYPE_INSTANCE_HOOK(
     );
     auto beforeEvent = SendPacketBeforeEvent(*this, const_cast<Packet&>(pPacket), false, player);
     LLEventBus.publish(beforeEvent);
-    if (beforeEvent.isCancelled()) return;
+    if (beforeEvent.isCancelled()) { return; }
     origin(pUser, pPacket, pId);
     LLEventBus.publish(SendPacketAfterEvent(*this, pPacket, false, player));
 }
@@ -90,7 +90,7 @@ LL_TYPE_INSTANCE_HOOK(
 {
     auto beforeEvent = SendPacketBeforeEvent(*this, const_cast<Packet&>(pPacket), true, std::nullopt);
     LLEventBus.publish(beforeEvent);
-    if (beforeEvent.isCancelled()) return;
+    if (beforeEvent.isCancelled()) { return; }
     origin(pPacket);
     LLEventBus.publish(SendPacketAfterEvent(*this, pPacket, true, std::nullopt));
 }
@@ -108,7 +108,7 @@ LL_TYPE_INSTANCE_HOOK(
 {
     auto beforeEvent = SendPacketBeforeEvent(*this, const_cast<Packet&>(pPacket), true, std::nullopt);
     LLEventBus.publish(beforeEvent);
-    if (beforeEvent.isCancelled()) return;
+    if (beforeEvent.isCancelled()) { return; }
     origin(pUser, pId, pPacket);
     LLEventBus.publish(SendPacketAfterEvent(*this, pPacket, true, std::nullopt));
 }

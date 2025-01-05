@@ -7,14 +7,14 @@ namespace ila::mc::inline actor
 void ActorRideBeforeEvent::serialize(CompoundTag& nbt) const
 {
     Cancellable::serialize(nbt);
-    nbt["target"] = reinterpret_cast<uintptr_t>(&getTarget());
+    nbt["target"] = serializeRefObj(getTarget());
 }
 Actor& ActorRideBeforeEvent::getTarget() const { return mTarget; }
 
 void ActorRideAfterEvent::serialize(CompoundTag& nbt) const
 {
     ActorEvent::serialize(nbt);
-    nbt["target"] = reinterpret_cast<uintptr_t>(&getTarget());
+    nbt["target"] = serializeRefObj(getTarget());
 }
 Actor const& ActorRideAfterEvent::getTarget() const { return mTarget; }
 
