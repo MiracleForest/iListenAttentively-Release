@@ -53,8 +53,7 @@ LL_TYPE_INSTANCE_HOOK(
         || (*pPacket->mData)["id"] != "Sign")
         return origin(pSource, pPacket);
 
-    auto handle = static_cast<decltype(this)>(static_cast<NetEventCallback*>(this));
-    auto player = handle->_getServerPlayer(pSource, pPacket->mClientSubId);
+    auto* player = thisFor<NetEventCallback>()->_getServerPlayer(pSource, pPacket->mClientSubId);
     if (!player) return origin(pSource, pPacket);
 
     auto* blockActor =
