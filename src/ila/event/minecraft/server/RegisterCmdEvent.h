@@ -79,7 +79,6 @@ public:
     }
 
     ILAPI void serialize(CompoundTag& nbt) const override;
-    ILAPI void deserialize(CompoundTag const& nbt) override;
 
     ILNDAPI CommandRegistry& getRegistry() const;
     ILNDAPI std::string const& getCommandName() const;
