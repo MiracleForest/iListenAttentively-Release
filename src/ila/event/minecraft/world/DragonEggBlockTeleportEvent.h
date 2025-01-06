@@ -1,4 +1,8 @@
-#include "ila/Global.h"
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
+#include <ll/api/event/world/WorldEvent.h>
+#include <mc/world/level/BlockPos.h>
 #include <mc/util/Random.h>
 
 namespace ila::mc::inline world
@@ -24,9 +28,12 @@ public:
     {
     }
 
-    ILAPI BlockPos const& getPos() const;
-    ILAPI Random&         getRandom() const;
-    ILAPI BlockPos&       getTargetPos() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+    ILAPI void deserialize(CompoundTag const& nbt) override;
+
+    ILNDAPI BlockPos const& getPos() const;
+    ILNDAPI Random&         getRandom() const;
+    ILNDAPI BlockPos&       getTargetPos() const;
 };
 
 class DragonEggBlockTeleportAfterEvent final : public ll::event::WorldEvent
@@ -50,8 +57,10 @@ public:
     {
     }
 
-    ILAPI BlockPos const& getPos() const;
-    ILAPI Random const&   getRandom() const;
-    ILAPI BlockPos const& getTargetPos() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI BlockPos const& getPos() const;
+    ILNDAPI Random const&   getRandom() const;
+    ILNDAPI BlockPos const& getTargetPos() const;
 };
 } // namespace ila::mc::inline world

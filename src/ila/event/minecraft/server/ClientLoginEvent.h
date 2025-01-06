@@ -1,7 +1,9 @@
-#include "ila/Global.h"
-#include <mc/deps/core/mce/UUID.h>
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
 #include <mc/network/NetworkIdentifier.h>
 #include <mc/network/ServerNetworkHandler.h>
+#include <mc/platform/UUID.h>
 
 namespace ila::mc::inline server
 {
@@ -23,8 +25,10 @@ public:
     {
     }
 
-    ILAPI ServerNetworkHandler const& getServerNetworkHandler() const;
-    ILAPI NetworkIdentifier const&    getNetworkIdentifier() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI ServerNetworkHandler const& getServerNetworkHandler() const;
+    ILNDAPI NetworkIdentifier const&    getNetworkIdentifier() const;
 };
 
 class ClientLoginAfterEvent final : public ll::event::Event
@@ -58,16 +62,18 @@ public:
     {
     }
 
-    ILAPI ServerNetworkHandler const& getServerNetworkHandler() const;
-    ILAPI NetworkIdentifier const&    getNetworkIdentifier() const;
-    ILAPI mce::UUID const& getUuid() const;
-    ILAPI std::string const& getServerAuthXuid() const;
-    ILAPI std::string const& getClientAuthXuid() const;
-    ILAPI std::string const& getRealName() const;
-    ILAPI std::string const& getIpAndPort() const;
-    ILAPI std::string getIp() const;
-    ILAPI std::string getPort() const;
-    ILAPI void        disConnectClient(std::string reason = "") const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI ServerNetworkHandler const& getServerNetworkHandler() const;
+    ILNDAPI NetworkIdentifier const&    getNetworkIdentifier() const;
+    ILNDAPI mce::UUID const& getUuid() const;
+    ILNDAPI std::string const& getServerAuthXuid() const;
+    ILNDAPI std::string const& getClientAuthXuid() const;
+    ILNDAPI std::string const& getRealName() const;
+    ILNDAPI std::string const& getIpAndPort() const;
+    ILNDAPI std::string getIp() const;
+    ILNDAPI std::string getPort() const;
+    ILAPI void          disConnectClient(std::string reason = "") const;
 };
 
 } // namespace ila::mc::inline server

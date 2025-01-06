@@ -1,19 +1,23 @@
-#include "ila/Global.h"
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
+#include <ll/api/event/world/WorldEvent.h>
+#include <mc/world/phys/AABB.h>
 
 namespace ila::mc::inline world
 {
 class WitherDestroyBeforeEvent final : public ll::event::Cancellable<ll::event::WorldEvent>
 {
 protected:
-    Level&      mLevel;
-    AABB const& mBox;
-    int&        mRadius;
+    Level& mLevel;
+    AABB&  mBox;
+    int&   mRadius;
 
 public:
     constexpr explicit WitherDestroyBeforeEvent(
         BlockSource& blockSource,
         Level&       level,
-        AABB const&  box,
+        AABB&        box,
         int&         radius
     )
         : Cancellable(blockSource)
@@ -23,9 +27,12 @@ public:
     {
     }
 
-    ILAPI Level&      level() const;
-    ILAPI AABB const& getBox() const;
-    ILAPI int&        getRadius() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+    ILAPI void deserialize(CompoundTag const& nbt) override;
+
+    ILNDAPI Level& level() const;
+    ILNDAPI AABB&  getBox() const;
+    ILNDAPI int&   getRadius() const;
 };
 
 class WitherDestroyAfterEvent final : public ll::event::WorldEvent
@@ -49,8 +56,10 @@ public:
     {
     }
 
-    ILAPI Level&      level() const;
-    ILAPI AABB const& getBox() const;
-    ILAPI int const&  getRadius() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI Level&      level() const;
+    ILNDAPI AABB const& getBox() const;
+    ILNDAPI int const&  getRadius() const;
 };
 } // namespace ila::mc::inline world

@@ -1,7 +1,4 @@
-// clang-format off
-#include <span>
 #include <ll/api/mod/NativeMod.h>
-// clang-format on
 
 namespace ila
 {
@@ -12,8 +9,8 @@ class iListenAttentively
 public:
     static iListenAttentively& getInstance();
 
-    iListenAttentively(ll::mod::NativeMod& self)
-        : mSelf(self)
+    iListenAttentively()
+        : mSelf(*ll::mod::NativeMod::current())
     {
     }
 
@@ -25,7 +22,9 @@ public:
 
     bool disable();
 
-    // bool unload();
+#ifdef ILA_TESTS
+    bool unload() { return true; }
+#endif
 
 private:
     ll::mod::NativeMod& mSelf;

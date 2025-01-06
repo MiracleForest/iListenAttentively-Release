@@ -1,5 +1,8 @@
-#include "ila/Global.h"
-#include "ila/world/level/Explosion.h"
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
+#include <ll/api/event/world/WorldEvent.h>
+#include <mc/world/level/Explosion.h>
 
 namespace ila::mc::inline world
 {
@@ -15,7 +18,10 @@ public:
     {
     }
 
-    ILAPI Explosion& getExplosion() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+    ILAPI void deserialize(CompoundTag const& nbt) override;
+
+    ILNDAPI Explosion& getExplosion() const;
 };
 
 class ExplosionAfterEvent final : public ll::event::WorldEvent
@@ -23,21 +29,16 @@ class ExplosionAfterEvent final : public ll::event::WorldEvent
 
 protected:
     Explosion& mExplosion;
-    bool&                      mResult;
 
 public:
-    constexpr explicit ExplosionAfterEvent(
-        BlockSource&               blockSource,
-        Explosion& explosion,
-        bool&                      result
-    )
+    constexpr explicit ExplosionAfterEvent(BlockSource& blockSource, Explosion& explosion)
         : WorldEvent(blockSource)
         , mExplosion(explosion)
-        , mResult(result)
     {
     }
 
-    ILAPI Explosion const& getExplosion() const;
-    ILAPI bool&                            getResult();
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI Explosion const& getExplosion() const;
 };
 } // namespace ila::mc::inline world

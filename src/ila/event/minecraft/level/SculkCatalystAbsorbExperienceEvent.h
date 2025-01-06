@@ -1,4 +1,7 @@
-#include "ila/Global.h"
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
+#include <ll/api/event/world/LevelEvent.h>
 #include <mc/world/level/block/actor/SculkCatalystBlockActor.h>
 
 namespace ila::mc::inline level
@@ -21,8 +24,10 @@ public:
     {
     }
 
-    ILAPI SculkCatalystBlockActor& getBlockActor() const;
-    ILAPI Actor&                   getActor() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI SculkCatalystBlockActor& getBlockActor() const;
+    ILNDAPI Actor&                   getActor() const;
 };
 
 class SculkCatalystAbsorbExperienceAfterEvent final : public ll::event::LevelEvent
@@ -43,7 +48,9 @@ public:
     {
     }
 
-    ILAPI SculkCatalystBlockActor const& getBlockActor() const;
-    ILAPI Actor const&                   getActor() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI SculkCatalystBlockActor const& getBlockActor() const;
+    ILNDAPI Actor const&                   getActor() const;
 };
 } // namespace ila::mc::inline level

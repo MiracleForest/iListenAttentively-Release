@@ -1,4 +1,7 @@
-#include "ila/Global.h"
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
+#include <ll/api/event/entity/ActorEvent.h>
 
 namespace ila::mc::inline actor
 {
@@ -14,24 +17,25 @@ public:
     {
     }
 
-    ILAPI Actor& getTarget() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI Actor& getTarget() const;
 };
 
 class ActorRideAfterEvent final : public ll::event::entity::ActorEvent
 {
 protected:
     Actor const& mTarget;
-    bool&        mResult;
 
 public:
-    constexpr explicit ActorRideAfterEvent(Actor& actor, Actor const& target, bool& result)
+    constexpr explicit ActorRideAfterEvent(Actor& actor, Actor const& target)
         : ActorEvent(actor)
         , mTarget(target)
-        , mResult(result)
     {
     }
 
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
     ILAPI Actor const& getTarget() const;
-    ILAPI bool&        getResult() const;
 };
 } // namespace ila::mc::inline actor

@@ -1,4 +1,6 @@
-#include "ila/Global.h"
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/player/PlayerEvent.h>
 #include <mc/world/level/ChangeDimensionRequest.h>
 
 namespace ila::mc::inline player
@@ -21,8 +23,10 @@ public:
     {
     }
 
-    ILAPI ChangeDimensionRequest const& getChangeDimensionRequest() const;
-    ILAPI Dimension const&              getDimension() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI ChangeDimensionRequest const& getChangeDimensionRequest() const;
+    ILNDAPI Dimension const&              getDimension() const;
 };
 
 class PlayerChangeDimensionAfterEvent final : public ll::event::player::PlayerEvent
@@ -43,7 +47,9 @@ public:
     {
     }
 
-    ILAPI ChangeDimensionRequest const& getChangeDimensionRequest() const;
-    ILAPI Dimension const&              getDimension() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI ChangeDimensionRequest const& getChangeDimensionRequest() const;
+    ILNDAPI Dimension const&              getDimension() const;
 };
 } // namespace ila::mc::inline player

@@ -1,8 +1,12 @@
-#include "ila/Global.h"
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
+#include <ll/api/event/player/ServerPlayerEvent.h>
 
 namespace ila::mc::inline player
 {
-class PlayerChangGameTypeBeforeEvent final : public ll::event::Cancellable<ll::event::player::PlayerEvent>
+class PlayerChangGameTypeBeforeEvent final
+    : public ll::event::Cancellable<ll::event::player::ServerPlayerEvent>
 {
 protected:
     GameType const& mOldGameType;
@@ -10,7 +14,7 @@ protected:
 
 public:
     constexpr explicit PlayerChangGameTypeBeforeEvent(
-        Player&         player,
+        ServerPlayer&   player,
         GameType const& oldGameType,
         GameType&       newGameType
     )
@@ -20,11 +24,14 @@ public:
     {
     }
 
-    ILAPI GameType const& getOldGameType() const;
-    ILAPI GameType&       getNewGameType() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+    ILAPI void deserialize(CompoundTag const& nbt) override;
+
+    ILNDAPI GameType const& getOldGameType() const;
+    ILNDAPI GameType&       getNewGameType() const;
 };
 
-class PlayerChangGameTypeAfterEvent final : public ll::event::player::PlayerEvent
+class PlayerChangGameTypeAfterEvent final : public ll::event::player::ServerPlayerEvent
 {
 protected:
     GameType const& mOldGameType;
@@ -32,17 +39,19 @@ protected:
 
 public:
     constexpr explicit PlayerChangGameTypeAfterEvent(
-        Player&         player,
+        ServerPlayer&   player,
         GameType const& oldGameType,
         GameType const& newGameType
     )
-        : PlayerEvent(player)
+        : ServerPlayerEvent(player)
         , mOldGameType(oldGameType)
         , mNewGameType(newGameType)
     {
     }
 
-    ILAPI GameType const& getOldGameType() const;
-    ILAPI GameType const& getNewGameType() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI GameType const& getOldGameType() const;
+    ILNDAPI GameType const& getNewGameType() const;
 };
 } // namespace ila::mc::inline player

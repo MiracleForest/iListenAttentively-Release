@@ -1,20 +1,24 @@
-#include "ila/Global.h"
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
+#include <ll/api/event/world/WorldEvent.h>
+#include <mc/world/level/BlockPos.h>
 
 namespace ila::mc::inline world
 {
 class FarmDecayBeforeEvent final : public ll::event::Cancellable<ll::event::WorldEvent>
 {
 protected:
-    BlockPos const& mPos;
-    Actor*&         mActor;
-    float&          mFallDistance;
+    BlockPos& mPos;
+    Actor*&   mActor;
+    float&    mFallDistance;
 
 public:
     constexpr explicit FarmDecayBeforeEvent(
-        BlockSource&    blockSource,
-        BlockPos const& pos,
-        Actor*&         actor,
-        float&          fallDistance
+        BlockSource& blockSource,
+        BlockPos&    pos,
+        Actor*&      actor,
+        float&       fallDistance
     )
         : Cancellable(blockSource)
         , mPos(pos)
@@ -23,9 +27,12 @@ public:
     {
     }
 
-    ILAPI BlockPos const& getPos() const;
-    ILAPI Actor*&         getActor() const;
-    ILAPI float&          getFallDistance() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+    ILAPI void deserialize(CompoundTag const& nbt) override;
+
+    ILNDAPI BlockPos& getPos() const;
+    ILNDAPI Actor*&   getActor() const;
+    ILNDAPI float&    getFallDistance() const;
 };
 
 class FarmDecayAfterEvent final : public ll::event::WorldEvent
@@ -49,8 +56,10 @@ public:
     {
     }
 
-    ILAPI BlockPos const& getPos() const;
-    ILAPI Actor* const&   getActor() const;
-    ILAPI float const&    getFallDistance() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI BlockPos const& getPos() const;
+    ILNDAPI Actor* const&   getActor() const;
+    ILNDAPI float const&    getFallDistance() const;
 };
 } // namespace ila::mc::inline world

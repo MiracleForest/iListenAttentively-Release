@@ -1,4 +1,8 @@
-#include "ila/Global.h"
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
+#include <ll/api/event/world/WorldEvent.h>
+#include <mc/world/level/BlockPos.h>
 
 namespace ila::mc::inline world
 {
@@ -14,7 +18,10 @@ public:
     {
     }
 
-    ILAPI BlockPos& getPos() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+    ILAPI void deserialize(CompoundTag const& nbt) override;
+
+    ILNDAPI BlockPos& getPos() const;
 };
 
 class SpawnWanderingTraderAfterEvent final : public ll::event::WorldEvent
@@ -29,6 +36,8 @@ public:
     {
     }
 
-    ILAPI BlockPos const& getPos() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI BlockPos const& getPos() const;
 };
 } // namespace ila::mc::inline world

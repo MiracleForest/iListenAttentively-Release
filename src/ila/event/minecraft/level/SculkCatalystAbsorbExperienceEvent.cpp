@@ -1,14 +1,27 @@
 #include "ila/event/minecraft/level/SculkCatalystAbsorbExperienceEvent.h"
+#include "ila/base/Gloabl.h"
 
 namespace ila::mc::inline level
 {
 
+void SculkCatalystAbsorbExperienceBeforeEvent::serialize(CompoundTag& nbt) const
+{
+    Cancellable::serialize(nbt);
+    nbt["blockActor"] = serializeRefObj(getBlockActor());
+    nbt["actor"]      = serializeRefObj(getActor());
+}
 SculkCatalystBlockActor& SculkCatalystAbsorbExperienceBeforeEvent::getBlockActor() const
 {
     return mBlockActor;
 };
 Actor& SculkCatalystAbsorbExperienceBeforeEvent::getActor() const { return mActor; };
 
+void SculkCatalystAbsorbExperienceAfterEvent::serialize(CompoundTag& nbt) const
+{
+    LevelEvent::serialize(nbt);
+    nbt["blockActor"] = serializeRefObj(getBlockActor());
+    nbt["actor"]      = serializeRefObj(getActor());
+}
 SculkCatalystBlockActor const& SculkCatalystAbsorbExperienceAfterEvent::getBlockActor() const
 {
     return mBlockActor;
@@ -19,19 +32,19 @@ LL_TYPE_INSTANCE_HOOK(
     SculkCatalystAbsorbExperienceEventHook,
     HookPriority::Normal,
     SculkCatalystBlockActor,
-    "?_tryConsumeOnDeathExperience@SculkCatalystBlockActor@@AEAAXAEAVLevel@@AEAVActor@@@Z",
+    &SculkCatalystBlockActor::_tryConsumeOnDeathExperience,
     void,
     Level& pLevel,
     Actor& pActor
 )
 {
     auto beforeEvent = SculkCatalystAbsorbExperienceBeforeEvent(pLevel, *this, pActor);
-    eventBus.publish(beforeEvent);
-    if (beforeEvent.isCancelled()) return;
+    LLEventBus.publish(beforeEvent);
+    if (beforeEvent.isCancelled()) { return; }
     origin(pLevel, pActor);
-    eventBus.publish(SculkCatalystAbsorbExperienceAfterEvent(pLevel, *this, pActor));
+    LLEventBus.publish(SculkCatalystAbsorbExperienceAfterEvent(pLevel, *this, pActor));
 }
 
-Event_Factory(SculkCatalystAbsorbExperience, <SculkCatalystAbsorbExperienceEventHook>);
+Event_Hook_Factory(SculkCatalystAbsorbExperience, <SculkCatalystAbsorbExperienceEventHook>);
 
 } // namespace ila::mc::inline level

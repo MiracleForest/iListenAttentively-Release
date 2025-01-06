@@ -1,4 +1,10 @@
-#include "ila/Global.h"
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
+#include <ll/api/event/world/WorldEvent.h>
+#include <mc/deps/core/math/Vec3.h>
+#include <mc/world/actor/Actor.h>
+#include <mc/world/item/ItemStack.h>
 
 namespace ila::mc::inline world
 {
@@ -26,10 +32,13 @@ public:
     {
     }
 
-    ILAPI Vec3&      getPos() const;
-    ILAPI ItemStack& getItem() const;
-    ILAPI Actor*&    getSpawner() const;
-    ILAPI int&       getThrowTime() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+    ILAPI void deserialize(CompoundTag const& nbt) override;
+
+    ILNDAPI Vec3&      getPos() const;
+    ILNDAPI ItemStack& getItem() const;
+    ILNDAPI Actor*&    getSpawner() const;
+    ILNDAPI int&       getThrowTime() const;
 };
 
 class SpawnItemActorAfterEvent final : public ll::event::WorldEvent
@@ -59,10 +68,12 @@ public:
     {
     }
 
-    ILAPI Vec3 const&      getPos() const;
-    ILAPI ItemStack const& getItem() const;
-    ILAPI Actor* const&    getSpawner() const;
-    ILAPI int const&       getThrowTime() const;
-    ILAPI ItemActor*&      getItemActor() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI Vec3 const&      getPos() const;
+    ILNDAPI ItemStack const& getItem() const;
+    ILNDAPI Actor* const&    getSpawner() const;
+    ILNDAPI int const&       getThrowTime() const;
+    ILNDAPI ItemActor*&      getItemActor() const;
 };
 } // namespace ila::mc::inline world

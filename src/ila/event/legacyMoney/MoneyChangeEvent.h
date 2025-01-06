@@ -1,4 +1,6 @@
-#include "ila/Global.h"
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
 
 namespace ila::legacyMoney
 {
@@ -33,10 +35,12 @@ public:
     {
     }
 
-    ILAPI LLMoneyEventType const& getType() const;
-    ILAPI std::string const& getFromXuid() const;
-    ILAPI std::string const& getToXuid() const;
-    ILAPI llong const&       getValue() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI LLMoneyEventType const& getType() const;
+    ILNDAPI std::string const& getFromXuid() const;
+    ILNDAPI std::string const& getToXuid() const;
+    ILNDAPI llong const&       getValue() const;
 }; // class MoneyChangEvent
 
 class MoneyChangAfterEvent final : public ll::event::Event
@@ -61,9 +65,11 @@ public:
     {
     }
 
-    ILAPI LLMoneyEventType const& getType() const;
-    ILAPI std::string const& getFromXuid() const;
-    ILAPI std::string const& getToXuid() const;
-    ILAPI llong const&       getValue() const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI LLMoneyEventType const& getType() const;
+    ILNDAPI std::string const& getFromXuid() const;
+    ILNDAPI std::string const& getToXuid() const;
+    ILNDAPI llong const&       getValue() const;
 }; // class MoneyChangEvent
 } // namespace ila::legacyMoney
