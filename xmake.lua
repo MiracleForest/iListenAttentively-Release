@@ -8,7 +8,7 @@ add_requires("magic_enum v0.9.5")
 add_requires("nlohmann_json v3.11.3")
 
 -- Dependencies from liteldev-repo.
-add_requires("levilamina 1.0.0-rc.1")
+add_requires("levilamina 1.0.0-rc.2")
 add_requires("levibuildscript 0.2.0")
 add_requires("prelink 0.3.0")
 
@@ -38,7 +38,8 @@ target("iListenAttentively")
         "UNICODE",
         "ILA_EXPORT",
         "_HAS_CXX17",
-        "_HAS_CXX20"
+        "_HAS_CXX20",
+        "_HAS_CXX23"
     )
     add_files("src/ila/**.cpp")
     add_headerfiles("src/(ila/**.h)")
@@ -52,7 +53,7 @@ target("iListenAttentively")
     add_rules("@levibuildscript/linkrule")
     set_exceptions("none")
     set_kind("shared")
-    set_languages("c++20")
+    set_languages("cxx20")
     set_symbols("debug")
 
     if is_mode("debug") then
