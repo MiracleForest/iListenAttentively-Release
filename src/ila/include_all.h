@@ -22,7 +22,7 @@
 #include "ila/event/minecraft/player/PlayerEditSignEvent.h"
 #include "ila/event/minecraft/player/PlayerInteractEntityEvent.h"
 #include "ila/event/minecraft/player/PlayerOpenContainerEvent.h"
-#include "ila/event/minecraft/player/PlayerOperatedItemFrame.h"
+#include "ila/event/minecraft/player/PlayerOperatedItemFrameEvent.h"
 #include "ila/event/minecraft/player/PlayerRequestItemActionEvent.h"
 #include "ila/event/minecraft/server/ClientLoginEvent.h"
 #include "ila/event/minecraft/server/RegisterCmdEvent.h"
