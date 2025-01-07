@@ -8,31 +8,35 @@ namespace ila::mc::inline world
 void PistonPushBeforeEvent::serialize(CompoundTag& nbt) const
 {
     Cancellable::serialize(nbt);
-    nbt["pos"]              = ListTag { getPos().x, getPos().y, getPos().z };
+    nbt["pistonPos"]        = ListTag { getPistonPos().x, getPistonPos().y, getPistonPos().z };
+    nbt["pushPos"]          = ListTag { getPushPos().x, getPushPos().y, getPushPos().z };
     nbt["branchFacing"]     = getBranchFacing();
     nbt["pistonMoveFacing"] = getPistonMoveFacing();
 }
 void PistonPushBeforeEvent::deserialize(CompoundTag const& nbt)
 {
     Cancellable::deserialize(nbt);
-    getPos().x            = nbt["pos"];
-    getPos().y            = nbt["pos"];
-    getPos().z            = nbt["pos"];
+    getPushPos().x        = nbt["pushPos"];
+    getPushPos().y        = nbt["pushPos"];
+    getPushPos().z        = nbt["pushPos"];
     getBranchFacing()     = nbt["branchFacing"];
     getPistonMoveFacing() = nbt["pistonMoveFacing"];
 }
-BlockPos& PistonPushBeforeEvent::getPos() const { return mPos; }
-uchar&    PistonPushBeforeEvent::getBranchFacing() const { return mBranchFacing; }
-uchar&    PistonPushBeforeEvent::getPistonMoveFacing() const { return mPistonMoveFacing; }
+BlockPos const& PistonPushBeforeEvent::getPistonPos() const { return mPistonPos; }
+BlockPos&       PistonPushBeforeEvent::getPushPos() const { return mPushPos; }
+uchar&          PistonPushBeforeEvent::getBranchFacing() const { return mBranchFacing; }
+uchar&          PistonPushBeforeEvent::getPistonMoveFacing() const { return mPistonMoveFacing; }
 
 void PistonPushAfterEvent::serialize(CompoundTag& nbt) const
 {
     WorldEvent::serialize(nbt);
-    nbt["pos"]              = ListTag { getPos().x, getPos().y, getPos().z };
+    nbt["pistonPos"]        = ListTag { getPistonPos().x, getPistonPos().y, getPistonPos().z };
+    nbt["pushPos"]          = ListTag { getPushPos().x, getPushPos().y, getPushPos().z };
     nbt["branchFacing"]     = getBranchFacing();
     nbt["pistonMoveFacing"] = getPistonMoveFacing();
 }
-BlockPos const& PistonPushAfterEvent::getPos() const { return mPos; }
+BlockPos const& PistonPushAfterEvent::getPistonPos() const { return mPistonPos; }
+BlockPos const& PistonPushAfterEvent::getPushPos() const { return mPushPos; }
 uchar const&    PistonPushAfterEvent::getBranchFacing() const { return mBranchFacing; }
 uchar const&    PistonPushAfterEvent::getPistonMoveFacing() const { return mPistonMoveFacing; }
 
@@ -48,12 +52,22 @@ LL_TYPE_INSTANCE_HOOK(
     uchar           pPistonMoveFacing
 )
 {
-    auto beforeEvent =
-        PistonPushBeforeEvent(pRegion, const_cast<BlockPos&>(pPos), pBranchFacing, pPistonMoveFacing);
+    auto beforeEvent = PistonPushBeforeEvent(
+        pRegion,
+        getPosition(),
+        const_cast<BlockPos&>(pPos),
+        pBranchFacing,
+        pPistonMoveFacing
+    );
     LLEventBus.publish(beforeEvent);
     if (beforeEvent.isCancelled()) { return false; }
     auto result = origin(pRegion, pPos, pBranchFacing, pPistonMoveFacing);
-    if (result) { LLEventBus.publish(PistonPushAfterEvent(pRegion, pPos, pBranchFacing, pPistonMoveFacing)); }
+    if (result)
+    {
+        LLEventBus.publish(
+            PistonPushAfterEvent(pRegion, getPosition(), pPos, pBranchFacing, pPistonMoveFacing)
+        );
+    }
     return result;
 }
 

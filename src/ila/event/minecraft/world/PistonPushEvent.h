@@ -9,19 +9,22 @@ namespace ila::mc::inline world
 class PistonPushBeforeEvent final : public ll::event::Cancellable<ll::event::WorldEvent>
 {
 protected:
-    BlockPos& mPos;
-    uchar&    mBranchFacing;
-    uchar&    mPistonMoveFacing;
+    BlockPos const& mPistonPos;
+    BlockPos&       mPushPos;
+    uchar&          mBranchFacing;
+    uchar&          mPistonMoveFacing;
 
 public:
     constexpr explicit PistonPushBeforeEvent(
-        BlockSource& blockSource,
-        BlockPos&    pos,
-        uchar&       branchFacing,
-        uchar&       pistonMoveFacing
+        BlockSource&    blockSource,
+        BlockPos const& pistonPos,
+        BlockPos&       pushPos,
+        uchar&          branchFacing,
+        uchar&          pistonMoveFacing
     )
         : Cancellable(blockSource)
-        , mPos(pos)
+        , mPistonPos(pistonPos)
+        , mPushPos(pushPos)
         , mBranchFacing(branchFacing)
         , mPistonMoveFacing(pistonMoveFacing)
     {
@@ -30,27 +33,31 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI BlockPos& getPos() const;
-    ILNDAPI uchar&    getBranchFacing() const;
-    ILNDAPI uchar&    getPistonMoveFacing() const;
+    ILNDAPI BlockPos const& getPistonPos() const;
+    ILNDAPI BlockPos&       getPushPos() const;
+    ILNDAPI uchar&          getBranchFacing() const;
+    ILNDAPI uchar&          getPistonMoveFacing() const;
 };
 
 class PistonPushAfterEvent final : public ll::event::WorldEvent
 {
 protected:
-    BlockPos const& mPos;
+    BlockPos const& mPistonPos;
+    BlockPos const& mPushPos;
     uchar const&    mBranchFacing;
     uchar const&    mPistonMoveFacing;
 
 public:
     constexpr explicit PistonPushAfterEvent(
         BlockSource&    blockSource,
-        BlockPos const& pos,
+        BlockPos const& pistonPos,
+        BlockPos const& pushPos,
         uchar&          branchFacing,
         uchar&          pistonMoveFacing
     )
         : WorldEvent(blockSource)
-        , mPos(pos)
+        , mPistonPos(pistonPos)
+        , mPushPos(pushPos)
         , mBranchFacing(branchFacing)
         , mPistonMoveFacing(pistonMoveFacing)
     {
@@ -58,7 +65,8 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI BlockPos const& getPos() const;
+    ILNDAPI BlockPos const& getPistonPos() const;
+    ILNDAPI BlockPos const& getPushPos() const;
     ILNDAPI uchar const&    getBranchFacing() const;
     ILNDAPI uchar const&    getPistonMoveFacing() const;
 };
