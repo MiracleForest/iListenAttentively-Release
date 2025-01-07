@@ -10,6 +10,7 @@
 #include "ila/event/minecraft/actor/ArmorStandSwapItemEvent.h"
 #include "ila/event/minecraft/actor/DeathMessageEvent.h"
 #include "ila/event/minecraft/actor/DragonRespawnEvent.h"
+#include "ila/event/minecraft/actor/MobHurtEffectEvent.h"
 #include "ila/event/minecraft/actor/ProjectileCreateEvent.h"
 #include "ila/event/minecraft/level/LevelTickEvent.h"
 #include "ila/event/minecraft/level/SculkCatalystAbsorbExperienceEvent.h"
