@@ -4,13 +4,12 @@ add_repositories("liteldev-repo https://github.com/LiteLDev/xmake-repo.git")
 
 -- Dependencies from xmake-repo.
 add_requires("fmt 10.2.1")
-add_requires("magic_enum v0.9.5")
+add_requires("magic_enum v0.9.7")
 add_requires("nlohmann_json v3.11.3")
 
 -- Dependencies from liteldev-repo.
 add_requires("levilamina 1.0.0-rc.2")
 add_requires("levibuildscript 0.2.0")
-add_requires("prelink 0.3.0")
 
 if not has_config("vs_runtime") then
     set_runtimes("MD")
