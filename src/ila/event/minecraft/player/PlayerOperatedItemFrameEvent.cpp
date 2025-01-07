@@ -1,4 +1,4 @@
-#include "ila/event/minecraft/player/PlayerOperatedItemFrame.h"
+#include "ila/event/minecraft/player/PlayerOperatedItemFrameEvent.h"
 #include "ila/base/Gloabl.h"
 #include <mc/world/item/ItemInstance.h>
 #include <mc/world/level/BlockSource.h>
