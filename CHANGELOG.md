@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.2] - 2025-1-13
+
+### Clanged
+
+- Adapt to LeviLamina 1.0.0-rc.3 and BDS version 1.21.50.10 @zimuya4153
+
 ## [0.2.1] - 2025-1-7
 
 ### Added
