@@ -1,6 +1,6 @@
 # iListenAttentively
 
-![iListenAttentively](https://socialify.git.ci/MiracleForest/iListenAttentively/image?description=1&descriptionEditable=A%20rich%20and%20modern%20LeviLamina%20Minecraft%20event%20library&font=Raleway&forks=1&issues=1&language=1&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Auto)
+![iListenAttentively](https://socialify.git.ci/MiracleForest/iListenAttentively-Release/image?description=1&descriptionEditable=A%20rich%20and%20modern%20LeviLamina%20Minecraft%20event%20library&font=Raleway&forks=1&issues=1&language=1&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Auto)
 
 [![English](https://img.shields.io/badge/English-informational?style=for-the-badge)](README.md)
 ![中文](https://img.shields.io/badge/简体中文-inactive?style=for-the-badge)
@@ -19,7 +19,7 @@
 
 ## 星标历史图
 
-[![星标历史图](https://api.star-history.com/svg?repos=MiracleForest/iListenAttentively&type=Date)](https://star-history.com/#MiracleForest/iListenAttentively&Date)
+[![星标历史图](https://api.star-history.com/svg?repos=MiracleForest/iListenAttentively-Release&type=Date)](https://star-history.com/#MiracleForest/iListenAttentively-Release&Date)
 
 ## ⭐贡献⭐
 
@@ -27,9 +27,9 @@
 >
 > 您可以通过以下方式为**ilistenintently** 项目 ***贡献***
 >
-> - ⭐ 通过[**pull request**](https://github.com/MiracleForest/iListenAttentively/pulls)贡献代码添加新功能
+> - ⭐ 通过[**pull request**](https://github.com/MiracleForest/iListenAttentively-Release/pulls)贡献代码添加新功能
 > - ⭐ 帮助我们修改或优化**文档**
-> - ⭐ 对[**GitHub Issues**](https://github.com/MiracleForest/iListenAttentively/issues)的问题、建议等的反馈
+> - ⭐ 对[**GitHub Issues**](https://github.com/MiracleForest/iListenAttentively-Release/issues)的问题、建议等的反馈
 > - ⭐ 帮助我们推广 ***iListenAttentively*** 并支持我们的发展！
 >
 > 非常期待并欢迎您的贡献！
@@ -40,7 +40,7 @@
 
 这个项目的存在要感谢所有做出贡献的人
 
-![Contributors](https://contrib.rocks/image?repo=MiracleForest/iListenAttentively)
+![Contributors](https://contrib.rocks/image?repo=MiracleForest/iListenAttentively-Release)
 
 ## 许可证
 
