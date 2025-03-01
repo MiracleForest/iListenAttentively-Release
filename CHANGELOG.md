@@ -7,14 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [0.3.1]
+
 ### Added
 
+- Added BlockActor, ChestPairWith and BlockActorTick event @zimuya4153
 
 ### Changed
 
+- Refactored MoneyChange event @zimuya4153
 
 ### Fixed
 
+- Fixed typo in local port for ServerPong event @zimuya4153
+- Fixed PlayerDropItem event crash [#10] @zimuya4153
 
 
 ## [0.3.0] - 2025-02-24
@@ -24,7 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Adapted to LeviLamina 1.1.0-rc.1 @zimuya4153
 - Added FireTryBurnBlock event [#7] @zimuya4153
 
-### Clanged
+### Changed
 
 - Removed PlayerChangePermissions event @zimuya4153
 - Refactored of RedstoneUpdate events @zimuya4153
@@ -40,7 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added LeviAntiCheat, PLand mod event @zimuya4153
 
-### Clanged
+### Changed
 
 - Reorganized the location of documents for individual events @Lovelylavender4
 - Removed LeviLamina version info for ServerPong event @zimuya4153
@@ -87,8 +94,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [#7]: https://github.com/MiracleForest/iListenAttentively-Release/issues/7
 [#9]: https://github.com/MiracleForest/iListenAttentively-Release/issues/9
+[#10]: https://github.com/MiracleForest/iListenAttentively-Release/issues/10
 
-[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.2.3...v0.3.0
 [0.2.3]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.2.2...v0.2.3
 [0.2.2]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.2.1...v0.2.2
