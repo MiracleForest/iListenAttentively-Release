@@ -1,0 +1,46 @@
+#pragma once
+#include "ila/base/Macro.h"
+#include <ll/api/event/Cancellable.h>
+#include <ll/api/event/entity/MobEvent.h>
+#include <mc/world/actor/monster/EnderMan.h>
+#include <mc/world/level/BlockPos.h>
+
+namespace ila::mc::inline world::inline actor
+{
+class EndermanLeaveBlockBeforeEvent final : public ll::event::Cancellable<ll::event::entity::MobEvent>
+{
+protected:
+    BlockPos& mPos;
+
+public:
+    constexpr explicit EndermanLeaveBlockBeforeEvent(Mob& mob, BlockPos& pos)
+        : Cancellable(mob)
+        , mPos(pos)
+    {
+    }
+
+    ILAPI void serialize(CompoundTag& nbt) const override;
+    ILAPI void deserialize(CompoundTag const& nbt) override;
+
+    ILNDAPI EnderMan& self() const;
+    ILNDAPI BlockPos& pos() const;
+};
+
+class EndermanLeaveBlockAfterEvent final : public ll::event::entity::MobEvent
+{
+protected:
+    BlockPos& mPos;
+
+public:
+    constexpr explicit EndermanLeaveBlockAfterEvent(Mob& mob, BlockPos& pos)
+        : MobEvent(mob)
+        , mPos(pos)
+    {
+    }
+
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI EnderMan&       self() const;
+    ILNDAPI BlockPos const& pos() const;
+};
+} // namespace ila::mc::inline world::inline actor

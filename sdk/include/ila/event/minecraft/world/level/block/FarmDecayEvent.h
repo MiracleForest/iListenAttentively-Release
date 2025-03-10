@@ -4,7 +4,7 @@
 #include <ll/api/event/world/WorldEvent.h>
 #include <mc/world/level/BlockPos.h>
 
-namespace ila::mc::inline world
+namespace ila::mc::inline world::inline level::inline block
 {
 class FarmDecayBeforeEvent final : public ll::event::Cancellable<ll::event::WorldEvent>
 {
@@ -30,9 +30,9 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI BlockPos& getPos() const;
-    ILNDAPI Actor*&   getActor() const;
-    ILNDAPI float&    getFallDistance() const;
+    ILNDAPI BlockPos& pos() const;
+    ILNDAPI Actor*&   actor() const;
+    ILNDAPI float&    fallDistance() const;
 };
 
 class FarmDecayAfterEvent final : public ll::event::WorldEvent
@@ -58,8 +58,8 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI BlockPos const& getPos() const;
-    ILNDAPI Actor* const&   getActor() const;
-    ILNDAPI float const&    getFallDistance() const;
+    ILNDAPI BlockPos const& pos() const;
+    ILNDAPI Actor* const&   actor() const;
+    ILNDAPI float const&    fallDistance() const;
 };
-} // namespace ila::mc::inline world
+} // namespace ila::mc::inline world::inline level::inline block

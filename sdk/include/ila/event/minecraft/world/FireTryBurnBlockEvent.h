@@ -20,7 +20,7 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI BlockPos const& getPos() const;
+    ILNDAPI BlockPos const& pos() const;
 };
 
 class FireTryBurnBlockAfterEvent final : public ll::event::WorldEvent
@@ -37,6 +37,6 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI BlockPos const& getPos() const;
+    ILNDAPI BlockPos const& pos() const;
 };
 } // namespace ila::mc::inline world

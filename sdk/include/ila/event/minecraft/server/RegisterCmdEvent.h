@@ -41,12 +41,12 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI CommandRegistry& getRegistry() const;
-    ILNDAPI std::string const& getCommandName() const;
-    ILNDAPI std::string&            getDescription() const;
-    ILNDAPI CommandPermissionLevel& getRequirement() const;
-    ILNDAPI CommandFlag&            getFlag1() const;
-    ILNDAPI CommandFlag&            getFlag2() const;
+    ILNDAPI CommandRegistry& registry() const;
+    ILNDAPI std::string const& commandName() const;
+    ILNDAPI std::string&            description() const;
+    ILNDAPI CommandPermissionLevel& requirement() const;
+    ILNDAPI CommandFlag&            flag1() const;
+    ILNDAPI CommandFlag&            flag2() const;
 };
 
 class RegisterCmdAfterEvent final : public ll::event::Event
@@ -80,12 +80,12 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI CommandRegistry& getRegistry() const;
-    ILNDAPI std::string const& getCommandName() const;
-    ILNDAPI std::string const&            getDescription() const;
-    ILNDAPI CommandPermissionLevel const& getRequirement() const;
-    ILNDAPI CommandFlag const&            getFlag1() const;
-    ILNDAPI CommandFlag const&            getFlag2() const;
+    ILNDAPI CommandRegistry& registry() const;
+    ILNDAPI std::string const& commandName() const;
+    ILNDAPI std::string const&            description() const;
+    ILNDAPI CommandPermissionLevel const& requirement() const;
+    ILNDAPI CommandFlag const&            flag1() const;
+    ILNDAPI CommandFlag const&            flag2() const;
 };
 
 } // namespace ila::mc::inline server

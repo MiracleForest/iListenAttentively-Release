@@ -28,9 +28,9 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI std::string const& getTargetPlayer() const;
-    ILNDAPI uint64_t           getLandId() const;
-    ILNDAPI bool               getIsAdd() const;
+    ILNDAPI std::string const& targetPlayer() const;
+    ILNDAPI uint64_t           landId() const;
+    ILNDAPI bool               isAdd() const;
 };
 class LandMemberChangeAfterEvent final : public ll::event::PlayerEvent
 {
@@ -55,9 +55,9 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI std::string const& getTargetPlayer() const;
-    ILNDAPI uint64_t           getLandId() const;
-    ILNDAPI bool               getIsAdd() const;
+    ILNDAPI std::string const& targetPlayer() const;
+    ILNDAPI uint64_t           landId() const;
+    ILNDAPI bool               isAdd() const;
 };
 
 } // namespace land

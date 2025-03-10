@@ -38,10 +38,10 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI LLMoneyEventType const& getType() const;
-    ILNDAPI std::string& getFromXuid() const;
-    ILNDAPI std::string& getToXuid() const;
-    ILNDAPI llong&       getValue() const;
+    ILNDAPI LLMoneyEventType const& type() const;
+    ILNDAPI std::string& fromXuid() const;
+    ILNDAPI std::string& toXuid() const;
+    ILNDAPI llong&       value() const;
 }; // class MoneyChangEvent
 
 class MoneyChangeAfterEvent final : public ll::event::Event
@@ -68,9 +68,9 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI LLMoneyEventType const& getType() const;
-    ILNDAPI std::string const& getFromXuid() const;
-    ILNDAPI std::string const& getToXuid() const;
-    ILNDAPI llong const&       getValue() const;
+    ILNDAPI LLMoneyEventType const& type() const;
+    ILNDAPI std::string const& fromXuid() const;
+    ILNDAPI std::string const& toXuid() const;
+    ILNDAPI llong const&       value() const;
 }; // class MoneyChangEvent
 } // namespace ila::legacyMoney

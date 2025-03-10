@@ -27,8 +27,8 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI struct LandSelectorData* getLandSelectorData() const;
-    ILNDAPI int&                     getPrice() const;
+    ILNDAPI struct LandSelectorData* landSelectorData() const;
+    ILNDAPI int&                     price() const;
 };
 
 class PlayerBuyLandAfterEvent final : public ll::event::PlayerEvent
@@ -45,7 +45,7 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI std::shared_ptr<class LandData> getLandData() const;
+    ILNDAPI std::shared_ptr<class LandData> landData() const;
 };
 
 } // namespace land

@@ -4,7 +4,7 @@
 #include <ll/api/event/player/PlayerEvent.h>
 #include <mc/deps/shared_types/legacy/item/EquipmentSlot.h>
 
-namespace ila::mc::inline actor
+namespace ila::mc::inline world::inline actor
 {
 class ArmorStandSwapItemBeforeEvent final : public ll::event::Cancellable<ll::event::entity::ActorEvent>
 {
@@ -27,8 +27,8 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI Player& getPlayer() const;
-    ILNDAPI SharedTypes::Legacy::EquipmentSlot& getSlot() const;
+    ILNDAPI Player& player() const;
+    ILNDAPI SharedTypes::Legacy::EquipmentSlot& slot() const;
 };
 
 class ArmorStandSwapItemAfterEvent final : public ll::event::entity::ActorEvent
@@ -51,7 +51,7 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI Player const& getPlayer() const;
-    ILNDAPI SharedTypes::Legacy::EquipmentSlot const& getSlot() const;
+    ILNDAPI Player const& player() const;
+    ILNDAPI SharedTypes::Legacy::EquipmentSlot const& slot() const;
 };
-} // namespace ila::mc::inline actor
+} // namespace ila::mc::inline world::inline actor

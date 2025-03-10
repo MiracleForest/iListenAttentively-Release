@@ -4,7 +4,7 @@
 #include <ll/api/event/entity/ActorEvent.h>
 #include <mc/deps/core/math/Vec3.h>
 
-namespace ila::mc::inline actor
+namespace ila::mc::inline world::inline actor
 {
 class ActorChangeDimensionBeforeEvent final : public ll::event::Cancellable<ll::event::entity::ActorEvent>
 {
@@ -27,8 +27,8 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI DimensionType const& getFromDimensionId() const;
-    ILNDAPI DimensionType&       getToDimensionId() const;
+    ILNDAPI DimensionType const& fromDimensionId() const;
+    ILNDAPI DimensionType&       toDimensionId() const;
 };
 
 class ActorChangeDimensionAfterEvent final : public ll::event::entity::ActorEvent
@@ -54,8 +54,8 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI DimensionType const& getFromDimensionId() const;
+    ILNDAPI DimensionType const& fromDimensionId() const;
     ILNDAPI Vec3 const&          getFromPos() const;
-    ILNDAPI DimensionType const& getToDimensionId() const;
+    ILNDAPI DimensionType const& toDimensionId() const;
 };
-} // namespace ila::mc::inline actor
+} // namespace ila::mc::inline world::inline actor

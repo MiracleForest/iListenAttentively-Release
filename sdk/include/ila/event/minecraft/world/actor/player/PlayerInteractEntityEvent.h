@@ -4,7 +4,7 @@
 #include <ll/api/event/player/PlayerEvent.h>
 #include <mc/deps/core/math/Vec3.h>
 
-namespace ila::mc::inline player
+namespace ila::mc::inline world::inline actor::inline player
 {
 class PlayerInteractEntityBeforeEvent final : public ll::event::Cancellable<ll::event::player::PlayerEvent>
 {
@@ -23,8 +23,8 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILAPI Actor& getTarget() const;
-    ILAPI Vec3&  getPos() const;
+    ILAPI Actor& target() const;
+    ILAPI Vec3&  pos() const;
 };
 
 class PlayerInteractEntityAfterEvent final : public ll::event::player::PlayerEvent
@@ -43,7 +43,7 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILAPI Actor const& getTarget() const;
-    ILAPI Vec3 const&  getPos() const;
+    ILAPI Actor const& target() const;
+    ILAPI Vec3 const&  pos() const;
 };
-} // namespace ila::mc::inline player
+} // namespace ila::mc::inline world::inline actor::inline player

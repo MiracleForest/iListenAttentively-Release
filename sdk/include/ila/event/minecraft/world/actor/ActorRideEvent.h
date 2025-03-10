@@ -3,7 +3,7 @@
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/entity/ActorEvent.h>
 
-namespace ila::mc::inline actor
+namespace ila::mc::inline world::inline actor
 {
 class ActorRideBeforeEvent final : public ll::event::Cancellable<ll::event::entity::ActorEvent>
 {
@@ -19,7 +19,7 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI Actor& getTarget() const;
+    ILNDAPI Actor& target() const;
 };
 
 class ActorRideAfterEvent final : public ll::event::entity::ActorEvent
@@ -36,6 +36,6 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILAPI Actor const& getTarget() const;
+    ILAPI Actor const& target() const;
 };
-} // namespace ila::mc::inline actor
+} // namespace ila::mc::inline world::inline actor

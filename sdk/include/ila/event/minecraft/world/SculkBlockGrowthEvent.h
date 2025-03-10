@@ -21,7 +21,7 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI BlockPos& getPos() const;
+    ILNDAPI BlockPos& pos() const;
 };
 
 class SculkBlockGrowthAfterEvent final : public ll::event::WorldEvent
@@ -38,6 +38,6 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI BlockPos const& getPos() const;
+    ILNDAPI BlockPos const& pos() const;
 };
 } // namespace ila::mc::inline world

@@ -15,29 +15,24 @@
 #    define LLEventBus ll::event::EventBus::getInstance()
 #endif
 
+#ifndef Event_Hook_Factory_Base
+#    define Event_Hook_Factory_Base(eventName, ...)                                                          \
+        static std::unique_ptr<ll::event::EmitterBase> eventName##EmitterFactory();                          \
+        class eventName##EventEmitter                                                                        \
+            : public ll::event::Emitter<eventName##EmitterFactory, eventName##Event>                         \
+        {                                                                                                    \
+            ll::memory::HookRegistrar __VA_ARGS__ hook;                                                      \
+        };                                                                                                   \
+        static std::unique_ptr<ll::event::EmitterBase> eventName##EmitterFactory()                           \
+        {                                                                                                    \
+            return std::make_unique<eventName##EventEmitter>();                                              \
+        }
+#endif
+
 #ifndef Event_Hook_Factory
 #    define Event_Hook_Factory(eventName, ...)                                                               \
-        static std::unique_ptr<ll::event::EmitterBase> eventBeforeEmitterFactory();                          \
-        class eventName##BeforeEventEmitter                                                                  \
-            : public ll::event::Emitter<eventBeforeEmitterFactory, eventName##BeforeEvent>                   \
-        {                                                                                                    \
-            ll::memory::HookRegistrar __VA_ARGS__ hook;                                                      \
-        };                                                                                                   \
-        static std::unique_ptr<ll::event::EmitterBase> eventBeforeEmitterFactory()                           \
-        {                                                                                                    \
-            return std::make_unique<eventName##BeforeEventEmitter>();                                        \
-        }                                                                                                    \
-                                                                                                             \
-        static std::unique_ptr<ll::event::EmitterBase> eventAfterEmitterFactory();                           \
-        class eventName##AfterEventEmitter                                                                   \
-            : public ll::event::Emitter<eventAfterEmitterFactory, eventName##AfterEvent>                     \
-        {                                                                                                    \
-            ll::memory::HookRegistrar __VA_ARGS__ hook;                                                      \
-        };                                                                                                   \
-        static std::unique_ptr<ll::event::EmitterBase> eventAfterEmitterFactory()                            \
-        {                                                                                                    \
-            return std::make_unique<eventName##AfterEventEmitter>();                                         \
-        };
+        Event_Hook_Factory_Base(eventName##Before, __VA_ARGS__);                                             \
+        Event_Hook_Factory_Base(eventName##After, __VA_ARGS__);
 #endif
 
 #ifndef Event_Listener_Factory
@@ -64,9 +59,14 @@
         eventName##EventEmitter::eventName##EventEmitter()
 #endif
 
+class BlockSource;
+class Dimension;
+
 namespace ila
 {
-void nextTick(std::function<void()> const& func);
+void        nextTick(std::function<void()> const& func);
+std::string getDimensionName(::BlockSource& region);
+std::string getDimensionName(::Dimension& region);
 using ll::event::serializePtrObj;
 using ll::event::serializeRefObj;
 } // namespace ila

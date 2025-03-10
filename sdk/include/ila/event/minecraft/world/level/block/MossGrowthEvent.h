@@ -5,7 +5,7 @@
 #include <mc/util/Random.h>
 #include <mc/world/level/BlockPos.h>
 
-namespace ila::mc::inline world
+namespace ila::mc::inline world::inline level::inline block
 {
 class MossGrowthBeforeEvent final : public ll::event::Cancellable<ll::event::WorldEvent>
 {
@@ -34,10 +34,10 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI BlockPos& getPos() const;
-    ILNDAPI Random&   getRandom() const;
-    ILNDAPI int&      getXRadius() const;
-    ILNDAPI int&      getZRadius() const;
+    ILNDAPI BlockPos& pos() const;
+    ILNDAPI Random&   random() const;
+    ILNDAPI int&      xRadius() const;
+    ILNDAPI int&      zRadius() const;
 };
 
 class MossGrowthAfterEvent final : public ll::event::WorldEvent
@@ -70,10 +70,10 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI BlockPos const& getPos() const;
-    ILNDAPI Random const&   getRandom() const;
-    ILNDAPI int const&      getXRadius() const;
-    ILNDAPI int const&      getZRadius() const;
+    ILNDAPI BlockPos const& pos() const;
+    ILNDAPI Random const&   random() const;
+    ILNDAPI int const&      xRadius() const;
+    ILNDAPI int const&      zRadius() const;
     ILNDAPI std::vector<BlockPos>& getTargetPoss() const;
 };
-} // namespace ila::mc::inline world
+} // namespace ila::mc::inline world::inline level::inline block

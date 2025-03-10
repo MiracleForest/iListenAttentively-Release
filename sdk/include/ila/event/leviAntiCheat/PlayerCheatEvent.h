@@ -72,10 +72,10 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const;
 
-    ILNDAPI CheckType const&  getCheatType() const;
-    ILNDAPI ExtraInfo const&  getExtraData() const;
-    ILNDAPI int const&        getDuration() const;
-    ILNDAPI PunishType const& getType() const;
+    ILNDAPI CheckType const&  cheatType() const;
+    ILNDAPI ExtraInfo const&  extraData() const;
+    ILNDAPI int const&        duration() const;
+    ILNDAPI PunishType const& type() const;
 };
 
 } // namespace lac::punish

@@ -26,8 +26,8 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const;
 
-    ILNDAPI mce::UUID const& getUuid() const;
-    ILNDAPI std::string_view const& getName() const;
-    ILNDAPI std::string_view const& getIp() const;
+    ILNDAPI mce::UUID const& uuid() const;
+    ILNDAPI std::string_view const& name() const;
+    ILNDAPI std::string_view const& ip() const;
 };
 } // namespace lac::punish

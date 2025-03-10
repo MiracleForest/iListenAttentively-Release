@@ -31,10 +31,10 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI LoopbackPacketSender& getPacketSender() const;
-    ILNDAPI Packet&               getPacket() const;
-    ILNDAPI bool const&           getIsBroadcast() const;
-    ILNDAPI optional_ref<ServerPlayer> getPlayer() const;
+    ILNDAPI LoopbackPacketSender& packetSender() const;
+    ILNDAPI Packet&               packet() const;
+    ILNDAPI bool const&           isBroadcast() const;
+    ILNDAPI optional_ref<ServerPlayer> player() const;
 }; // class SendPacketEvent
 
 class SendPacketAfterEvent final : public ll::event::Event
@@ -61,9 +61,9 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI LoopbackPacketSender& getPacketSender() const;
-    ILNDAPI Packet const&         getPacket() const;
-    ILNDAPI bool const&           getIsBroadcast() const;
-    ILNDAPI optional_ref<ServerPlayer> getPlayer() const;
+    ILNDAPI LoopbackPacketSender& packetSender() const;
+    ILNDAPI Packet const&         packet() const;
+    ILNDAPI bool const&           isBroadcast() const;
+    ILNDAPI optional_ref<ServerPlayer> player() const;
 }; // class SendPacketEvent
 } // namespace ila::mc::inline server

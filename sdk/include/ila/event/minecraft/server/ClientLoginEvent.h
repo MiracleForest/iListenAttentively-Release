@@ -27,8 +27,8 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI ServerNetworkHandler const& getServerNetworkHandler() const;
-    ILNDAPI NetworkIdentifier const&    getNetworkIdentifier() const;
+    ILNDAPI ServerNetworkHandler const& serverNetworkHandler() const;
+    ILNDAPI NetworkIdentifier const&    networkIdentifier() const;
 };
 
 class ClientLoginAfterEvent final : public ll::event::Event
@@ -64,15 +64,15 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI ServerNetworkHandler const& getServerNetworkHandler() const;
-    ILNDAPI NetworkIdentifier const&    getNetworkIdentifier() const;
-    ILNDAPI mce::UUID const& getUuid() const;
-    ILNDAPI std::string const& getServerAuthXuid() const;
-    ILNDAPI std::string const& getClientAuthXuid() const;
-    ILNDAPI std::string const& getRealName() const;
-    ILNDAPI std::string const& getIpAndPort() const;
-    ILNDAPI std::string getIp() const;
-    ILNDAPI std::string getPort() const;
+    ILNDAPI ServerNetworkHandler const& serverNetworkHandler() const;
+    ILNDAPI NetworkIdentifier const&    networkIdentifier() const;
+    ILNDAPI mce::UUID const& uuid() const;
+    ILNDAPI std::string const& serverAuthXuid() const;
+    ILNDAPI std::string const& clientAuthXuid() const;
+    ILNDAPI std::string const& realName() const;
+    ILNDAPI std::string const& ipAndPort() const;
+    ILNDAPI std::string ip() const;
+    ILNDAPI std::string port() const;
     ILAPI void          disConnectClient(std::string reason = "") const;
 };
 

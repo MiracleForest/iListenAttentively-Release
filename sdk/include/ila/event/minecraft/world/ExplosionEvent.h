@@ -21,7 +21,7 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI Explosion& getExplosion() const;
+    ILNDAPI Explosion& explosion() const;
 };
 
 class ExplosionAfterEvent final : public ll::event::WorldEvent
@@ -39,6 +39,6 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI Explosion const& getExplosion() const;
+    ILNDAPI Explosion const& explosion() const;
 };
 } // namespace ila::mc::inline world

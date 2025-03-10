@@ -2,7 +2,7 @@
 #include <ll/api/event/entity/ActorEvent.h>
 #include <mc/world/actor/item/ItemActor.h>
 
-namespace ila::event::inline actor::itemActor
+namespace ila::mc::inline world::inline actor::inline item
 {
 
 class ItemActorEvent : public ll::event::ActorEvent
@@ -18,4 +18,4 @@ public:
     ILNDAPI ItemActor& self() const;
 };
 
-} // namespace ila::event::inline actor::itemActor
+} // namespace ila::mc::inline world::inline actor::inline item

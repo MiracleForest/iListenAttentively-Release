@@ -5,7 +5,7 @@
 #include <mc/deps/core/utility/optional_ref.h>
 #include <mc/deps/shared_types/legacy/actor/ActorDamageCause.h>
 
-namespace ila::mc::inline actor
+namespace ila::mc::inline world::inline actor
 {
 class MobHurtEffectBeforeEvent final : public ll::event::Cancellable<ll::event::entity::MobEvent>
 {
@@ -31,9 +31,9 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI optional_ref<Actor> getSource() const;
-    ILNDAPI float&              getValue() const;
-    ILNDAPI SharedTypes::Legacy::ActorDamageCause& getCause() const;
+    ILNDAPI optional_ref<Actor> source() const;
+    ILNDAPI float&              value() const;
+    ILNDAPI SharedTypes::Legacy::ActorDamageCause& cause() const;
 };
 
 class MobHurtEffectAfterEvent final : public ll::event::entity::MobEvent
@@ -59,8 +59,8 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI optional_ref<Actor const> getSource() const;
-    ILNDAPI float const&              getValue() const;
-    ILNDAPI SharedTypes::Legacy::ActorDamageCause const& getCause() const;
+    ILNDAPI optional_ref<Actor const> source() const;
+    ILNDAPI float const&              value() const;
+    ILNDAPI SharedTypes::Legacy::ActorDamageCause const& cause() const;
 };
-} // namespace ila::mc::inline actor
+} // namespace ila::mc::inline world::inline actor

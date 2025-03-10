@@ -2,7 +2,7 @@
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/entity/ActorEvent.h>
 
-namespace ila::mc::inline actor
+namespace ila::mc::inline world::inline actor
 {
 class ProjectileCreateBeforeEvent final : public ll::event::Cancellable<ll::event::entity::ActorEvent>
 {
@@ -22,4 +22,4 @@ public:
     {
     }
 };
-} // namespace ila::mc::inline actor
+} // namespace ila::mc::inline world::inline actor

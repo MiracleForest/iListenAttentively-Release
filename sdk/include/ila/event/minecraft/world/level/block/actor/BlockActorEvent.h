@@ -3,7 +3,7 @@
 #include <ll/api/event/Event.h>
 #include <mc/world/level/block/actor/BlockActor.h>
 
-namespace ila::event::inline blockActor
+namespace ila::mc::inline world::inline level::inline block::inline actor
 {
 
 class BlockActorEvent : public ll::event::Event
@@ -22,4 +22,4 @@ public:
     ILNDAPI BlockActor& self() const;
 };
 
-} // namespace ila::event::inline block::actor
+} // namespace ila::mc::inline world::inline level::inline block::inline actor

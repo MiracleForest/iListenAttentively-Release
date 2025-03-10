@@ -33,10 +33,10 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI BlockPos& getPistonPos() const;
-    ILNDAPI BlockPos& getPushPos() const;
-    ILNDAPI uchar&    getBranchFacing() const;
-    ILNDAPI uchar&    getPistonMoveFacing() const;
+    ILNDAPI BlockPos& pistonPos() const;
+    ILNDAPI BlockPos& pushPos() const;
+    ILNDAPI uchar&    branchFacing() const;
+    ILNDAPI uchar&    pistonMoveFacing() const;
 };
 
 class PistonPushAfterEvent final : public ll::event::WorldEvent
@@ -65,9 +65,9 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI BlockPos const& getPistonPos() const;
-    ILNDAPI BlockPos const& getPushPos() const;
-    ILNDAPI uchar const&    getBranchFacing() const;
-    ILNDAPI uchar const&    getPistonMoveFacing() const;
+    ILNDAPI BlockPos const& pistonPos() const;
+    ILNDAPI BlockPos const& pushPos() const;
+    ILNDAPI uchar const&    branchFacing() const;
+    ILNDAPI uchar const&    pistonMoveFacing() const;
 };
 } // namespace ila::mc::inline world

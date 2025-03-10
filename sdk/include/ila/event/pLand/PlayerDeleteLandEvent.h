@@ -21,8 +21,8 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI uint64_t   getLandId() const;
-    ILNDAPI int const& getRefundPrice() const;
+    ILNDAPI uint64_t   landId() const;
+    ILNDAPI int const& refundPrice() const;
 };
 
 class PlayerDeleteLandAfterEvent final : public ll::event::PlayerEvent
@@ -39,6 +39,6 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI uint64_t getLandId() const;
+    ILNDAPI uint64_t landId() const;
 };
 } // namespace land

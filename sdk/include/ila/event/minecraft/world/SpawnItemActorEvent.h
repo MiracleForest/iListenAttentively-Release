@@ -35,10 +35,10 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI Vec3&      getPos() const;
-    ILNDAPI ItemStack& getItem() const;
-    ILNDAPI Actor*&    getSpawner() const;
-    ILNDAPI int&       getThrowTime() const;
+    ILNDAPI Vec3&      pos() const;
+    ILNDAPI ItemStack& item() const;
+    ILNDAPI Actor*&    spawner() const;
+    ILNDAPI int&       throwTime() const;
 };
 
 class SpawnItemActorAfterEvent final : public ll::event::WorldEvent
@@ -70,10 +70,10 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI Vec3 const&      getPos() const;
-    ILNDAPI ItemStack const& getItem() const;
-    ILNDAPI Actor* const&    getSpawner() const;
-    ILNDAPI int const&       getThrowTime() const;
-    ILNDAPI ItemActor*&      getItemActor() const;
+    ILNDAPI Vec3 const&      pos() const;
+    ILNDAPI ItemStack const& item() const;
+    ILNDAPI Actor* const&    spawner() const;
+    ILNDAPI int const&       throwTime() const;
+    ILNDAPI ItemActor*&      itemActor() const;
 };
 } // namespace ila::mc::inline world

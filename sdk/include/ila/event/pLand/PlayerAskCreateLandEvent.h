@@ -29,7 +29,7 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI bool getIs3DLand() const;
+    ILNDAPI bool is3DLand() const;
 };
 
 } // namespace land

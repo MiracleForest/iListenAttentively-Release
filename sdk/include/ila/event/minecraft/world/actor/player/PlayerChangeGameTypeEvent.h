@@ -3,7 +3,7 @@
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/player/ServerPlayerEvent.h>
 
-namespace ila::mc::inline player
+namespace ila::mc::inline world::inline actor::inline player
 {
 class PlayerChangGameTypeBeforeEvent final
     : public ll::event::Cancellable<ll::event::player::ServerPlayerEvent>
@@ -27,8 +27,8 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI GameType const& getOldGameType() const;
-    ILNDAPI GameType&       getNewGameType() const;
+    ILNDAPI GameType const& oldGameType() const;
+    ILNDAPI GameType&       newGameType() const;
 };
 
 class PlayerChangGameTypeAfterEvent final : public ll::event::player::ServerPlayerEvent
@@ -51,7 +51,7 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI GameType const& getOldGameType() const;
-    ILNDAPI GameType const& getNewGameType() const;
+    ILNDAPI GameType const& oldGameType() const;
+    ILNDAPI GameType const& newGameType() const;
 };
-} // namespace ila::mc::inline player
+} // namespace ila::mc::inline world::inline actor::inline player

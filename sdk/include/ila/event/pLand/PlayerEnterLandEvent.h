@@ -20,6 +20,6 @@ public:
 
     void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI uint64_t getLandId() const;
+    ILNDAPI uint64_t landId() const;
 };
 } // namespace land

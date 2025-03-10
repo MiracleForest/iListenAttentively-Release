@@ -31,8 +31,8 @@ public:
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
     ILNDAPI Level& level() const;
-    ILNDAPI AABB&  getBox() const;
-    ILNDAPI int&   getRadius() const;
+    ILNDAPI AABB&  box() const;
+    ILNDAPI int&   radius() const;
 };
 
 class WitherDestroyAfterEvent final : public ll::event::WorldEvent
@@ -59,7 +59,7 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
 
     ILNDAPI Level&      level() const;
-    ILNDAPI AABB const& getBox() const;
-    ILNDAPI int const&  getRadius() const;
+    ILNDAPI AABB const& box() const;
+    ILNDAPI int const&  radius() const;
 };
 } // namespace ila::mc::inline world

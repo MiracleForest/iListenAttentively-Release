@@ -2,7 +2,7 @@
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/world/LevelEvent.h>
 
-namespace ila::mc::inline level
+namespace ila::mc::inline world::inline level
 {
 class LevelTickBeforeEvent final : public ll::event::Cancellable<ll::event::LevelEvent>
 {
@@ -21,4 +21,4 @@ public:
     {
     }
 };
-} // namespace ila::mc::inline level
+} // namespace ila::mc::inline world::inline level

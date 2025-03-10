@@ -21,8 +21,8 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI Player&  getNewOwner() const;
-    ILNDAPI uint64_t getLandId() const;
+    ILNDAPI Player&  newOwner() const;
+    ILNDAPI uint64_t landId() const;
 };
 
 class LandOwnerChangeAfterEvent final : public ll::event::PlayerEvent
@@ -41,7 +41,7 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI Player&  getNewOwner() const;
-    ILNDAPI uint64_t getLandId() const;
+    ILNDAPI Player&  newOwner() const;
+    ILNDAPI uint64_t landId() const;
 };
 } // namespace land

@@ -50,17 +50,17 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI std::string& getMotd() const;
-    ILNDAPI int&         getProtocolVersion() const;
-    ILNDAPI std::string& getNetworkVersion() const;
-    ILNDAPI int&         getPlayerCount() const;
-    ILNDAPI int&         getMaxPlayerCount() const;
-    ILNDAPI std::string& getGuid() const;
-    ILNDAPI std::string& getLevelName() const;
-    ILNDAPI GameType&    getGameMode() const;
-    ILNDAPI ushort&      getLocalPort() const;
-    ILNDAPI ushort&      getLocalPortV6() const;
-    ILNDAPI std::vector<std::string>& getOther() const;
+    ILNDAPI std::string& motd() const;
+    ILNDAPI int&         protocolVersion() const;
+    ILNDAPI std::string& networkVersion() const;
+    ILNDAPI int&         playerCount() const;
+    ILNDAPI int&         maxPlayerCount() const;
+    ILNDAPI std::string& guid() const;
+    ILNDAPI std::string& levelName() const;
+    ILNDAPI GameType&    gameMode() const;
+    ILNDAPI ushort&      localPort() const;
+    ILNDAPI ushort&      localPortV6() const;
+    ILNDAPI std::vector<std::string>& other() const;
 }; // class ServerPongEvent
 
 class ServerPongAfterEvent final : public ll::event::Event
@@ -108,16 +108,16 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI std::string const& getMotd() const;
-    ILNDAPI int const&         getProtocolVersion() const;
-    ILNDAPI std::string const& getNetworkVersion() const;
-    ILNDAPI int const&         getPlayerCount() const;
-    ILNDAPI int const&         getMaxPlayerCount() const;
-    ILNDAPI std::string const& getGuid() const;
-    ILNDAPI std::string const& getLevelName() const;
-    ILNDAPI GameType const&    getGameMode() const;
-    ILNDAPI ushort const&      getLocalPort() const;
-    ILNDAPI ushort const&      getLocalPortV6() const;
-    ILNDAPI std::vector<std::string> const& getOther() const;
+    ILNDAPI std::string const& motd() const;
+    ILNDAPI int const&         protocolVersion() const;
+    ILNDAPI std::string const& networkVersion() const;
+    ILNDAPI int const&         playerCount() const;
+    ILNDAPI int const&         maxPlayerCount() const;
+    ILNDAPI std::string const& guid() const;
+    ILNDAPI std::string const& levelName() const;
+    ILNDAPI GameType const&    gameMode() const;
+    ILNDAPI ushort const&      localPort() const;
+    ILNDAPI ushort const&      localPortV6() const;
+    ILNDAPI std::vector<std::string> const& other() const;
 }; // class ServerPongEvent
 } // namespace ila::mc::inline server

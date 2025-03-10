@@ -7,6 +7,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+
+### Changed
+
+
+### Fixed
+
+
+
+## [0.4.0] - 2025-03-10
+
+### Added
+
+- Added VillageFeatureConstructionEvent @Lovelylavender4
+- Added CheckIfItIsAVillageGenerationChunkEvent @Lovelylavender4
+- Added PlayerAteEvent @killcerr
+- Added dimension name to block event [#12] @zimuya4153
+- Added EndermanTakeBlock and EndermanLeaveBlock event [#11] @zimuya4153
+
+### Changed
+
+- Refactored the namespaces of various events @Lovelylavender4
+- Refactored event member functions @zimuya4153
+
+### Fixed
+
+- Fixed some event pos deserialization @zimuya4153
 
 ## [0.3.1]
 
@@ -95,8 +123,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#7]: https://github.com/MiracleForest/iListenAttentively-Release/issues/7
 [#9]: https://github.com/MiracleForest/iListenAttentively-Release/issues/9
 [#10]: https://github.com/MiracleForest/iListenAttentively-Release/issues/10
+[#11]: https://github.com/MiracleForest/iListenAttentively-Release/issues/11
+[#12]: https://github.com/MiracleForest/iListenAttentively-Release/issues/12
 
-[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.3.1...HEAD
+[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.2.3...v0.3.0
 [0.2.3]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.2.2...v0.2.3

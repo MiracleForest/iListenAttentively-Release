@@ -30,9 +30,9 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI BlockPos& getPos() const;
-    ILNDAPI int&      getStrength() const;
-    ILNDAPI bool&     getIsFirstTime() const;
+    ILNDAPI BlockPos& pos() const;
+    ILNDAPI int&      strength() const;
+    ILNDAPI bool&     isFirstTime() const;
 };
 
 class RedstoneUpdateAfterEvent final : public ll::event::WorldEvent
@@ -58,8 +58,8 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI BlockPos const& getPos() const;
-    ILNDAPI int const&      getStrength() const;
-    ILNDAPI bool const&     getIsFirstTime() const;
+    ILNDAPI BlockPos const& pos() const;
+    ILNDAPI int const&      strength() const;
+    ILNDAPI bool const&     isFirstTime() const;
 };
 } // namespace ila::mc::inline world

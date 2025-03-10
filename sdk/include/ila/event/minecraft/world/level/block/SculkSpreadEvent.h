@@ -6,7 +6,7 @@
 #include <mc/world/level/block/Block.h>
 
 
-namespace ila::mc::inline world
+namespace ila::mc::inline world::inline level::inline block
 {
 class SculkSpreadBeforeEvent final : public ll::event::Cancellable<ll::event::WorldEvent>
 {
@@ -44,13 +44,13 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI BlockPos& getSelfPos() const;
-    ILNDAPI Block&    getSelfBlock() const;
-    ILNDAPI uchar&    getSelfFace() const;
-    ILNDAPI BlockPos& getTargetPos() const;
-    ILNDAPI Block&    getTargetBlock() const;
-    ILNDAPI uchar&    getTargetFace() const;
-    ILNDAPI uchar&    getFacing() const;
+    ILNDAPI BlockPos& selfPos() const;
+    ILNDAPI Block&    selfBlock() const;
+    ILNDAPI uchar&    selfFace() const;
+    ILNDAPI BlockPos& targetPos() const;
+    ILNDAPI Block&    targetBlock() const;
+    ILNDAPI uchar&    targetFace() const;
+    ILNDAPI uchar&    facing() const;
 };
 
 class SculkSpreadAfterEvent final : public ll::event::WorldEvent
@@ -88,12 +88,12 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI BlockPos const& getSelfPos() const;
-    ILNDAPI Block const&    getSelfBlock() const;
-    ILNDAPI uchar const&    getSelfFace() const;
-    ILNDAPI BlockPos const& getTargetPos() const;
-    ILNDAPI Block const&    getTargetBlock() const;
-    ILNDAPI uchar const&    getTargetFace() const;
-    ILNDAPI uchar const&    getFacing() const;
+    ILNDAPI BlockPos const& selfPos() const;
+    ILNDAPI Block const&    selfBlock() const;
+    ILNDAPI uchar const&    selfFace() const;
+    ILNDAPI BlockPos const& targetPos() const;
+    ILNDAPI Block const&    targetBlock() const;
+    ILNDAPI uchar const&    targetFace() const;
+    ILNDAPI uchar const&    facing() const;
 };
-} // namespace ila::mc::inline worlds
+} // namespace ila::mc::inline world::inline level::inline block

@@ -31,10 +31,10 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI std::shared_ptr<class LandData> const& getLandData() const;
-    ILNDAPI class LandPos const&                   getNewRange() const;
-    ILNDAPI int const&                             getNeedPay() const;
-    ILNDAPI int const&                             getRefundPrice() const;
+    ILNDAPI std::shared_ptr<class LandData> const& landData() const;
+    ILNDAPI class LandPos const&                   newRange() const;
+    ILNDAPI int const&                             needPay() const;
+    ILNDAPI int const&                             refundPrice() const;
 };
 
 class LandRangeChangeAfterEvent final : public ll::event::PlayerEvent
@@ -63,9 +63,9 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI std::shared_ptr<class LandData> const& getLandData() const;
-    ILNDAPI LandPos const&                         getNewRange() const;
-    ILNDAPI int const&                             getNeedPay() const;
-    ILNDAPI int const&                             getRefundPrice() const;
+    ILNDAPI std::shared_ptr<class LandData> const& landData() const;
+    ILNDAPI LandPos const&                         newRange() const;
+    ILNDAPI int const&                             needPay() const;
+    ILNDAPI int const&                             refundPrice() const;
 };
 } // namespace land

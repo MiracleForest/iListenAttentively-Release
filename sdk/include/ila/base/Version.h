@@ -5,10 +5,10 @@
 #define IL_VERSION_MINOR         3
 #define IL_VERSION_PATCH         1
 /* #undef IL_VERSION_PRERELEASE */
-#define IL_VERSION_COMMIT_SHA    d58fac4
+#define IL_VERSION_COMMIT_SHA    4d75753
 // clang-format on
 
-#define IL_WORKSPACE_FOLDER R"(D:\a\iListenAttentively\iListenAttentively\)"
+#define IL_WORKSPACE_FOLDER R"(D:\Github项目\MiracleForest\iListenAttentively\)"
 
 #define IL_VERSION_TO_STRING_INNER(ver) #ver
 #define IL_VERSION_TO_STRING(ver)       IL_VERSION_TO_STRING_INNER(ver)

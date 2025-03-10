@@ -5,7 +5,7 @@
 #include <mc/common/FacingID.h>
 #include <mc/world/level/BlockPos.h>
 
-namespace ila::mc::inline player
+namespace ila::mc::inline world::inline actor::inline player
 {
 class PlayerAttackBlockBeforeEvent final : public ll::event::Cancellable<ll::event::player::ServerPlayerEvent>
 {
@@ -24,8 +24,8 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI BlockPos& getPos() const;
-    ILNDAPI FacingID& getFace() const;
+    ILNDAPI BlockPos& pos() const;
+    ILNDAPI FacingID& face() const;
 };
 
 class PlayerAttackBlockAfterEvent final : public ll::event::player::ServerPlayerEvent
@@ -48,7 +48,7 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI BlockPos const& getPos() const;
-    ILNDAPI FacingID const& getFace() const;
+    ILNDAPI BlockPos const& pos() const;
+    ILNDAPI FacingID const& face() const;
 };
-} // namespace ila::mc::inline player
+} // namespace ila::mc::inline world::inline actor::inline player

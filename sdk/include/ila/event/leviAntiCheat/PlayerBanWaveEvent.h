@@ -26,7 +26,7 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI BanWaveType getType() const;
+    ILNDAPI BanWaveType type() const;
 };
 
 } // namespace lac::punish
