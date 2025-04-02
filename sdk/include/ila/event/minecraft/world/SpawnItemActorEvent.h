@@ -48,7 +48,7 @@ protected:
     ItemStack const& mItem;
     Actor* const&    mSpawner;
     int const&       mThrowTime;
-    ItemActor*&      mItemActor;
+    ItemActor&       mItemActor;
 
 public:
     constexpr explicit SpawnItemActorAfterEvent(
@@ -57,7 +57,7 @@ public:
         ItemStack const& item,
         Actor* const&    spawner,
         int const&       throwTime,
-        ItemActor*&      itemActor
+        ItemActor&       itemActor
     )
         : WorldEvent(blockSource)
         , mPos(pos)
@@ -74,6 +74,6 @@ public:
     ILNDAPI ItemStack const& item() const;
     ILNDAPI Actor* const&    spawner() const;
     ILNDAPI int const&       throwTime() const;
-    ILNDAPI ItemActor*&      itemActor() const;
+    ILNDAPI ItemActor&       itemActor() const;
 };
 } // namespace ila::mc::inline world

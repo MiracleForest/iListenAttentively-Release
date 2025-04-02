@@ -2,10 +2,10 @@
 
 // clang-format off
 #define IL_VERSION_MAJOR         0
-#define IL_VERSION_MINOR         3
+#define IL_VERSION_MINOR         4
 #define IL_VERSION_PATCH         1
 /* #undef IL_VERSION_PRERELEASE */
-#define IL_VERSION_COMMIT_SHA    4d75753
+#define IL_VERSION_COMMIT_SHA    7dcc163
 // clang-format on
 
 #define IL_WORKSPACE_FOLDER R"(D:\Github项目\MiracleForest\iListenAttentively\)"

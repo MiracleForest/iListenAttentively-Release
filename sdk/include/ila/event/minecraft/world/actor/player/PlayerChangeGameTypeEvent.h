@@ -5,7 +5,7 @@
 
 namespace ila::mc::inline world::inline actor::inline player
 {
-class PlayerChangGameTypeBeforeEvent final
+class PlayerChangeGameTypeBeforeEvent final
     : public ll::event::Cancellable<ll::event::player::ServerPlayerEvent>
 {
 protected:
@@ -13,7 +13,7 @@ protected:
     GameType&       mNewGameType;
 
 public:
-    constexpr explicit PlayerChangGameTypeBeforeEvent(
+    constexpr explicit PlayerChangeGameTypeBeforeEvent(
         ServerPlayer&   player,
         GameType const& oldGameType,
         GameType&       newGameType
@@ -31,14 +31,14 @@ public:
     ILNDAPI GameType&       newGameType() const;
 };
 
-class PlayerChangGameTypeAfterEvent final : public ll::event::player::ServerPlayerEvent
+class PlayerChangeGameTypeAfterEvent final : public ll::event::player::ServerPlayerEvent
 {
 protected:
     GameType const& mOldGameType;
     GameType const& mNewGameType;
 
 public:
-    constexpr explicit PlayerChangGameTypeAfterEvent(
+    constexpr explicit PlayerChangeGameTypeAfterEvent(
         ServerPlayer&   player,
         GameType const& oldGameType,
         GameType const& newGameType

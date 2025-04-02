@@ -9,13 +9,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-
 ### Changed
-
 
 ### Fixed
 
 
+## [0.4.1]
+
+### Added
+
+- Added PlayerChangeSlot event @Lovelylavender4
+- Added PlayerCloseContainer event [#15] @zimuya4153
+- Added MobHealthChange event [#15] @zimuya4153
+- Added LiquidFlow event [#14] @zimuya4153
+- Added FireworkRocketDealDamage event [#16] @zimuya4153
+- Added PlayerStartSleep and PlayerStopSleep event [#15] @zimuya4153
+- Added ActorDestroyBlock event [#17] @zimuya4153
+
+### Changed
+
+- Changed the serialized dimension id in the ActorChangeDimension event to the dimension name @zimuya4153
+
+### Fixed
+
+- Fixed PlayerChangeGameType typo @zimuya4153
+- Fixed PlayerRequestItemAction event @zimuya4153
+- Fixed MobHurtEffect event source [#13] @killcerr
+- Fixed itemActor method for SpawnItemActor event @zimuya4153
 
 ## [0.4.0] - 2025-03-10
 
@@ -125,8 +145,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#10]: https://github.com/MiracleForest/iListenAttentively-Release/issues/10
 [#11]: https://github.com/MiracleForest/iListenAttentively-Release/issues/11
 [#12]: https://github.com/MiracleForest/iListenAttentively-Release/issues/12
+[#13]: https://github.com/MiracleForest/iListenAttentively-Release/issues/13
+[#14]: https://github.com/MiracleForest/iListenAttentively-Release/issues/14
+[#15]: https://github.com/MiracleForest/iListenAttentively-Release/issues/15
+[#16]: https://github.com/MiracleForest/iListenAttentively-Release/issues/16
+[#17]: https://github.com/MiracleForest/iListenAttentively-Release/issues/17
 
-[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.1...HEAD
+[0.4.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.2.3...v0.3.0

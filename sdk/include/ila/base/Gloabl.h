@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ila/base/Macro.h"
 #include <ll/api/event/Emitter.h>
 #include <ll/api/event/EventBus.h>
 #include <ll/api/event/EventRefObjSerializer.h>
@@ -64,11 +65,14 @@ class Dimension;
 
 namespace ila
 {
-void        nextTick(std::function<void()> const& func);
-std::string getDimensionName(::BlockSource& region);
-std::string getDimensionName(::Dimension& region);
+ILAPI void nextTick(std::function<void()> const& func);
+ILNDAPI std::string getDimensionName(::DimensionType const& dimId);
+ILNDAPI std::string getDimensionName(::BlockSource& region);
+ILNDAPI std::string     getDimensionName(::Dimension& region);
+ILNDAPI ::DimensionType getDimensionId(std::string const& dimName);
 using ll::event::serializePtrObj;
 using ll::event::serializeRefObj;
+using ll::memory::dAccess;
 } // namespace ila
 
 namespace ll::memory

@@ -33,14 +33,14 @@ public:
 class SculkCatalystAbsorbExperienceAfterEvent final : public ll::event::LevelEvent
 {
 protected:
-    SculkCatalystBlockActor const& mBlockActor;
-    Actor const&                   mActor;
+    SculkCatalystBlockActor& mBlockActor;
+    Actor&                   mActor;
 
 public:
     constexpr explicit SculkCatalystAbsorbExperienceAfterEvent(
-        Level&                         level,
-        SculkCatalystBlockActor const& blockActor,
-        Actor const&                   actor
+        Level&                   level,
+        SculkCatalystBlockActor& blockActor,
+        Actor&                   actor
     )
         : LevelEvent(level)
         , mBlockActor(blockActor)
@@ -50,7 +50,7 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI SculkCatalystBlockActor const& blockActor() const;
-    ILNDAPI Actor const&                   actor() const;
+    ILNDAPI SculkCatalystBlockActor& blockActor() const;
+    ILNDAPI Actor&                   actor() const;
 };
 } // namespace ila::mc::inline world::inline level::inline block
