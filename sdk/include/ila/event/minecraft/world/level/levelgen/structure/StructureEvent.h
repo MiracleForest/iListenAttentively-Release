@@ -8,9 +8,11 @@ namespace ila::mc::inline world::inline level::inline levelgen::inline structure
 
 class StructureEvent : public ll::event::Event
 {
-protected:
 public:
-    constexpr explicit StructureEvent() {}
+    constexpr explicit StructureEvent()
+        : Event()
+    {
+    }
 };
 
 } // namespace ila::mc::inline world::inline level::inline levelgen::inline structure

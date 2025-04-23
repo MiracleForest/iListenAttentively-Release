@@ -2,9 +2,11 @@
 #include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/player/PlayerEvent.h>
-#include <mc/world/Container.h>
-#include <mc/world/actor/player/Player.h>
-#include <mc/world/item/ItemStack.h>
+
+// clang-format off
+class Container;
+class ItemStack;
+// clang-format on
 
 namespace ila::mc::inline world::inline actor::inline player
 {

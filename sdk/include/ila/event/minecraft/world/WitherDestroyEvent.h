@@ -2,7 +2,11 @@
 #include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/world/WorldEvent.h>
-#include <mc/world/phys/AABB.h>
+
+// clang-format off
+class Level;
+class AABB;
+// clang-format on
 
 namespace ila::mc::inline world
 {

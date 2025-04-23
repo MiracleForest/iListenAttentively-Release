@@ -2,9 +2,13 @@
 #include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/world/WorldEvent.h>
-#include <mc/deps/core/math/Vec3.h>
-#include <mc/world/actor/Actor.h>
-#include <mc/world/item/ItemStack.h>
+
+// clang-format off
+class Vec3;
+class Actor;
+class ItemStack;
+class ItemActor;
+// clang-format on
 
 namespace ila::mc::inline world
 {

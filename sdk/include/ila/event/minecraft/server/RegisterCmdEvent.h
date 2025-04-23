@@ -1,10 +1,12 @@
 #pragma once
 #include "ila/base/Macro.h"
 #include <ll/api/event/Event.h>
-#include <mc/server/commands/CommandFlag.h>
 #include <mc/server/commands/CommandPermissionLevel.h>
 
+// clang-format off
 class CommandRegistry;
+class CommandFlag;
+// clang-format on
 
 namespace ila::mc::inline server
 {

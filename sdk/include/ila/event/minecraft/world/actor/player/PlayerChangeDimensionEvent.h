@@ -1,7 +1,11 @@
 #pragma once
 #include "ila/base/Macro.h"
 #include <ll/api/event/player/PlayerEvent.h>
-#include <mc/world/level/ChangeDimensionRequest.h>
+
+// clang-format off
+class ChangeDimensionRequest;
+class Dimension;
+// clang-format on
 
 namespace ila::mc::inline world::inline actor::inline player
 {

@@ -1,9 +1,12 @@
 #include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
 #include <mc/deps/core/utility/optional_ref.h>
-#include <mc/network/LoopbackPacketSender.h>
-#include <mc/network/packet/Packet.h>
-#include <mc/server/ServerPlayer.h>
+
+// clang-format off
+class LoopbackPacketSender;
+class Packet;
+class ServerPlayer;
+// clang-format on
 
 namespace ila::mc::inline server
 {

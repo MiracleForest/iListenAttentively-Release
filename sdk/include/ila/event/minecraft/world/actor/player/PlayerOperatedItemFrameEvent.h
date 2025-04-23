@@ -2,7 +2,10 @@
 #include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/player/PlayerEvent.h>
-#include <mc/world/level/BlockPos.h>
+
+// clang-format off
+class BlockPos;
+// clang-format on
 
 namespace ila::mc::inline world::inline actor::inline player
 {

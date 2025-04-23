@@ -1,9 +1,12 @@
 #include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
-#include <ll/api/event/player/ServerPlayerEvent.h>
-#include <mc/nbt/CompoundTagVariant.h>
-#include <mc/world/level/BlockPos.h>
 #include <mc/world/level/block/actor/SignTextSide.h>
+#include <ll/api/event/player/ServerPlayerEvent.h>
+
+// clang-format off
+class BlockPos;
+class StringTag;
+// clang-format on
 
 namespace ila::mc::inline world::inline actor::inline player
 {

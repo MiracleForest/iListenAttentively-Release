@@ -14,6 +14,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 
+## [0.4.2] - 2025-04-24
+
+### Added
+
+- Added ReceivePacket event @zimuya4153
+- Added flow from position to LiquidFlow event [#18] @zimuya4153
+- Added BlockFall event [#19] @zimuya4153
+
+### Changed
+
+- Changed source deserialize for MobHurtEffectBefore event @zimuya4153
+- Reduced header dependencies in event header
+
+### Fixed
+
+- Fixed deserialize of some events @zimuya4153
+- Fixed ActorDestroyBlock event crash @zimuya4153
+
 ## [0.4.1]
 
 ### Added
@@ -107,7 +125,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.2] - 2025-01-13
 
-### Clanged
+### Changed
 
 - Adapted to LeviLamina 1.0.0-rc.3 and BDS version 1.21.50.10 @zimuya4153
 
@@ -150,8 +168,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#15]: https://github.com/MiracleForest/iListenAttentively-Release/issues/15
 [#16]: https://github.com/MiracleForest/iListenAttentively-Release/issues/16
 [#17]: https://github.com/MiracleForest/iListenAttentively-Release/issues/17
+[#18]: https://github.com/MiracleForest/iListenAttentively-Release/issues/18
+[#19]: https://github.com/MiracleForest/iListenAttentively-Release/issues/19
 
-[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.1...HEAD
+[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.2...HEAD
+[0.4.2]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.1...v0.4.2
 [0.4.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.3.0...v0.3.1

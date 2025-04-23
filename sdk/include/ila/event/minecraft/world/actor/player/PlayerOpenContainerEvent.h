@@ -1,7 +1,11 @@
 #include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/player/ServerPlayerEvent.h>
-#include <mc/legacy/ActorUniqueID.h>
+
+// clang-format off
+class BlockPos;
+struct ActorUniqueID;
+// clang-format on
 
 namespace ila::mc::inline world::inline actor::inline player
 {

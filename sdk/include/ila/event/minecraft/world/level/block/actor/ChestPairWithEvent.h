@@ -4,6 +4,10 @@
 #include <ll/api/event/world/WorldEvent.h>
 #include <mc/world/level/block/actor/ChestBlockActor.h>
 
+// clang-format off
+class BlockPos;
+// clang-format on
+
 namespace ila::mc::inline world::inline level::inline block::inline actor
 {
 class ChestPairWithBeforeEvent final : public ll::event::Cancellable<ll::event::WorldEvent>

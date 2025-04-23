@@ -1,7 +1,10 @@
 #pragma once
 #include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
-#include <mc/platform/UUID.h>
+
+// clang-format off
+namespace mce { class UUID; }
+// clang-format on
 
 namespace lac::punish
 {

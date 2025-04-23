@@ -2,7 +2,10 @@
 #include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/entity/ActorEvent.h>
-#include <mc/world/actor/ActorDamageSource.h>
+
+// clang-format off
+class ActorDamageSource;
+// clang-format on
 
 namespace ila::mc::inline world::inline actor
 {

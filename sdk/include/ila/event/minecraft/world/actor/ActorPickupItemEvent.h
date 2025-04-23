@@ -3,6 +3,10 @@
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/entity/MobEvent.h>
 
+// clang-format off
+class ItemActor;
+// clang-format on
+
 namespace ila::mc::inline world::inline actor
 {
 class ActorPickupItemBeforeEvent final : public ll::event::Cancellable<ll::event::entity::MobEvent>

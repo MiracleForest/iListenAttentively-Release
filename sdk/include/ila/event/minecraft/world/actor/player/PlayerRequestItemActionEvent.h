@@ -2,10 +2,12 @@
 #include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/player/PlayerEvent.h>
+#include <mc/world/inventory/network/ItemStackRequestActionType.h>
 #include <mc/world/inventory/network/ItemStackNetResult.h>
-#include <mc/world/inventory/network/ItemStackRequestActionTransferBase.h>
 
+// clang-format off
 struct ItemStackRequestSlotInfo;
+// clang-format on
 
 namespace ila::mc::inline world::inline actor::inline player
 {

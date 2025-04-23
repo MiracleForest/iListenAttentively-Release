@@ -2,7 +2,10 @@
 #include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/entity/MobEvent.h>
-#include <mc/world/attribute/AttributeBuff.h>
+
+// clang-format off
+class AttributeBuff;
+// clang-format on
 
 namespace ila::mc::inline world::inline actor
 {

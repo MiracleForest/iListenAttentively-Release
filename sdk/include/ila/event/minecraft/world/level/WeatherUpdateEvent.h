@@ -2,7 +2,6 @@
 #include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/world/LevelEvent.h>
-#include <mc/world/level/block/actor/SculkCatalystBlockActor.h>
 
 namespace ila::mc::inline world::inline level
 {

@@ -1,9 +1,12 @@
 #pragma once
 #include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
-#include <mc/network/NetworkIdentifier.h>
-#include <mc/network/ServerNetworkHandler.h>
-#include <mc/platform/UUID.h>
+
+// clang-format off
+namespace mce { class UUID; }
+class ServerNetworkHandler;
+class NetworkIdentifier;
+// clang-format on
 
 namespace ila::mc::inline server
 {

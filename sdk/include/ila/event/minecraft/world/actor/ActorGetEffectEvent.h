@@ -2,7 +2,10 @@
 #include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/entity/ActorEvent.h>
-#include <mc/world/effect/MobEffectInstance.h>
+
+// clang-format off
+class MobEffectInstance;
+// clang-format on
 
 namespace ila::mc::inline world::inline actor
 {

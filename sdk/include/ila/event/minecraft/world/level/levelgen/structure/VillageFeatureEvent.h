@@ -2,12 +2,14 @@
 #include "ila/base/Macro.h"
 #include "ila/event/minecraft/world/level/levelgen/structure/StructureEvent.h"
 #include <ll/api/event/Cancellable.h>
-#include <ll/api/event/Event.h>
-#include <mc/util/Random.h>
-#include <mc/world/level/ChunkPos.h>
-#include <mc/world/level/biome/source/BiomeSource.h>
-#include <mc/world/level/dimension/Dimension.h>
-#include <mc/world/level/levelgen/v1/IPreliminarySurfaceProvider.h>
+
+// clang-format off
+class IPreliminarySurfaceProvider;
+class BiomeSource;
+class Dimension;
+class ChunkPos;
+class Random;
+// clang-format on
 
 namespace ila::mc::inline world::inline level::inline levelgen::inline structure
 {

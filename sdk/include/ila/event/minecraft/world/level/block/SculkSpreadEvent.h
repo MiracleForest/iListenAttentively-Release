@@ -2,9 +2,11 @@
 #include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/world/WorldEvent.h>
-#include <mc/world/level/BlockPos.h>
-#include <mc/world/level/block/Block.h>
 
+// clang-format off
+class Block;
+class BlockPos;
+// clang-format on
 
 namespace ila::mc::inline world::inline level::inline block
 {

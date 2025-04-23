@@ -2,6 +2,10 @@
 #include "ila/base/Macro.h"
 #include <ll/api/event/player/PlayerEvent.h>
 
+// clang-format off
+class ItemStack;
+// clang-format on
+
 namespace ila::mc::inline world::inline actor::inline player
 {
 class PlayerAteEvent final : public ll::event::PlayerEvent
