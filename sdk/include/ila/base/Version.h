@@ -5,7 +5,7 @@
 #define IL_VERSION_MINOR         5
 #define IL_VERSION_PATCH         0
 #define IL_VERSION_PRERELEASE "rc.1"
-#define IL_VERSION_COMMIT_SHA    902dd2f
+#define IL_VERSION_COMMIT_SHA    5e9e630
 // clang-format on
 
 #define IL_WORKSPACE_FOLDER R"(D:\a\iListenAttentively\iListenAttentively\)"

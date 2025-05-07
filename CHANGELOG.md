@@ -13,6 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [0.5.0-rc.1] - 2025-05-08
+
+### Changed
+
+- Adapted to LeviLamina 1.2.0-rc.1 and bds 1.21.70 @zimuya4153
 
 ## [0.4.2] - 2025-04-24
 
@@ -26,7 +31,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Changed source deserialize for MobHurtEffectBefore event @zimuya4153
 - Reduced header dependencies in event header @zimuya4153
-- Adapted to LeviLamina 1.2.0-rc.1 and bds 1.21.70 @zimuya4153
 
 ### Fixed
 
