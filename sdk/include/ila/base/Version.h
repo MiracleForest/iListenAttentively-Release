@@ -2,10 +2,10 @@
 
 // clang-format off
 #define IL_VERSION_MAJOR         0
-#define IL_VERSION_MINOR         4
-#define IL_VERSION_PATCH         2
-/* #undef IL_VERSION_PRERELEASE */
-#define IL_VERSION_COMMIT_SHA    a9826b4
+#define IL_VERSION_MINOR         5
+#define IL_VERSION_PATCH         0
+#define IL_VERSION_PRERELEASE "rc.1"
+#define IL_VERSION_COMMIT_SHA    902dd2f
 // clang-format on
 
 #define IL_WORKSPACE_FOLDER R"(D:\a\iListenAttentively\iListenAttentively\)"

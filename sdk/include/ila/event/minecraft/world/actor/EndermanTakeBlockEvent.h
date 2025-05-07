@@ -16,7 +16,7 @@ protected:
     BlockPos& mPos;
 
 public:
-    constexpr explicit EndermanTakeBlockBeforeEvent(Mob& mob, BlockPos& pos)
+    constexpr explicit EndermanTakeBlockBeforeEvent(EnderMan& mob, BlockPos& pos)
         : Cancellable(mob)
         , mPos(pos)
     {
@@ -35,7 +35,7 @@ protected:
     BlockPos& mPos;
 
 public:
-    constexpr explicit EndermanTakeBlockAfterEvent(Mob& mob, BlockPos& pos)
+    constexpr explicit EndermanTakeBlockAfterEvent(EnderMan& mob, BlockPos& pos)
         : MobEvent(mob)
         , mPos(pos)
     {

@@ -8,6 +8,12 @@
 class BlockPos;
 // clang-format on
 
+// Warning:
+// When a player joins the server, if existing player data is found in the save file,
+// the server will load the player data and trigger this event.
+// However, member variables such as the player"s dimension are not yet initialized at this stage.
+// You need to implement custom checks accordingly.
+
 namespace ila::mc::inline world::inline actor::inline player
 {
 class PlayerStopSleepBeforeEvent final : public ll::event::player::PlayerEvent

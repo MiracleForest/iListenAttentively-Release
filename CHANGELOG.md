@@ -25,7 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Changed source deserialize for MobHurtEffectBefore event @zimuya4153
-- Reduced header dependencies in event header
+- Reduced header dependencies in event header @zimuya4153
+- Adapted to LeviLamina 1.2.0-rc.1 and bds 1.21.70 @zimuya4153
 
 ### Fixed
 
@@ -171,7 +172,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#18]: https://github.com/MiracleForest/iListenAttentively-Release/issues/18
 [#19]: https://github.com/MiracleForest/iListenAttentively-Release/issues/19
 
-[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.2...HEAD
+[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.5.0-rc.1...HEAD
+[0.5.0-rc.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.2...v0.5.0-rc.1
 [0.4.2]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.1...v0.4.2
 [0.4.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.3.1...v0.4.0
