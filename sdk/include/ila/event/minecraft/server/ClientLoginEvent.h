@@ -2,6 +2,7 @@
 #include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
 #include <optional>
+#include <vector>
 
 // clang-format off
 namespace mce { class UUID; }

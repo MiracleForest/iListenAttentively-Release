@@ -26,21 +26,4 @@ public:
 
     ILNDAPI BlockPos& pos() const;
 };
-
-class SpawnWanderingTraderAfterEvent final : public ll::event::WorldEvent
-{
-protected:
-    BlockPos const& mPos;
-
-public:
-    constexpr explicit SpawnWanderingTraderAfterEvent(BlockSource& blockSource, BlockPos const& pos)
-        : WorldEvent(blockSource)
-        , mPos(pos)
-    {
-    }
-
-    ILAPI void serialize(CompoundTag& nbt) const override;
-
-    ILNDAPI BlockPos const& pos() const;
-};
 } // namespace ila::mc::inline world

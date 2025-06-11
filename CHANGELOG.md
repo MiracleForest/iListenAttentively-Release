@@ -14,7 +14,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 
-## [0.5.0] - 2025-05-11
+## [0.6.0] - 2025-06-12
+
+### Changed
+
+- Adapted to LeviLamina 1.3.0 and bds 1.21.80.03 @zimuya4153
+
+
+## [0.5.0] - 2025-06-11
 
 ### Changed
 
