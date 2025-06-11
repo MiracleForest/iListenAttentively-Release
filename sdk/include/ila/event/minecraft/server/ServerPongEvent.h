@@ -18,6 +18,7 @@ protected:
     ushort&                   mLocalPort;
     ushort&                   mLocalPortV6;
     std::vector<std::string>& mOther;
+    std::string const&        mIpAndPort;
 
 public:
     constexpr explicit ServerPongBeforeEvent(
@@ -31,7 +32,8 @@ public:
         GameType&                 gameMode,
         ushort&                   localPort,
         ushort&                   localPortV6,
-        std::vector<std::string>& other
+        std::vector<std::string>& other,
+        std::string const&        ipAndPort
     )
         : mMotd(motd)
         , mProtocolVersion(protocolVersion)
@@ -44,6 +46,7 @@ public:
         , mLocalPort(localPort)
         , mLocalPortV6(localPortV6)
         , mOther(other)
+        , mIpAndPort(ipAndPort)
     {
     }
 
@@ -61,6 +64,9 @@ public:
     ILNDAPI ushort&      localPort() const;
     ILNDAPI ushort&      localPortV6() const;
     ILNDAPI std::vector<std::string>& other() const;
+    ILNDAPI std::string const& ipAndPort() const;
+    ILNDAPI std::string ip() const;
+    ILNDAPI ushort      port() const;
 }; // class ServerPongEvent
 
 class ServerPongAfterEvent final : public ll::event::Event
@@ -77,6 +83,7 @@ protected:
     ushort const&            mLocalPort;
     ushort const&            mLocalPortV6;
     std::vector<std::string> mOther;
+    std::string const&       mIpAndPort;
 
 public:
     constexpr explicit ServerPongAfterEvent(
@@ -90,7 +97,8 @@ public:
         GameType const&                 gameMode,
         ushort const&                   localPort,
         ushort const&                   localPortV6,
-        std::vector<std::string> const& other
+        std::vector<std::string> const& other,
+        std::string const&              ipAndPort
     )
         : mMotd(motd)
         , mProtocolVersion(protocolVersion)
@@ -103,6 +111,7 @@ public:
         , mLocalPort(localPort)
         , mLocalPortV6(localPortV6)
         , mOther(other)
+        , mIpAndPort(ipAndPort)
     {
     }
 
@@ -119,5 +128,8 @@ public:
     ILNDAPI ushort const&      localPort() const;
     ILNDAPI ushort const&      localPortV6() const;
     ILNDAPI std::vector<std::string> const& other() const;
+    ILNDAPI std::string const& ipAndPort() const;
+    ILNDAPI std::string ip() const;
+    ILNDAPI ushort      port() const;
 }; // class ServerPongEvent
 } // namespace ila::mc::inline server

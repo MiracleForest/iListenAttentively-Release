@@ -7,6 +7,7 @@
 #include <ll/api/event/ListenerBase.h>
 #include <ll/api/io/Logger.h>
 #include <ll/api/memory/Hook.h>
+#include <mc/network/MinecraftPacketIds.h>
 
 #ifndef SelfLogger
 #    define SelfLogger ll::mod::NativeMod::current()->getLogger()
@@ -76,6 +77,7 @@ ILNDAPI ::NetworkIdentifier& getNetworkIdentifier(::NetworkPeer& peer);
 using ll::event::serializePtrObj;
 using ll::event::serializeRefObj;
 using ll::memory::dAccess;
+using namespace ll::memory_literals;
 } // namespace ila
 
 namespace ll::memory
@@ -91,3 +93,19 @@ constexpr FuncPtr resolveIdentifier(ll::memory::FuncPtr func)
     return func;
 }
 } // namespace ll::memory
+
+template<>
+struct magic_enum::customize::enum_range<MinecraftPacketIds>
+{
+    static constexpr int min = static_cast<int>(MinecraftPacketIds::KeepAlive);
+    static constexpr int max = static_cast<int>(MinecraftPacketIds::EndId);
+};
+
+template <typename T>
+    requires(std::is_enum_v<T>)
+struct fmt::formatter<T> : fmt::formatter<std::string> {
+    template <class FormatContext>
+    auto format(T const& t, FormatContext& ctx) const {
+        return formatter<std::string>::format(magic_enum::enum_name(t), ctx);
+    }
+};

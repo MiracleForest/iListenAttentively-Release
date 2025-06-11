@@ -13,6 +13,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+
+## [0.5.0] - 2025-05-11
+
+### Changed
+
+- Added ipAndPort info in ServerPongEvent @zimuya4153
+- Change ServerNetworkHandler to non-const @zimuya4153
+- Refactor SendPacket, ReceivePacket, ClientLogin event @zimuya4153
+- Optimize client disconnection handling for ClientLogin event @zimuya4153
+
+### Fixed
+
+- Fixed Hard coding for EndermanTakeBlock event @zimuya4153
+
 ## [0.5.0-rc.1] - 2025-05-08
 
 ### Changed
@@ -176,7 +190,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#18]: https://github.com/MiracleForest/iListenAttentively-Release/issues/18
 [#19]: https://github.com/MiracleForest/iListenAttentively-Release/issues/19
 
-[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.5.0-rc.1...HEAD
+[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.5.0-rc.1...v0.5.0
 [0.5.0-rc.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.2...v0.5.0-rc.1
 [0.4.2]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.1...v0.4.2
 [0.4.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.0...v0.4.1

@@ -1,25 +1,24 @@
 #include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
+#include <mc/deps/core/utility/optional_ref.h>
 
 // clang-format off
-class LoopbackPacketSender;
 class NetworkIdentifier;
 class ServerPlayer;
 class Packet;
-template <typename T>
-class optional_ref;
 // clang-format on
 
 namespace ila::mc::inline server
 {
-class ReceivePacketEvent final : public ll::event::Cancellable<ll::event::Event>
+
+class IReceivePacketBeforeEvent : public ll::event::Cancellable<ll::event::Event>
 {
 protected:
-    Packet&            mPacket;
-    NetworkIdentifier& mNetworkIdentifier;
+    Packet&                  mPacket;
+    NetworkIdentifier const& mNetworkIdentifier;
 
 public:
-    constexpr explicit ReceivePacketEvent(Packet& packet, NetworkIdentifier& networkIdentifier)
+    constexpr explicit IReceivePacketBeforeEvent(Packet& packet, NetworkIdentifier const& networkIdentifier)
         : mPacket(packet)
         , mNetworkIdentifier(networkIdentifier)
     {
@@ -27,8 +26,65 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI Packet&            packet() const;
-    ILNDAPI NetworkIdentifier& networkIdentifier() const;
+    ILNDAPI Packet&                  packet() const;
+    ILNDAPI NetworkIdentifier const& networkIdentifier() const;
     ILNDAPI optional_ref<ServerPlayer> player() const;
 }; // class ReceivePacketEvent
+
+template<std::derived_from<Packet> PacketType = Packet>
+class ReceivePacketBeforeEvent final : public IReceivePacketBeforeEvent
+{
+public:
+    constexpr explicit ReceivePacketBeforeEvent(
+        PacketType&              packet,
+        NetworkIdentifier const& networkIdentifier
+    )
+        : IReceivePacketBeforeEvent(packet, networkIdentifier)
+    {
+    }
+
+    PacketType& packet() const { return static_cast<PacketType&>(IReceivePacketBeforeEvent::packet()); }
+};
+
+class IReceivePacketAfterEvent : public ll::event::Cancellable<ll::event::Event>
+{
+protected:
+    Packet const&            mPacket;
+    NetworkIdentifier const& mNetworkIdentifier;
+
+public:
+    constexpr explicit IReceivePacketAfterEvent(
+        Packet const&            packet,
+        NetworkIdentifier const& networkIdentifier
+    )
+        : mPacket(packet)
+        , mNetworkIdentifier(networkIdentifier)
+    {
+    }
+
+    ILAPI void serialize(CompoundTag& nbt) const override;
+
+    ILNDAPI Packet const&            packet() const;
+    ILNDAPI NetworkIdentifier const& networkIdentifier() const;
+    ILNDAPI optional_ref<ServerPlayer> player() const;
+}; // class ReceivePacketEvent
+
+template<std::derived_from<Packet> PacketType = Packet>
+class ReceivePacketAfterEvent final : public IReceivePacketAfterEvent
+{
+public:
+    constexpr explicit ReceivePacketAfterEvent(
+        PacketType const&        packet,
+        NetworkIdentifier const& networkIdentifier
+    )
+        : IReceivePacketAfterEvent(packet, networkIdentifier)
+    {
+    }
+
+    PacketType const& packet() const
+    {
+        return static_cast<PacketType const&>(IReceivePacketAfterEvent::packet());
+    }
+};
+
 } // namespace ila::mc::inline server

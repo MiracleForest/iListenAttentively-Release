@@ -1,11 +1,11 @@
 #include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
-#include <mc/world/level/block/actor/SignTextSide.h>
 #include <ll/api/event/player/ServerPlayerEvent.h>
+#include <mc/world/level/block/actor/SignTextSide.h>
+
 
 // clang-format off
 class BlockPos;
-class StringTag;
 // clang-format on
 
 namespace ila::mc::inline world::inline actor::inline player
@@ -14,14 +14,14 @@ class PlayerEditSignBeforeEvent final : public ll::event::Cancellable<ll::event:
 {
 protected:
     BlockPos&           mPos;
-    StringTag&          mText;
+    std::string&        mText;
     SignTextSide const& mTextSide;
 
 public:
     constexpr explicit PlayerEditSignBeforeEvent(
         ServerPlayer&       player,
         BlockPos&           pos,
-        StringTag&          text,
+        std::string&        text,
         SignTextSide const& textSide
     )
         : Cancellable(player)
@@ -34,8 +34,8 @@ public:
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI BlockPos&           pos() const;
-    ILNDAPI StringTag&          text() const;
+    ILNDAPI BlockPos& pos() const;
+    ILNDAPI std::string&        text() const;
     ILNDAPI SignTextSide const& textSide() const;
 };
 
@@ -43,14 +43,14 @@ class PlayerEditSignAfterEvent final : public ll::event::player::ServerPlayerEve
 {
 protected:
     BlockPos const&     mPos;
-    StringTag const&    mText;
+    std::string const&  mText;
     SignTextSide const& mTextSide;
 
 public:
     constexpr explicit PlayerEditSignAfterEvent(
         ServerPlayer&       player,
         BlockPos const&     pos,
-        StringTag const&    text,
+        std::string const&  text,
         SignTextSide const& textSide
     )
         : ServerPlayerEvent(player)
@@ -62,7 +62,7 @@ public:
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI StringTag const&    text() const;
+    ILNDAPI std::string const&  text() const;
     ILNDAPI SignTextSide const& textSide() const;
     ILNDAPI BlockPos const&     pos() const;
 };
