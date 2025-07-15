@@ -14,6 +14,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 
+## [0.7.0] - 2025-07-15
+
+### Fixed
+
+- Adapted to LeviLamina 1.4.0 and bds 1.21.93.1 @zimuya4153
+
+
 ## [0.6.0] - 2025-06-12
 
 ### Changed
@@ -197,7 +204,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#18]: https://github.com/MiracleForest/iListenAttentively-Release/issues/18
 [#19]: https://github.com/MiracleForest/iListenAttentively-Release/issues/19
 
-[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.6.0...v0.7.0
+[0.6.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.5.0-rc.1...v0.5.0
 [0.5.0-rc.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.2...v0.5.0-rc.1
 [0.4.2]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.1...v0.4.2
