@@ -2,6 +2,7 @@
 #include "ila/base/Macro.h"
 #include "ila/event/minecraft/world/level/levelgen/structure/StructureEvent.h"
 #include <ll/api/event/Cancellable.h>
+#include <mc/common/BiomeIdType.h>
 
 // clang-format off
 class IPreliminarySurfaceProvider;
@@ -17,7 +18,7 @@ namespace ila::mc::inline world::inline level::inline levelgen::inline structure
 class VillageFeatureConstructionEvent final : public ila::mc::StructureEvent
 {
 protected:
-    std::vector<uint64>& mAllowedBiomes;
+    std::vector<BiomeIdType>& mAllowedBiomes;
 
     uint& mSeed;
     int&  mTownSpacing;
@@ -25,10 +26,10 @@ protected:
 
 public:
     constexpr explicit VillageFeatureConstructionEvent(
-        std::vector<uint64>& pAllowedBiomes,
-        uint&                pSeed,
-        int&                 pTownSpacing,
-        int&                 pMinTownSeparation
+        std::vector<BiomeIdType>& pAllowedBiomes,
+        uint&                     pSeed,
+        int&                      pTownSpacing,
+        int&                      pMinTownSeparation
     )
         : StructureEvent()
         , mAllowedBiomes(pAllowedBiomes)
@@ -42,10 +43,10 @@ public:
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
 public:
-    ILNDAPI std::vector<uint64>& allowedBiomes() const;
-    ILNDAPI uint&                seed() const;
-    ILNDAPI int&                 townSpacing() const;
-    ILNDAPI int&                 minTownSeparation() const;
+    ILNDAPI std::vector<BiomeIdType>& allowedBiomes() const;
+    ILNDAPI uint&                     seed() const;
+    ILNDAPI int&                      townSpacing() const;
+    ILNDAPI int&                      minTownSeparation() const;
 };
 
 class CheckIfItIsAVillageGenerationChunkEvent final : public ll::event::Cancellable<ila::mc::StructureEvent>

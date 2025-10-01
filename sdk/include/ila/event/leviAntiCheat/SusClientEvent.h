@@ -6,7 +6,7 @@
 namespace mce { class UUID; }
 // clang-format on
 
-namespace lac::punish
+namespace ila::lac
 {
 class SusClientEvent final : public ll::event::Cancellable<ll::event::Event>
 {
@@ -27,10 +27,10 @@ public:
     {
     }
 
-    ILAPI void serialize(CompoundTag& nbt) const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
 
     ILNDAPI mce::UUID const& uuid() const;
     ILNDAPI std::string_view const& name() const;
     ILNDAPI std::string_view const& ip() const;
 };
-} // namespace lac::punish
+} // namespace ila::lac

@@ -1,4 +1,5 @@
 #pragma once
+#include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/world/LevelEvent.h>
 

@@ -7,12 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.0] - 2025-10-01
+
 ### Added
+
+- Added BiomeDecorationSystemEvent, DecorateEvent, DecorateBiomeEvent, DecorateLargeFeature1Event, DecorateLargeFeature2Event @Lovelylavender4
+- Adapted to LeviLamina 1.5.1 @zimyua4153
 
 ### Changed
 
+- Removed the PLand mod event @zimuya4153
+
 ### Fixed
 
+- Fixed the strange crash [#28] @zimuya4153
+- Fixed the suspended reference of the MobHurtEffectBeforeEvent event [#29] @zimuya4153
+- Fixed the issue of the ClientLoginAfterEvent event being kicked out of output [#34] @zimuya4153
+- Fixed the interception of the LiquidFlowBeforeEvent event [#35] @zimuya4153
 
 ## [0.7.0] - 2025-07-15
 
@@ -20,13 +31,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Adapted to LeviLamina 1.4.0 and bds 1.21.93.1 @zimuya4153
 
-
 ## [0.6.0] - 2025-06-12
 
 ### Changed
 
 - Adapted to LeviLamina 1.3.0 and bds 1.21.80.03 @zimuya4153
-
 
 ## [0.5.0] - 2025-06-11
 
@@ -65,7 +74,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed deserialize of some events @zimuya4153
 - Fixed ActorDestroyBlock event crash @zimuya4153
 
-## [0.4.1]
+## [0.4.1] - 2025-04-02
 
 ### Added
 
@@ -107,7 +116,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed some event pos deserialization @zimuya4153
 
-## [0.3.1]
+## [0.3.1] - 2025-03-01
 
 ### Added
 
@@ -121,7 +130,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed typo in local port for ServerPong event @zimuya4153
 - Fixed PlayerDropItem event crash [#10] @zimuya4153
-
 
 ## [0.3.0] - 2025-02-24
 
@@ -138,7 +146,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fixed the serialize and deserialize for PlayerRequestItemAction event @zimuya4153
-
 
 ## [0.2.3] - 2025-01-27
 
@@ -203,8 +210,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#17]: https://github.com/MiracleForest/iListenAttentively-Release/issues/17
 [#18]: https://github.com/MiracleForest/iListenAttentively-Release/issues/18
 [#19]: https://github.com/MiracleForest/iListenAttentively-Release/issues/19
+[#28]: https://github.com/MiracleForest/iListenAttentively-Release/issues/28
+[#29]: https://github.com/MiracleForest/iListenAttentively-Release/issues/29
+[#34]: https://github.com/MiracleForest/iListenAttentively-Release/issues/34
+[#35]: https://github.com/MiracleForest/iListenAttentively-Release/issues/35
 
-[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.8.0...HEAD
+[0.8.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.5.0-rc.1...v0.5.0

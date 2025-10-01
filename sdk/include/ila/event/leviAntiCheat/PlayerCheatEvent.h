@@ -3,7 +3,7 @@
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/player/PlayerEvent.h>
 
-namespace lac::punish
+namespace ila::lac
 {
 
 enum class CheckType
@@ -70,7 +70,7 @@ public:
     {
     }
 
-    ILAPI void serialize(CompoundTag& nbt) const;
+    ILAPI void serialize(CompoundTag& nbt) const override;
 
     ILNDAPI CheckType const&  cheatType() const;
     ILNDAPI ExtraInfo const&  extraData() const;
@@ -78,4 +78,4 @@ public:
     ILNDAPI PunishType const& type() const;
 };
 
-} // namespace lac::punish
+} // namespace ila::lac

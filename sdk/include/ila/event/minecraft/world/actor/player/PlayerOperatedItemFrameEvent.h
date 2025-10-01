@@ -22,6 +22,9 @@ namespace PlayerOperatedItemFrameEvent
 
 class PlayerOperatedItemFrameBeforeEvent final : public ll::event::Cancellable<ll::event::PlayerEvent>
 {
+public:
+    using Type = PlayerOperatedItemFrameEvent::Type;
+
 protected:
     BlockPos const&                          mBlockPos;
     PlayerOperatedItemFrameEvent::Type const mType;
@@ -46,6 +49,9 @@ public:
 
 class PlayerOperatedItemFrameAfterEvent final : public ll::event::PlayerEvent
 {
+public:
+    using Type = PlayerOperatedItemFrameEvent::Type;
+
 protected:
     BlockPos const&                           mBlockPos;
     PlayerOperatedItemFrameEvent::Type const& mType;

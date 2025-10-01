@@ -14,7 +14,6 @@ class LiquidFlowBeforeEvent final : public ll::event::Cancellable<ll::event::Wor
 protected:
     BlockPos&       mPos;
     int&            mDepth;
-    bool&           mPreserveExisting;
     BlockPos const& mFlowFromPos;
 
 public:
@@ -22,13 +21,11 @@ public:
         BlockSource&    blockSource,
         BlockPos&       pos,
         int&            depth,
-        bool&           preserveExisting,
         BlockPos const& flowFromPos
     )
         : Cancellable(blockSource)
         , mPos(pos)
         , mDepth(depth)
-        , mPreserveExisting(preserveExisting)
         , mFlowFromPos(flowFromPos)
     {
     }
@@ -38,7 +35,6 @@ public:
 
     ILNDAPI BlockPos&       pos() const;
     ILNDAPI int&            depth() const;
-    ILNDAPI bool&           preserveExisting() const;
     ILNDAPI BlockPos const& flowFromPos() const;
 };
 
@@ -47,7 +43,6 @@ class LiquidFlowAfterEvent final : public ll::event::WorldEvent
 protected:
     BlockPos const& mPos;
     int const&      mDepth;
-    bool const&     mPreserveExisting;
     BlockPos const& mFlowFromPos;
 
 public:
@@ -55,13 +50,11 @@ public:
         BlockSource&    blockSource,
         BlockPos const& pos,
         int const&      depth,
-        bool const&     preserveExisting,
         BlockPos const& flowFromPos
     )
         : WorldEvent(blockSource)
         , mPos(pos)
         , mDepth(depth)
-        , mPreserveExisting(preserveExisting)
         , mFlowFromPos(flowFromPos)
     {
     }
@@ -70,7 +63,6 @@ public:
 
     ILNDAPI BlockPos const& pos() const;
     ILNDAPI int const&      depth() const;
-    ILNDAPI bool const&     preserveExisting() const;
     ILNDAPI BlockPos const& flowFromPos() const;
 };
 } // namespace ila::mc::inline world::inline level::inline block

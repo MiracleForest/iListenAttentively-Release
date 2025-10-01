@@ -2,7 +2,6 @@
 #include "ila/base/Macro.h"
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/entity/MobEvent.h>
-#include <mc/world/actor/monster/EnderMan.h>
 
 // clang-format off
 class BlockPos;
@@ -10,40 +9,44 @@ class BlockPos;
 
 namespace ila::mc::inline world::inline actor
 {
-class EndermanLeaveBlockBeforeEvent final : public ll::event::Cancellable<ll::event::entity::MobEvent>
+class MobPlaceBlockBeforeEvent final : public ll::event::Cancellable<ll::event::entity::MobEvent>
 {
 protected:
-    BlockPos& mPos;
+    BlockPos&    mPos;
+    Block const* mBlock;
 
 public:
-    constexpr explicit EndermanLeaveBlockBeforeEvent(Mob& mob, BlockPos& pos)
+    constexpr explicit MobPlaceBlockBeforeEvent(Mob& mob, BlockPos& pos, Block const* block)
         : Cancellable(mob)
         , mPos(pos)
+        , mBlock(block)
     {
     }
 
     ILAPI void serialize(CompoundTag& nbt) const override;
     ILAPI void deserialize(CompoundTag const& nbt) override;
 
-    ILNDAPI EnderMan& self() const;
-    ILNDAPI BlockPos& pos() const;
+    ILNDAPI BlockPos&    pos() const;
+    ILNDAPI Block const* block() const;
 };
 
-class EndermanLeaveBlockAfterEvent final : public ll::event::entity::MobEvent
+class MobPlaceBlockAfterEvent final : public ll::event::entity::MobEvent
 {
 protected:
-    BlockPos& mPos;
+    BlockPos&    mPos;
+    Block const* mBlock;
 
 public:
-    constexpr explicit EndermanLeaveBlockAfterEvent(Mob& mob, BlockPos& pos)
+    constexpr explicit MobPlaceBlockAfterEvent(Mob& mob, BlockPos& pos, Block const* block)
         : MobEvent(mob)
         , mPos(pos)
+        , mBlock(block)
     {
     }
 
     ILAPI void serialize(CompoundTag& nbt) const override;
 
-    ILNDAPI EnderMan&       self() const;
     ILNDAPI BlockPos const& pos() const;
+    ILNDAPI Block const*    block() const;
 };
 } // namespace ila::mc::inline world::inline actor

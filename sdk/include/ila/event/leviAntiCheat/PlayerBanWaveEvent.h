@@ -3,7 +3,7 @@
 #include <ll/api/event/Cancellable.h>
 #include <ll/api/event/player/PlayerEvent.h>
 
-namespace lac::punish
+namespace ila::lac
 {
 
 enum class BanWaveType
@@ -29,4 +29,4 @@ public:
     ILNDAPI BanWaveType type() const;
 };
 
-} // namespace lac::punish
+} // namespace ila::lac
