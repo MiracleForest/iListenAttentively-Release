@@ -1,7 +1,7 @@
 {
     "format_version": 2,
     "tooth": "github.com/MiracleForest/iListenAttentively-Release",
-    "version": "0.8.0",
+    "version": "0.8.1",
     "info": {
         "name": "iListenAttentively",
         "description": "iListenAttentively is a rich and modern LeviLamina Minecraft event library!",

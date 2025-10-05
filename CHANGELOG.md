@@ -7,12 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.1] - 2025-10-05
+
+### Fixed
+
+- Fixed the LiquidFlow event [#36] @zimuya4153
+
 ## [0.8.0] - 2025-10-01
 
 ### Added
 
 - Added BiomeDecorationSystemEvent, DecorateEvent, DecorateBiomeEvent, DecorateLargeFeature1Event, DecorateLargeFeature2Event @Lovelylavender4
-- Adapted to LeviLamina 1.5.1 @zimyua4153
+- Adapted to LeviLamina 1.5.1 @zimuya4153
 
 ### Changed
 
@@ -214,8 +220,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#29]: https://github.com/MiracleForest/iListenAttentively-Release/issues/29
 [#34]: https://github.com/MiracleForest/iListenAttentively-Release/issues/34
 [#35]: https://github.com/MiracleForest/iListenAttentively-Release/issues/35
+[#36]: https://github.com/MiracleForest/iListenAttentively-Release/issues/36
 
-[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.8.0...HEAD
+[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.8.1...HEAD
+[0.8.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.5.0...v0.6.0
