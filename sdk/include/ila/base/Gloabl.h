@@ -7,6 +7,7 @@
 #include <ll/api/io/Logger.h>
 #include <ll/api/memory/Hook.h>
 #include <mc/network/MinecraftPacketIds.h>
+#include <mc/world/events/BlockSourceHandle.h>
 
 #ifndef SelfLogger
 #    define SelfLogger ll::mod::NativeMod::current()->getLogger()
@@ -98,3 +99,14 @@ struct magic_enum::customize::enum_range<MinecraftPacketIds>
     static constexpr int min = static_cast<int>(MinecraftPacketIds::KeepAlive);
     static constexpr int max = static_cast<int>(MinecraftPacketIds::EndId);
 };
+
+template<>
+_NODISCARD_SMART_PTR_ALLOC inline std::shared_ptr<BlockSourceHandle> std::
+    make_shared<BlockSourceHandle, BlockSource&>(BlockSource& region)
+{
+    const auto _Rx               = new _Ref_count_obj2<BlockSourceHandle>();
+    _Rx->_Storage._Value.mSource = &region;
+    shared_ptr<BlockSourceHandle> _Ret;
+    _Ret._Set_ptr_rep_and_enable_shared(_STD addressof(_Rx->_Storage._Value), _Rx);
+    return _Ret;
+}
