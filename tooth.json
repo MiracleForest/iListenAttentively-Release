@@ -1,7 +1,7 @@
 {
     "format_version": 2,
     "tooth": "github.com/MiracleForest/iListenAttentively-Release",
-    "version": "0.10.0",
+    "version": "0.11.0",
     "info": {
         "name": "iListenAttentively",
         "description": "iListenAttentively is a rich and modern LeviLamina Minecraft event library!",
@@ -15,7 +15,7 @@
     },
     "asset_url": "https://github.com/MiracleForest/iListenAttentively-Release/releases/download/v$(version)/iListenAttentively-windows-x64.zip",
     "prerequisites": {
-        "github.com/LiteLDev/LeviLamina": ">=1.7.0"
+        "github.com/LiteLDev/LeviLamina": ">=1.9.0"
     },
     "files": {
         "place": [
