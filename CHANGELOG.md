@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.1] - 2026-01-29
+
+### Fixed
+
+- Fixed the ClientLogin event xuid @zimuya4153
+- Fixed the client rendering issue of the redstone update event @zimuya4153
+
 ## [0.11.0] - 2026-01-27
 
 ### Added
@@ -231,80 +238,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Addeded the initial batch of events. @zimuya4153
 
-  [#7]: https://github.com/MiracleForest/iListenAttentively-Release/issues/7
-  [#9]: https://github.com/MiracleForest/iListenAttentively-Release/issues/9
-  [#10]: https://github.com/MiracleForest/iListenAttentively-Release/issues/10
-  [#11]: https://github.com/MiracleForest/iListenAttentively-Release/issues/11
-  [#12]: https://github.com/MiracleForest/iListenAttentively-Release/issues/12
-  [#13]: https://github.com/MiracleForest/iListenAttentively-Release/issues/13
-  [#14]: https://github.com/MiracleForest/iListenAttentively-Release/issues/14
-  [#15]: https://github.com/MiracleForest/iListenAttentively-Release/issues/15
-  [#16]: https://github.com/MiracleForest/iListenAttentively-Release/issues/16
-  [#17]: https://github.com/MiracleForest/iListenAttentively-Release/issues/17
-  [#18]: https://github.com/MiracleForest/iListenAttentively-Release/issues/18
-  [#19]: https://github.com/MiracleForest/iListenAttentively-Release/issues/19
-  [#28]: https://github.com/MiracleForest/iListenAttentively-Release/issues/28
-  [#29]: https://github.com/MiracleForest/iListenAttentively-Release/issues/29
-  [#34]: https://github.com/MiracleForest/iListenAttentively-Release/issues/34
-  [#35]: https://github.com/MiracleForest/iListenAttentively-Release/issues/35
-  [#36]: https://github.com/MiracleForest/iListenAttentively-Release/issues/36
-  [#38]: https://github.com/MiracleForest/iListenAttentively-Release/issues/38
+[#7]: https://github.com/MiracleForest/iListenAttentively-Release/issues/7
+[#9]: https://github.com/MiracleForest/iListenAttentively-Release/issues/9
+[#10]: https://github.com/MiracleForest/iListenAttentively-Release/issues/10
+[#11]: https://github.com/MiracleForest/iListenAttentively-Release/issues/11
+[#12]: https://github.com/MiracleForest/iListenAttentively-Release/issues/12
+[#13]: https://github.com/MiracleForest/iListenAttentively-Release/issues/13
+[#14]: https://github.com/MiracleForest/iListenAttentively-Release/issues/14
+[#15]: https://github.com/MiracleForest/iListenAttentively-Release/issues/15
+[#16]: https://github.com/MiracleForest/iListenAttentively-Release/issues/16
+[#17]: https://github.com/MiracleForest/iListenAttentively-Release/issues/17
+[#18]: https://github.com/MiracleForest/iListenAttentively-Release/issues/18
+[#19]: https://github.com/MiracleForest/iListenAttentively-Release/issues/19
+[#28]: https://github.com/MiracleForest/iListenAttentively-Release/issues/28
+[#29]: https://github.com/MiracleForest/iListenAttentively-Release/issues/29
+[#34]: https://github.com/MiracleForest/iListenAttentively-Release/issues/34
+[#35]: https://github.com/MiracleForest/iListenAttentively-Release/issues/35
+[#36]: https://github.com/MiracleForest/iListenAttentively-Release/issues/36
+[#38]: https://github.com/MiracleForest/iListenAttentively-Release/issues/38
 
-  [Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.10.0...HEAD
-  [0.10.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.9.0...v0.10.0
-  [0.9.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.8.1...v0.9.0
-  [0.8.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.8.0...v0.8.1
-  [0.8.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.7.0...v0.8.0
-  [0.7.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.6.0...v0.7.0
-  [0.6.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.5.0...v0.6.0
-  [0.5.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.5.0-rc.1...v0.5.0
-  [0.5.0-rc.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.2...v0.5.0-rc.1
-  [0.4.2]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.1...v0.4.2
-  [0.4.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.0...v0.4.1
-  [0.4.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.3.1...v0.4.0
-  [0.3.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.3.0...v0.3.1
-  [0.3.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.2.3...v0.3.0
-  [0.2.3]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.2.2...v0.2.3
-  [0.2.2]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.2.1...v0.2.2
-  [0.2.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.2.0...v0.2.1
-  [0.2.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.1.0...v0.2.0
-
-[#7]: https://github.com/MiracleForest/iListenAttentively/issues/7
-[#9]: https://github.com/MiracleForest/iListenAttentively/issues/9
-[#10]: https://github.com/MiracleForest/iListenAttentively/issues/10
-[#11]: https://github.com/MiracleForest/iListenAttentively/issues/11
-[#12]: https://github.com/MiracleForest/iListenAttentively/issues/12
-[#13]: https://github.com/MiracleForest/iListenAttentively/issues/13
-[#14]: https://github.com/MiracleForest/iListenAttentively/issues/14
-[#15]: https://github.com/MiracleForest/iListenAttentively/issues/15
-[#16]: https://github.com/MiracleForest/iListenAttentively/issues/16
-[#17]: https://github.com/MiracleForest/iListenAttentively/issues/17
-[#18]: https://github.com/MiracleForest/iListenAttentively/issues/18
-[#19]: https://github.com/MiracleForest/iListenAttentively/issues/19
-[#28]: https://github.com/MiracleForest/iListenAttentively/issues/28
-[#29]: https://github.com/MiracleForest/iListenAttentively/issues/29
-[#34]: https://github.com/MiracleForest/iListenAttentively/issues/34
-[#35]: https://github.com/MiracleForest/iListenAttentively/issues/35
-[#36]: https://github.com/MiracleForest/iListenAttentively/issues/36
-[#38]: https://github.com/MiracleForest/iListenAttentively/issues/38
-
-[Unreleased]: https://github.com/MiracleForest/iListenAttentively/compare/v0.11.0...HEAD
-[0.11.0]: https://github.com/MiracleForest/iListenAttentively/compare/v0.10.0...v0.11.0
-[0.10.0]: https://github.com/MiracleForest/iListenAttentively/compare/v0.9.0...v0.10.0
-[0.9.0]: https://github.com/MiracleForest/iListenAttentively/compare/v0.8.1...v0.9.0
-[0.8.1]: https://github.com/MiracleForest/iListenAttentively/compare/v0.8.0...v0.8.1
-[0.8.0]: https://github.com/MiracleForest/iListenAttentively/compare/v0.7.0...v0.8.0
-[0.7.0]: https://github.com/MiracleForest/iListenAttentively/compare/v0.6.0...v0.7.0
-[0.6.0]: https://github.com/MiracleForest/iListenAttentively/compare/v0.5.0...v0.6.0
-[0.5.0]: https://github.com/MiracleForest/iListenAttentively/compare/v0.5.0-rc.1...v0.5.0
-[0.5.0-rc.1]: https://github.com/MiracleForest/iListenAttentively/compare/v0.4.2...v0.5.0-rc.1
-[0.4.2]: https://github.com/MiracleForest/iListenAttentively/compare/v0.4.1...v0.4.2
-[0.4.1]: https://github.com/MiracleForest/iListenAttentively/compare/v0.4.0...v0.4.1
-[0.4.0]: https://github.com/MiracleForest/iListenAttentively/compare/v0.3.1...v0.4.0
-[0.3.1]: https://github.com/MiracleForest/iListenAttentively/compare/v0.3.0...v0.3.1
-[0.3.0]: https://github.com/MiracleForest/iListenAttentively/compare/v0.2.3...v0.3.0
-[0.2.3]: https://github.com/MiracleForest/iListenAttentively/compare/v0.2.2...v0.2.3
-[0.2.2]: https://github.com/MiracleForest/iListenAttentively/compare/v0.2.1...v0.2.2
-[0.2.1]: https://github.com/MiracleForest/iListenAttentively/compare/v0.2.0...v0.2.1
-[0.2.0]: https://github.com/MiracleForest/iListenAttentively/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/MiracleForest/iListenAttentively/releases/tag/v0.1.0
+[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.11.1...HEAD
+[0.11.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.11.0...v0.11.1
+[0.11.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.10.0...v0.11.0
+[0.10.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.9.0...v0.10.0
+[0.9.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.8.1...v0.9.0
+[0.8.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.8.0...v0.8.1
+[0.8.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.7.0...v0.8.0
+[0.7.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.6.0...v0.7.0
+[0.6.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.5.0...v0.6.0
+[0.5.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.5.0-rc.1...v0.5.0
+[0.5.0-rc.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.2...v0.5.0-rc.1
+[0.4.2]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.1...v0.4.2
+[0.4.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.4.0...v0.4.1
+[0.4.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.3.1...v0.4.0
+[0.3.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.3.0...v0.3.1
+[0.3.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.2.3...v0.3.0
+[0.2.3]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.2.2...v0.2.3
+[0.2.2]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.2.1...v0.2.2
+[0.2.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.2.0...v0.2.1
+[0.2.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/MiracleForest/iListenAttentively-Release/releases/tag/v0.1.0
