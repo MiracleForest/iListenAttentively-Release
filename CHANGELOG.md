@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.3] - 2026-02-15
+
+### Fixed
+
+- Fixed MobPlaceBlockBeforeEvent @Lovelylavender4 @zimuya4153
+
 ## [0.11.2] - 2026-02-05
 
 ### Fixed
@@ -264,7 +270,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#38]: https://github.com/MiracleForest/iListenAttentively-Release/issues/38
 [#41]: https://github.com/MiracleForest/iListenAttentively-Release/issues/41
 
-[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.11.2...HEAD
+[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.11.3...HEAD
+[0.11.3]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.11.2...v0.11.3
 [0.11.2]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.11.0...v0.11.2
 [0.11.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.11.0...v0.11.1
 [0.11.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.10.0...v0.11.0
