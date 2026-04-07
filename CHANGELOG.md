@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.12.0] - 2026-04-07
+
+### Changed
+
+- Adapted to LeviLamina 26.10.x and bds 1.26.10.04 @killcerr
+
 ## [0.11.3] - 2026-02-15
 
 ### Fixed
@@ -268,11 +274,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#35]: https://github.com/MiracleForest/iListenAttentively-Release/issues/35
 [#36]: https://github.com/MiracleForest/iListenAttentively-Release/issues/36
 [#38]: https://github.com/MiracleForest/iListenAttentively-Release/issues/38
-[#41]: https://github.com/MiracleForest/iListenAttentively-Release/issues/41
 
-[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.11.3...HEAD
+[Unreleased]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.12.0...HEAD
+[0.12.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.11.3...v0.12.0
 [0.11.3]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.11.2...v0.11.3
-[0.11.2]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.11.0...v0.11.2
+[0.11.2]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.11.1...v0.11.2
 [0.11.1]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.11.0...v0.11.1
 [0.11.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.10.0...v0.11.0
 [0.10.0]: https://github.com/MiracleForest/iListenAttentively-Release/compare/v0.9.0...v0.10.0
