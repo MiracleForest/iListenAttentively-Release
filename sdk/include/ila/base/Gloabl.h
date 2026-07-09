@@ -8,6 +8,7 @@
 #include <ll/api/memory/Hook.h>
 #include <mc/network/MinecraftPacketIds.h>
 #include <mc/world/events/BlockSourceHandle.h>
+#include <mc/world/level/dimension/DimensionType.h>
 
 #ifndef SelfLogger
 #    define SelfLogger ll::mod::NativeMod::current()->getLogger()

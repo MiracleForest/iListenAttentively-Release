@@ -2,7 +2,7 @@
 #include "ila/base/Macro.h"
 #include "ila/event/minecraft/world/level/levelgen/structure/StructureEvent.h"
 #include <ll/api/event/Cancellable.h>
-#include <mc/common/BiomeIdType.h>
+#include <mc/world/level/biome/BiomeIdType.h>
 
 // clang-format off
 class IPreliminarySurfaceProvider;
